@@ -15,7 +15,7 @@ import {
 import { navContactID } from "../handlers/pageRoutes";
 import bgImage from "../../../assets/images/home/contact_background.png";
 import { Alert, Box, Button, Container, Snackbar, Stack } from "@mui/material";
-import { apiKey } from "../handlers/emailKey";
+// import { apiKey } from "../handlers/emailKey";
 import emailjs from "@emailjs/browser";
 import overlayBefore from "../../../assets/images/home/before.png";
 
@@ -74,10 +74,10 @@ export const ContactContent = () => {
       };
       emailjs
         .send(
-          apiKey.SERVICE_ID,
-          apiKey.TEMPLATE_ID,
-          templateParams,
-          apiKey.USER_ID
+          // apiKey.SERVICE_ID,
+          // apiKey.TEMPLATE_ID,
+          // templateParams,
+          // apiKey.USER_ID
         )
         .then(() => {
           return handleMessage("Message has been sent.", successText);

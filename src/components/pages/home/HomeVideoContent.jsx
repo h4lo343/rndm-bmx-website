@@ -8,7 +8,7 @@ import {
   myFont,
 } from "../../../styles/commonStyles";
 import { navHomeID } from "../handlers/pageRoutes";
-import videoContent from "../../../assets/videos/home_video.mp4";
+// import videoContent from "../../../assets/videos/home_video.mp4";
 import styled from "styled-components";
 import { BsSoundwave } from "react-icons/bs";
 import { VscMute } from "react-icons/vsc";
@@ -50,7 +50,7 @@ export const HomeVideoContent = () => {
       <VideoContainer tabIndex="0">
         <HomeVideo
           id="home-video"
-          src={videoContent}
+          // src={videoContent}
           ref={refVideo}
           muted={isMuted}
           autoPlay
