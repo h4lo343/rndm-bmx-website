@@ -3,6 +3,7 @@ import React from "react";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import { navProductID } from "../handlers/pageRoutes";
+import { useHistory } from 'react-router-dom'
 import { bgWhiteColor, blackColor, Title } from "../../../styles/commonStyles";
 import { latestProducts } from "../handlers/latestProducts";
 import PencilBg from "../../../assets/images/home/pencil_mark_bgd.png";
@@ -10,6 +11,7 @@ import overlayBefore from "../../../assets/images/home/before.png";
 import overlayAfter from "../../../assets/images/home/after.png";
 
 export const ProductContent = () => {
+  const history = useHistory()
   return (
     <ProductElement name={navProductID} id="home-product-section">
       <ProductContainer>
@@ -30,6 +32,7 @@ export const ProductContent = () => {
                   src={product.image}
                   alt={product.alt}
                   key={product.alt}
+                  onClick={() => history.push(`product/${product.key}`)}
                 />
                 <ProductText as="h3">{product.productName}</ProductText>
               </ProductLink>
@@ -109,6 +112,7 @@ const ProductImage = styled.img`
   transform: scale(1);
   transition: all 0.2s;
   &:hover {
+    cursor: pointer;
     transform: scale(1.1);
   }
   width: 250px;

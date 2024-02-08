@@ -11,7 +11,7 @@ export const pageRoutes = [
     key: "home",
   },
   {
-    pathname: "/product",
+    pathname: "/product/:key",
     exact: true,
     component: ProductPage,
     key: "product",

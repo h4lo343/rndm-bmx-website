@@ -12,6 +12,7 @@ import { navHomeID } from "../handlers/pageRoutes";
 import styled from "styled-components";
 import { BsSoundwave } from "react-icons/bs";
 import { VscMute } from "react-icons/vsc";
+import {TitleText} from "../../common/styles";
 
 export const HomeVideoContent = () => {
   const homeVideoText = "A BMX Brand for all kinds of people BMX!";
@@ -60,7 +61,7 @@ export const HomeVideoContent = () => {
           title="Home Video"
         ></HomeVideo>
         <OverlayBox id="home-video-content">
-          <VideoText variant="h1">{homeVideoText} </VideoText>
+          <TitleText variant="h1">{homeVideoText} </TitleText>
           {!isMuted && (
             <SoundIcon
               size={laptopSize}
@@ -112,24 +113,7 @@ const OverlayBox = styled(Box)`
   width: 100vw;
 `;
 
-const VideoText = styled(HeaderText)`
-  && {
-    font-size: 60px !important;
-    font-family: ${myFont};
-    text-shadow: -2px 2px 1px #000;
-    font-weight: 700;
-    height: 90vh;
-    @media (min-width: 1024px) {
-      max-width: 720px;
-      font-size: 80px !important;
-    }
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    height: 100vh;
-    padding: 0vh 10px;
-  }
-`;
+
 
 const SoundIcon = styled(BsSoundwave)`
   position: absolute;
