@@ -77,12 +77,12 @@ const ProductImageContainer = styled.div`
 `
 
 const AdditionalImageCarousel = styled.div`
-  width: 15rem;
+  width: 20%;
   background-color: pink;
 `;
 
 const OptionPanel = styled.div`
-  width: 35rem;
+  width: 40%;
   background-color: aqua;
 `;
 
@@ -95,10 +95,13 @@ const ProductImage = styled(GlassMagnifier)`
 const ShoppingSectionContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 40%;
+  width: 60%;
   gap: 10px;
-  min-height: 20rem;
+  min-height: 25rem;
   align-items: stretch;
+  @media (max-width: 900px) {
+    width: 80%;
+  }
 `
 
 const ProductTitle = styled(BodyText)`
