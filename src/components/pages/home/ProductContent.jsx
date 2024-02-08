@@ -32,7 +32,7 @@ export const ProductContent = () => {
                   src={product.image}
                   alt={product.alt}
                   key={product.alt}
-                  onClick={() => history.push(`product/${product.key}`)}
+                  onClick={() => history.push(`product/pin`)}
                 />
                 <ProductText as="h3">{product.productName}</ProductText>
               </ProductLink>

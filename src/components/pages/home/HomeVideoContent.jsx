@@ -12,7 +12,7 @@ import { navHomeID } from "../handlers/pageRoutes";
 import styled from "styled-components";
 import { BsSoundwave } from "react-icons/bs";
 import { VscMute } from "react-icons/vsc";
-import {TitleText} from "../../common/styles";
+import {TitleText} from "../../../styles/commonStyles";
 
 export const HomeVideoContent = () => {
   const homeVideoText = "A BMX Brand for all kinds of people BMX!";
