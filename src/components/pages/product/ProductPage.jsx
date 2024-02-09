@@ -8,7 +8,7 @@ import {useParams} from "react-router-dom";
 import { Box, Container, Grid } from "@mui/material";
 import { productDetails } from "../handlers/productsDetails";
 import {
-  GlassMagnifier,
+  GlassMagnifier, Magnifier,
   MagnifierContainer
 } from "react-image-magnifiers";
 
@@ -17,15 +17,10 @@ import {
 export const ProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const productImg = document.querySelector('.example-class').querySelector('img');
-
-    productImg.style.objectFit = 'fill';
-    productImg.style.height = '100%';
-    console.log(productImg.style)
   }, []);
   const { key } = useParams();
   const [currentProductKey, setCurrentProductKey] = useState(key)
-  console.log(productDetails[currentProductKey].boyImage)
+
   return (
     <>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
@@ -45,11 +40,9 @@ export const ProductPage = () => {
 
         <ShoppingSectionContainer>
           <AdditionalImageCarousel/>
-          <ProductImageContainer className={'example-class'}>
+          <ProductImageContainer>
               <ProductImage
                 imageSrc={productDetails[currentProductKey].boyImage}
-                magnifierSize= { '40%' }
-                alwaysInPlace={true}
               />
           </ProductImageContainer>
 
@@ -63,7 +56,6 @@ export const ProductPage = () => {
 
 const ProductContainer = styled.div`
   display: flex;
-  
   justify-content: center;
   align-items: center;
   margin: 2.5rem auto;
@@ -72,8 +64,17 @@ const ProductContainer = styled.div`
 `;
 
 const ProductImageContainer = styled.div`
-  flex: 0 0 1;
- 
+  flex: 1 0 20rem;
+  border: 1px solid  #cccccc;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
+  & div {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
 `
 
 const AdditionalImageCarousel = styled.div`
@@ -87,7 +88,7 @@ const OptionPanel = styled.div`
 `;
 
 
-const ProductImage = styled(GlassMagnifier)`
+const ProductImage = styled(Magnifier)`
   height: 100%;
   width: 100%;
 `
@@ -97,7 +98,8 @@ const ShoppingSectionContainer = styled.div`
   justify-content: center;
   width: 60%;
   gap: 10px;
-  min-height: 25rem;
+  margin: 1rem 0;
+  min-height: 20rem;
   align-items: stretch;
   @media (max-width: 900px) {
     width: 80%;
