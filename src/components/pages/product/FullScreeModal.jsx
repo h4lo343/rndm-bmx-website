@@ -26,12 +26,12 @@ const Modal = styled.div`
   transform: translate(0, 50%);
   left: ${(props) => (props.isOpen ? '15vw' : '-70vw')};
   height: ${(props) => (props.isOpen ? '80vh' : '0')};
-  width: 70vw;
+  width: 65vw;
   background-color: #ffffff;
   ${productPageShadow};
   z-index: 999;
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
-  transition: left .6s cubic-bezier(.62,-0.14,.62,1.25);
+  transition: left 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 `
 
 const ModalCloser = styled(GiCancel)`

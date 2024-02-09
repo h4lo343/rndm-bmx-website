@@ -8,7 +8,9 @@ export const productDetails = {
     description: 'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
     boyImage: product_pin_boy,
     girlImage: product_pin_girl,
-    specImage: product_pin_spec
+    specImage: product_pin_spec,
+    currPrice: 20,
+    originalPrice: 140
   },
   post: {
     fullName: 'BMX Seat',

@@ -13,6 +13,7 @@ import {
 } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
 import {productPageShadow} from "./styles";
+import OptionPanel from "./OptionPanel";
 
 
 
@@ -41,7 +42,6 @@ export const ProductPage = () => {
                 {productDetails[currentProductKey].description}
               </GeneralText>
             </ProductionDesContainer>
-
             <ShoppingSectionContainer>
               <AdditionalImageCarousel/>
               <ProductImageContainer>
@@ -50,7 +50,7 @@ export const ProductPage = () => {
                 />
                 <FullSizeIcon onClick={() => setIsModalOpen(true)}/>
               </ProductImageContainer>
-              <OptionPanel/>
+              <OptionPanel currProduct={productDetails[currentProductKey]}/>
             </ShoppingSectionContainer>
           </ProductContainer>
           <Footer />
@@ -98,10 +98,7 @@ const AdditionalImageCarousel = styled.div`
   background-color: pink;
 `;
 
-const OptionPanel = styled.div`
-  width: 40%;
-  background-color: aqua;
-`;
+
 
 
 export const ProductImage = styled(Magnifier)`
