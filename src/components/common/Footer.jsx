@@ -52,7 +52,7 @@ const style = {
   pb: 3,
 };
 
-const modalStyle1 = {
+export const modalStyle1 = {
   overflow: "scroll",
   display: "grid",
   justifyItems: "end",

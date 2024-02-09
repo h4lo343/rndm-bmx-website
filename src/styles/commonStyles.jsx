@@ -1,5 +1,5 @@
-import { Container, Link, Typography } from "@mui/material";
-import styled from "styled-components";
+import {Container, Link, Typography} from "@mui/material";
+import styled, {css} from "styled-components";
 import overlayBefore from "../assets/images/home/before.png";
 import overlayAfter from "../assets/images/home/after.png";
 
@@ -125,6 +125,12 @@ export const OverlayAfter = styled.div`
 export const StyleDiv = styled.div`
   padding-top: 3%;
 `;
+
+export const VerticalCentral = css`
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
 
 export const CommonContainer = styled(Container)`
   min-height: 80vh;
