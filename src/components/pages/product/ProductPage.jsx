@@ -12,7 +12,7 @@ import {
   MagnifierContainer
 } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
-import {productPageShadow} from "./styles";
+import {FullSizeIcon, productPageShadow} from "./styles";
 import OptionPanel from "./OptionPanel";
 
 
@@ -24,10 +24,14 @@ export const ProductPage = () => {
   const { key } = useParams();
   const [currentProductKey, setCurrentProductKey] = useState(key)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [chosenGender, setChosenGender] = useState('')
+  const [currentModalImage, setCurrentModalImage] = useState(productDetails[currentProductKey].boyImage)
+  const [currentMainImage, setCurrentMainImage] = useState(productDetails[currentProductKey].boyImage)
+  const [currentType, setCurrentType ] = useState(productDetails[currentProductKey].types[0])
 
   return (
     <ProductPageContainer>
-      <FullScreeModal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currImg={productDetails[currentProductKey].boyImage}/>
+      <FullScreeModal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currImg={currentModalImage}/>
         <>
           <NavigationBar isHomePage={false} arrayToHandle={[]} />
           <Banner>
@@ -46,11 +50,28 @@ export const ProductPage = () => {
               <AdditionalImageCarousel/>
               <ProductImageContainer>
                 <ProductImage
-                  imageSrc={productDetails[currentProductKey].boyImage}
+                  imageSrc={currentMainImage}
                 />
-                <FullSizeIcon onClick={() => setIsModalOpen(true)}/>
+                <FullSizeIcon
+                  onClick={() => {
+                    setIsModalOpen(true)
+                    if(chosenGender === 'B' || !chosenGender) setCurrentModalImage(productDetails[currentProductKey].boyImage);
+                    else setCurrentModalImage(productDetails[currentProductKey].girlImage);
+                  }}
+                  top={'13px'}
+                  right={'13px'}/>
               </ProductImageContainer>
-              <OptionPanel currProduct={productDetails[currentProductKey]}/>
+              <OptionPanel
+                setCurrentImage={setCurrentModalImage}
+                currProduct={productDetails[currentProductKey]}
+                setChosenGender={setChosenGender}
+                chosenGender={chosenGender}
+                currentType={currentType}
+                setCurrentType={setCurrentType}
+                setIsModalOpen={setIsModalOpen}
+                setCurrentModalImage={setCurrentModalImage}
+                setCurrentMainImage={setCurrentMainImage}
+              />
             </ShoppingSectionContainer>
           </ProductContainer>
           <Footer />
@@ -60,20 +81,19 @@ export const ProductPage = () => {
 };
 
 const ProductPageContainer = styled.div`
-  overflow: hidden;
 `
 const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem auto;
+  margin: 2rem auto;
   min-width: 30vw;
   flex-direction: column;
 `;
 
 export const ProductImageContainer = styled.div`
   position: relative;
-  flex: 1 0 20rem;
+  flex: 1 0 30rem;
   ${productPageShadow}
   & div {
     display: flex;
@@ -81,28 +101,12 @@ export const ProductImageContainer = styled.div`
     align-items: center;
   }
 `
-
-const FullSizeIcon = styled(SlSizeFullscreen)`
-  position: absolute;
-  top: 13px;
-  right: 13px;
-  transform: scale(1.2);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.5);
-  }
-`
-
 const AdditionalImageCarousel = styled.div`
   width: 20%;
   background-color: pink;
 `;
 
-
-
-
 export const ProductImage = styled(Magnifier)`
-   
 `
 
 const ShoppingSectionContainer = styled.div`
@@ -110,8 +114,8 @@ const ShoppingSectionContainer = styled.div`
   justify-content: center;
   width: 60%;
   gap: 10px;
-  margin: 1rem 0;
-  min-height: 20rem;
+  margin: .6rem 0;
+  min-height: 30rem;
   align-items: stretch;
   @media (max-width: 900px) {
     width: 80%;
@@ -143,6 +147,5 @@ const Banner = styled.div`
   height: 50vh;
   background: url(${BgdImage});
   background-size: cover !important;
-  background-color: red;
 `;
 

@@ -1,4 +1,5 @@
-import {css} from "styled-components";
+import styled, {css} from "styled-components";
+import {SlSizeFullscreen} from "react-icons/sl";
 
 export const productPageShadow = css`
   border: 1px solid  #cccccc;
@@ -6,4 +7,19 @@ export const productPageShadow = css`
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
   -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
   -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
+`
+export const FlexBetween = css`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const FullSizeIcon = styled(SlSizeFullscreen)`
+  position: absolute;
+  top: ${props => props.top};
+  right: ${props => props.right};
+  transform: scale(1.2);
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+  }
 `

@@ -23,7 +23,7 @@ const Modal = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  transform: translate(0, 50%);
+  transform: translate(0, 65%);
   left: ${(props) => (props.isOpen ? '15vw' : '-70vw')};
   height: ${(props) => (props.isOpen ? '80vh' : '0')};
   width: 65vw;

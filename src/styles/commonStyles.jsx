@@ -3,6 +3,7 @@ import styled from "styled-components";
 import overlayBefore from "../assets/images/home/before.png";
 import overlayAfter from "../assets/images/home/after.png";
 
+
 export const whiteColor = "#FFFFFF";
 export const bgWhiteColor = "#f6f6f6";
 export const blackNavColor = "rgba(14, 14, 17, 0.9)";
@@ -21,6 +22,8 @@ export const BodyText = styled(Typography)`
     font-family: ${myFont};
   }
 `;
+
+export const priceColor = 'rgb(161, 173, 61)';
 
 export const HeaderText = styled(Typography)`
   font-size: 32px;
@@ -126,3 +129,17 @@ export const StyleDiv = styled.div`
 export const CommonContainer = styled(Container)`
   min-height: 80vh;
 `;
+
+export const Button = styled.button`
+  cursor: pointer;
+  background-color: ${priceColor};
+  outline: none;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  margin: 0;
+  color: #ffffff;
+  transition: all .3s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
+`

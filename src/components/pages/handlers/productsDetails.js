@@ -10,7 +10,8 @@ export const productDetails = {
     girlImage: product_pin_girl,
     specImage: product_pin_spec,
     currPrice: 20,
-    originalPrice: 140
+    originalPrice: 140,
+    types: ['Type 1 Stainless Steel 316', 'Type 2 Stainless Steel 317', 'Type 3 Stainless Steel 318']
   },
   post: {
     fullName: 'BMX Seat',
