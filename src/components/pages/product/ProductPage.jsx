@@ -5,12 +5,14 @@ import styled from "styled-components";
 import {blackColor, BodyText, GeneralText, HeaderText, myFont, TitleText} from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/home/about_background.png";
 import {useParams} from "react-router-dom";
-import { Box, Container, Grid } from "@mui/material";
+import { SlSizeFullscreen } from "react-icons/sl";
 import { productDetails } from "../handlers/productsDetails";
 import {
   GlassMagnifier, Magnifier,
   MagnifierContainer
 } from "react-image-magnifiers";
+import FullScreeModal from "./FullScreeModal";
+import {productPageShadow} from "./styles";
 
 
 
@@ -20,40 +22,46 @@ export const ProductPage = () => {
   }, []);
   const { key } = useParams();
   const [currentProductKey, setCurrentProductKey] = useState(key)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <>
-      <NavigationBar isHomePage={false} arrayToHandle={[]} />
-      <Banner>
-        <TitleText variant="h1">
-          INTRO PRODUCTS
-        </TitleText>
-      </Banner>
+    <ProductPageContainer>
+      <FullScreeModal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currImg={productDetails[currentProductKey].boyImage}/>
+        <>
+          <NavigationBar isHomePage={false} arrayToHandle={[]} />
+          <Banner>
+            <TitleText variant="h1">
+              INTRO PRODUCTS
+            </TitleText>
+          </Banner>
+          <ProductContainer>
+            <ProductionDesContainer>
+              <ProductTitle>{productDetails[currentProductKey].fullName}</ProductTitle>
+              <GeneralText color={blackColor} textAlign={"left"}>
+                {productDetails[currentProductKey].description}
+              </GeneralText>
+            </ProductionDesContainer>
 
-      <ProductContainer>
-        <ProductionDesContainer>
-          <ProductTitle>{productDetails[currentProductKey].fullName}</ProductTitle>
-          <GeneralText color={blackColor} textAlign={"left"}>
-            {productDetails[currentProductKey].description}
-          </GeneralText>
-        </ProductionDesContainer>
-
-        <ShoppingSectionContainer>
-          <AdditionalImageCarousel/>
-          <ProductImageContainer>
-              <ProductImage
-                imageSrc={productDetails[currentProductKey].boyImage}
-              />
-          </ProductImageContainer>
-
-          <OptionPanel/>
-        </ShoppingSectionContainer>
-      </ProductContainer>
-      <Footer />
-    </>
+            <ShoppingSectionContainer>
+              <AdditionalImageCarousel/>
+              <ProductImageContainer>
+                <ProductImage
+                  imageSrc={productDetails[currentProductKey].boyImage}
+                />
+                <FullSizeIcon onClick={() => setIsModalOpen(true)}/>
+              </ProductImageContainer>
+              <OptionPanel/>
+            </ShoppingSectionContainer>
+          </ProductContainer>
+          <Footer />
+        </>
+    </ProductPageContainer>
   );
 };
 
+const ProductPageContainer = styled.div`
+  overflow: hidden;
+`
 const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -63,17 +71,25 @@ const ProductContainer = styled.div`
   flex-direction: column;
 `;
 
-const ProductImageContainer = styled.div`
+export const ProductImageContainer = styled.div`
+  position: relative;
   flex: 1 0 20rem;
-  border: 1px solid  #cccccc;
-  border-radius: 5px;
-  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
-  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
-  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
+  ${productPageShadow}
   & div {
     display: flex;
     height: 100%;
     align-items: center;
+  }
+`
+
+const FullSizeIcon = styled(SlSizeFullscreen)`
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  transform: scale(1.2);
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.5);
   }
 `
 
@@ -88,9 +104,8 @@ const OptionPanel = styled.div`
 `;
 
 
-const ProductImage = styled(Magnifier)`
-  height: 100%;
-  width: 100%;
+export const ProductImage = styled(Magnifier)`
+   
 `
 
 const ShoppingSectionContainer = styled.div`
