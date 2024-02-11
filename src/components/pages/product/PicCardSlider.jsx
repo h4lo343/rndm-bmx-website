@@ -1,9 +1,10 @@
 
 import styled from "styled-components";
 import { productDetails } from "../../pages/handlers/productsDetails"
-
+import { useEffect } from 'react'
 import useEmblaCarousel from "embla-carousel-react";
 import {path} from "./ProductPage";
+import {productPageShadow} from "./styles";
 
 const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
@@ -16,6 +17,10 @@ const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
     setCurrentIndex(index);
     emblaThumbs.scrollTo(index);
   };
+
+  useEffect(() => {
+    if(emblaThumbs) onThumbClick(currentIndex)
+  }, [currentIndex])
 
   return (
     <SliderContainer>
@@ -36,7 +41,6 @@ const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
           }
         </PicCardContainer>
       </PicCardViewport>
-
     </SliderContainer>
   );
 }
@@ -49,8 +53,6 @@ const SliderContainer = styled.div`
   width:  100%;
   height: 100%;
   overflow: hidden;
-  background-color: pink;
- 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,5 +92,6 @@ const PicCardImage = styled.img`
   height: 100%;
   width: 100%;
   border-radius: ${picRadius};
+  
 `
 

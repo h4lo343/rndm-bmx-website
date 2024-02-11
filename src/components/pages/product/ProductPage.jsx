@@ -2,13 +2,13 @@ import React, {useEffect, useState} from "react";
 import { Footer } from "../../common/Footer";
 import { NavigationBar } from "../../common/NavigationBar";
 import styled from "styled-components";
-import { blackColor, BodyText, GeneralText, TitleText } from "../../../styles/commonStyles";
+import {blackColor, BodyText, GeneralText, TitleText, verticalCentral} from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/home/about_background.png";
 import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
 import { Magnifier } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
-import {FullSizeIcon, productPageShadow} from "./styles";
+import {FullSizeIcon, LeftArrowIcon, productPageShadow, RightArrowIcon} from "./styles";
 import OptionPanel from "./OptionPanel";
 import PicCardSlider from "./PicCardSlider";
 
@@ -28,6 +28,16 @@ export const ProductPage = () => {
   const [currentModalImage, setCurrentModalImage] = useState()
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  const handleArrowClick = (direction) => {
+      let temp = currentIndex
+      const imgCount = productDetails[currentProductKey][path[chosenGender]].length
+      direction === 'left' ? temp -= 1 : temp += 1;
+      if(temp < 0) temp = imgCount - 1;
+      if(temp === imgCount) temp = 0;
+
+      setCurrentIndex(temp)
+  }
+  console.log(currentIndex)
   useEffect(() => {
     setCurrentIndex(0)
   }, [chosenGender]);
@@ -69,6 +79,10 @@ export const ProductPage = () => {
                   }}
                   top={'13px'}
                   right={'13px'}/>
+                <ArrowIconContainer>
+                  <LeftArrowIcon onClick={() => handleArrowClick('left')}/>
+                  <RightArrowIcon onClick={() => handleArrowClick('right')}/>
+                </ArrowIconContainer>
               </ProductImageContainer>
               <OptionPanel
                 setCurrentImage={setCurrentModalImage}
@@ -88,6 +102,9 @@ export const ProductPage = () => {
 
 const ProductPageContainer = styled.div`
 `
+
+
+
 const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -96,6 +113,14 @@ const ProductContainer = styled.div`
   min-width: 30vw;
   flex-direction: column;
 `;
+
+const ArrowIconContainer = styled.span`
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 106%;
+  ${verticalCentral}
+`
 
 export const ProductImageContainer = styled.div`
   position: relative;
@@ -109,7 +134,7 @@ export const ProductImageContainer = styled.div`
 `
 const SliderContainer = styled.div`
   width: 10%;
-  background-color: pink;
+ 
   padding: .7rem;
 `;
 

@@ -84,13 +84,11 @@ export const Title = styled(HeaderText)`
 
 
 
-
-
 export const StyleDiv = styled.div`
   padding-top: 3%;
 `;
 
-export const VerticalCentral = css`
+export const verticalCentral = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

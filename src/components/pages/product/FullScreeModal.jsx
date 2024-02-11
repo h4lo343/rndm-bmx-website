@@ -6,7 +6,7 @@ import {productPageShadow} from "./styles";
 import {Box, Modal} from "@mui/material";
 import {modalStyle1} from "../../common/Footer";
 import {Privacy, Return} from "../../common/Text";
-import {VerticalCentral} from "../../../styles/commonStyles";
+import { verticalCentral } from "../../../styles/commonStyles";
 
 const FullScreeModal = ({isOpen, setIsModalOpen, currImg }) => {
 
@@ -36,7 +36,7 @@ const ModalContainer = styled(Box)`
   ${productPageShadow};
   z-index: 100;
   
-  ${VerticalCentral}
+  ${verticalCentral}
 `
 
 const ModalCloser = styled(GiCancel)`
