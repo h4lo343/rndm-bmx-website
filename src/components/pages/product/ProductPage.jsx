@@ -8,7 +8,7 @@ import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
 import { Magnifier } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
-import {FullSizeIcon, LeftArrowIcon, productPageShadow, RightArrowIcon} from "./styles";
+import {BottomArrowIcon, FullSizeIcon, LeftArrowIcon, productPageShadow, RightArrowIcon, TopArrowIcon} from "./styles";
 import OptionPanel from "./OptionPanel";
 import PicCardSlider from "./PicCardSlider";
 
@@ -31,7 +31,7 @@ export const ProductPage = () => {
   const handleArrowClick = (direction) => {
       let temp = currentIndex
       const imgCount = productDetails[currentProductKey][path[chosenGender]].length
-      direction === 'left' ? temp -= 1 : temp += 1;
+      direction === 'back' ? temp -= 1 : temp += 1;
       if(temp < 0) temp = imgCount - 1;
       if(temp === imgCount) temp = 0;
 
@@ -44,7 +44,6 @@ export const ProductPage = () => {
 
   return (
     <ProductPageContainer>
-
       <FullScreeModal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currImg={currentModalImage}/>
         <>
           <NavigationBar isHomePage={false} arrayToHandle={[]} />
@@ -67,6 +66,8 @@ export const ProductPage = () => {
                   setCurrentIndex={setCurrentIndex}
                   chosenGender={chosenGender}
                 />
+                <TopArrowIcon onClick={() => handleArrowClick('back')}/>
+                <BottomArrowIcon onClick={() => handleArrowClick('forth')}/>
               </SliderContainer>
               <ProductImageContainer>
                 <ProductImage
@@ -80,8 +81,8 @@ export const ProductPage = () => {
                   top={'13px'}
                   right={'13px'}/>
                 <ArrowIconContainer>
-                  <LeftArrowIcon onClick={() => handleArrowClick('left')}/>
-                  <RightArrowIcon onClick={() => handleArrowClick('right')}/>
+                  <LeftArrowIcon onClick={() => handleArrowClick('back')}/>
+                  <RightArrowIcon onClick={() => handleArrowClick('forth')}/>
                 </ArrowIconContainer>
               </ProductImageContainer>
               <OptionPanel
@@ -103,8 +104,6 @@ export const ProductPage = () => {
 const ProductPageContainer = styled.div`
 `
 
-
-
 const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -117,14 +116,17 @@ const ProductContainer = styled.div`
 const ArrowIconContainer = styled.span`
   position: absolute;
   display: flex;
+  height: 0;
   justify-content: space-between;
-  width: 106%;
+  width: 110%;
+ 
   ${verticalCentral}
 `
 
 export const ProductImageContainer = styled.div`
   position: relative;
-  flex: 1 0 30rem;
+  flex: 0 0 30rem;
+  //background-color: #c7c7c7;
   ${productPageShadow}
   & div {
     display: flex;
@@ -134,18 +136,18 @@ export const ProductImageContainer = styled.div`
 `
 const SliderContainer = styled.div`
   width: 10%;
- 
   padding: .7rem;
+  position: relative;
+  text-align: center;
 `;
 
 export const ProductImage = styled(Magnifier)`
 `
-
 const ShoppingSectionContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 60%;
-  gap: 10px;
+  gap: 25px;
   margin: .6rem 0;
   height: 30rem;
   align-items: stretch;

@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 import {SlSizeFullscreen} from "react-icons/sl";
-import {IoIosArrowDropleft, IoIosArrowDropright} from "react-icons/io";
+import { IoIosArrowDropleft, IoIosArrowDropright, IoIosArrowDropup, IoIosArrowDropdown   } from "react-icons/io";
 
 export const productPageShadow = css`
   border: 1px solid  #cccccc;
@@ -16,24 +16,64 @@ export const FlexBetween = css`
 
 const iconBasic = css`
   font-size: 30px;
-  transform: scale(1.2);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.5);
-  }
+  z-index: 100;
 `;
 
 export const FullSizeIcon = styled(SlSizeFullscreen)`
   position: absolute;
   top: ${props => props.top};
   right: ${props => props.right};
-  ${iconBasic}
+  ${iconBasic};
+  font-size: 20px
+  
 `
 
 export const LeftArrowIcon = styled(IoIosArrowDropleft)`
-  ${iconBasic}
+  ${iconBasic};
+  transform: scale(1.2);
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+  }
+`
+
+const topBottomArrowBasic = css`
+  position: absolute;
+`
+
+const topBotOffset = '-15px'
+
+export const TopArrowIcon = styled(IoIosArrowDropup)`
+  ${iconBasic};
+  ${topBottomArrowBasic};
+  top: ${topBotOffset};
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+  &:hover {
+    cursor: pointer;
+    transform: translateX(-50%) scale(1.5);
+  }
+`
+
+export const BottomArrowIcon = styled(IoIosArrowDropdown)`
+  ${iconBasic};
+  ${topBottomArrowBasic};
+  bottom:  ${topBotOffset};
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+  &:hover {
+    cursor: pointer;
+    transform: translateX(-50%) scale(1.5);
+  }
 `
 
 export const RightArrowIcon = styled(IoIosArrowDropright)`
-  ${iconBasic}
+  ${iconBasic};
+  transform: scale(1.2);
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+  }
 `
