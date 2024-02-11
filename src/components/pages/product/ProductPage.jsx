@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Footer } from "../../common/Footer";
 import { NavigationBar } from "../../common/NavigationBar";
 import styled from "styled-components";
-import {blackColor, BodyText, GeneralText, HeaderText, myFont, TitleText} from "../../../styles/commonStyles";
+import { blackColor, BodyText, GeneralText, TitleText } from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/home/about_background.png";
 import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
@@ -12,7 +12,10 @@ import {FullSizeIcon, productPageShadow} from "./styles";
 import OptionPanel from "./OptionPanel";
 import PicCardSlider from "./PicCardSlider";
 
-
+export const path = {
+  'B': 'boyImages',
+  'G': 'girlImages'
+}
 
 export const ProductPage = () => {
   useEffect(() => {
@@ -22,9 +25,12 @@ export const ProductPage = () => {
   const [currentProductKey, setCurrentProductKey] = useState(key)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [chosenGender, setChosenGender] = useState('B')
-  const [currentModalImage, setCurrentModalImage] = useState(productDetails[currentProductKey].boyImage[0])
-  const [currentMainImage, setCurrentMainImage] = useState(productDetails[currentProductKey].boyImage[0])
-  const [currentType, setCurrentType ] = useState(productDetails[currentProductKey].types[0])
+  const [currentModalImage, setCurrentModalImage] = useState()
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [chosenGender]);
 
   return (
     <ProductPageContainer>
@@ -46,17 +52,20 @@ export const ProductPage = () => {
             </ProductionDesContainer>
             <ShoppingSectionContainer>
               <SliderContainer>
-                <PicCardSlider/>
+                <PicCardSlider
+                  currentIndex={currentIndex}
+                  setCurrentIndex={setCurrentIndex}
+                  chosenGender={chosenGender}
+                />
               </SliderContainer>
               <ProductImageContainer>
                 <ProductImage
-                  imageSrc={currentMainImage}
+                  imageSrc={productDetails[currentProductKey][path[chosenGender]][currentIndex]}
                 />
                 <FullSizeIcon
                   onClick={() => {
                     setIsModalOpen(true)
-                    if(chosenGender === 'B' || !chosenGender) setCurrentModalImage(productDetails[currentProductKey].boyImage[0]);
-                    else setCurrentModalImage(productDetails[currentProductKey].girlImage[0]);
+                    setCurrentModalImage(productDetails[currentProductKey][path[chosenGender]][currentIndex])
                   }}
                   top={'13px'}
                   right={'13px'}/>
@@ -66,11 +75,8 @@ export const ProductPage = () => {
                 currProduct={productDetails[currentProductKey]}
                 setChosenGender={setChosenGender}
                 chosenGender={chosenGender}
-                currentType={currentType}
-                setCurrentType={setCurrentType}
                 setIsModalOpen={setIsModalOpen}
                 setCurrentModalImage={setCurrentModalImage}
-                setCurrentMainImage={setCurrentMainImage}
               />
             </ShoppingSectionContainer>
           </ProductContainer>

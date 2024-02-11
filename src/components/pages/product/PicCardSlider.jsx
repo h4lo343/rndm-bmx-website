@@ -1,11 +1,11 @@
 
 import styled from "styled-components";
 import { productDetails } from "../../pages/handlers/productsDetails"
-import {useState} from "react";
-import useEmblaCarousel from "embla-carousel-react";
 
-const PicCardSlider = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+import useEmblaCarousel from "embla-carousel-react";
+import {path} from "./ProductPage";
+
+const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
     axis: "y",
@@ -13,8 +13,7 @@ const PicCardSlider = () => {
   });
 
   const onThumbClick = (index) => {
-    console.log(index)
-    setSelectedIndex(index);
+    setCurrentIndex(index);
     emblaThumbs.scrollTo(index);
   };
 
@@ -23,10 +22,10 @@ const PicCardSlider = () => {
       <PicCardViewport ref={thumbViewportRef}>
         <PicCardContainer>
           {
-            productDetails.pin.boyImage.map((src, index) =>
+            productDetails.pin[path[chosenGender]].map((src, index) =>
               <SlideCardContainer
                 key={index}
-                selected = {selectedIndex === index}
+                selected = {currentIndex === index}
                 onClick= {() => onThumbClick(index)}
               >
                 <PicCardImage

@@ -10,8 +10,8 @@ export const productDetails = {
   pin: {
     fullName: 'Brake\'N\'Pins',
     description: 'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
-    boyImage: [product_pin_boy_1, product_pin_boy_2, product_pin_boy_3, product_pin_boy_4, product_pin_boy_5],
-    girlImage: [product_pin_girl_1],
+    boyImages: [product_pin_boy_1, product_pin_boy_2, product_pin_boy_3, product_pin_boy_4, product_pin_boy_5],
+    girlImages: [product_pin_girl_1],
     specImage: product_pin_spec,
     currPrice: 20,
     originalPrice: 140,

@@ -15,7 +15,7 @@ const OptionPanel = ({
                        setChosenGender,
                        setCurrentModalImage,
                        setIsModalOpen,
-                       setCurrentMainImage}) => {
+                       }) => {
 
   return (
     <OptionPanelContainer>
@@ -35,14 +35,14 @@ const OptionPanel = ({
             chosen={chosenGender === 'B'}
             onClick={() => {
               setChosenGender('B')
-              setCurrentMainImage(currProduct.boyImage)
+
           }}>B</GenderOption>
           <GenderOption
             color={'rgb(235, 133, 231)'}
             chosen={chosenGender === 'G'}
             onClick={() => {
               setChosenGender('G')
-              setCurrentMainImage(currProduct.girlImage)
+
             }}>G</GenderOption>
         </div>
         <div>
