@@ -80,6 +80,8 @@ const OptionPanelContainer = styled.div`
   width: 40%;
   padding: 10px 10px 0 10px;
   text-align: left;
+  
+  
 `;
 
 const SpecImage = styled.img`

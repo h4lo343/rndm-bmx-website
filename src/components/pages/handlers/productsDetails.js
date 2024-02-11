@@ -1,13 +1,17 @@
-import product_pin_boy from '../../../assets/images/products/pin_boy.jpg'
-import product_pin_girl from '../../../assets/images/products/pin_girl.jpg'
-import product_pin_spec from '../../../assets/images/products/pin_spec.jpg'
+import product_pin_boy_1 from '../../../assets/images/products/pin/pin_boy_1.jpg'
+import product_pin_boy_2 from '../../../assets/images/products/pin/pin_boy_2.jpg'
+import product_pin_boy_3 from '../../../assets/images/products/pin/pin_boy_3.jpg'
+import product_pin_boy_4 from '../../../assets/images/products/pin/pin_boy_4.jpg'
+import product_pin_boy_5 from '../../../assets/images/products/pin/pin_boy_5.jpg'
+import product_pin_girl_1 from '../../../assets/images/products/pin/pin_girl_1.jpg'
+import product_pin_spec from '../../../assets/images/products/pin/pin_spec.jpg'
 
 export const productDetails = {
   pin: {
     fullName: 'Brake\'N\'Pins',
     description: 'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
-    boyImage: product_pin_boy,
-    girlImage: product_pin_girl,
+    boyImage: [product_pin_boy_1, product_pin_boy_2, product_pin_boy_3, product_pin_boy_4, product_pin_boy_5],
+    girlImage: [product_pin_girl_1],
     specImage: product_pin_spec,
     currPrice: 20,
     originalPrice: 140,

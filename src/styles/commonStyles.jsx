@@ -70,14 +70,6 @@ export const GeneralLink = styled(Link)`
   }
 `;
 
-export const HiddenTypo = styled(BodyText)`
-  opacity: 0;
-`;
-
-export const HomeContainer = styled(Container)`
-  width: 100vw;
-  height: 100vh;
-`;
 
 export const Title = styled(HeaderText)`
   text-transform: uppercase;
@@ -90,37 +82,9 @@ export const Title = styled(HeaderText)`
   color: ${(props) => (props.isBlack ? blackColor : whiteColor)};
 `;
 
-export const OverlayBefore = styled.div`
-  && {
-    content: "";
-    display: block;
-    width: 100%;
-    min-height: 100px;
-    background: url(${overlayBefore}) 50% 50% no-repeat;
-    background-size: cover;
-    transform: translate(0, -99px);
-    z-index: 3;
-    top: 0
-    left: 0
-    position: absolute;
-    margin-bottom: -5%;
-  }
-`;
 
-export const OverlayAfter = styled.div`
-  && {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    content: "";
-    display: block;
-    min-height: 100px;
-    background: url(${overlayAfter}) 50% 50% no-repeat;
-    background-size: cover;
-    transform: translate(0, 0);
-    z-index: 3;
-  }
-`;
+
+
 
 export const StyleDiv = styled.div`
   padding-top: 3%;

@@ -5,15 +5,12 @@ import styled from "styled-components";
 import {blackColor, BodyText, GeneralText, HeaderText, myFont, TitleText} from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/home/about_background.png";
 import {useParams} from "react-router-dom";
-import { SlSizeFullscreen } from "react-icons/sl";
 import { productDetails } from "../handlers/productsDetails";
-import {
-  GlassMagnifier, Magnifier,
-  MagnifierContainer
-} from "react-image-magnifiers";
+import { Magnifier } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
 import {FullSizeIcon, productPageShadow} from "./styles";
 import OptionPanel from "./OptionPanel";
+import PicCardSlider from "./PicCardSlider";
 
 
 
@@ -24,13 +21,14 @@ export const ProductPage = () => {
   const { key } = useParams();
   const [currentProductKey, setCurrentProductKey] = useState(key)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [chosenGender, setChosenGender] = useState('')
-  const [currentModalImage, setCurrentModalImage] = useState(productDetails[currentProductKey].boyImage)
-  const [currentMainImage, setCurrentMainImage] = useState(productDetails[currentProductKey].boyImage)
+  const [chosenGender, setChosenGender] = useState('B')
+  const [currentModalImage, setCurrentModalImage] = useState(productDetails[currentProductKey].boyImage[0])
+  const [currentMainImage, setCurrentMainImage] = useState(productDetails[currentProductKey].boyImage[0])
   const [currentType, setCurrentType ] = useState(productDetails[currentProductKey].types[0])
 
   return (
     <ProductPageContainer>
+
       <FullScreeModal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currImg={currentModalImage}/>
         <>
           <NavigationBar isHomePage={false} arrayToHandle={[]} />
@@ -47,7 +45,9 @@ export const ProductPage = () => {
               </GeneralText>
             </ProductionDesContainer>
             <ShoppingSectionContainer>
-              <AdditionalImageCarousel/>
+              <SliderContainer>
+                <PicCardSlider/>
+              </SliderContainer>
               <ProductImageContainer>
                 <ProductImage
                   imageSrc={currentMainImage}
@@ -55,8 +55,8 @@ export const ProductPage = () => {
                 <FullSizeIcon
                   onClick={() => {
                     setIsModalOpen(true)
-                    if(chosenGender === 'B' || !chosenGender) setCurrentModalImage(productDetails[currentProductKey].boyImage);
-                    else setCurrentModalImage(productDetails[currentProductKey].girlImage);
+                    if(chosenGender === 'B' || !chosenGender) setCurrentModalImage(productDetails[currentProductKey].boyImage[0]);
+                    else setCurrentModalImage(productDetails[currentProductKey].girlImage[0]);
                   }}
                   top={'13px'}
                   right={'13px'}/>
@@ -101,9 +101,10 @@ export const ProductImageContainer = styled.div`
     align-items: center;
   }
 `
-const AdditionalImageCarousel = styled.div`
-  width: 20%;
+const SliderContainer = styled.div`
+  width: 10%;
   background-color: pink;
+  padding: .7rem;
 `;
 
 export const ProductImage = styled(Magnifier)`
@@ -115,7 +116,7 @@ const ShoppingSectionContainer = styled.div`
   width: 60%;
   gap: 10px;
   margin: .6rem 0;
-  min-height: 30rem;
+  height: 30rem;
   align-items: stretch;
   @media (max-width: 900px) {
     width: 80%;

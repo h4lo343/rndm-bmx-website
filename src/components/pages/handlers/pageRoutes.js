@@ -1,6 +1,7 @@
 import { ProductPage } from "../product/ProductPage";
 import { ShopPage } from "../shop/ShopPage";
 import { HomePage } from "../home/HomePage";
+import { Test } from "../../../test";
 
 // setting the pages and the components for the routes
 export const pageRoutes = [
@@ -21,6 +22,12 @@ export const pageRoutes = [
     exact: true,
     component: ShopPage,
     key: "product",
+  },
+  {
+    pathname: "/test",
+    exact: true,
+    component: Test,
+    key: "test",
   },
 ];
 
