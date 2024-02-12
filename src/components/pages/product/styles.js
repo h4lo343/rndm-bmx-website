@@ -44,6 +44,10 @@ const topBottomArrowBasic = css`
 
 const topBotOffset = '-15px'
 
+export const productPageResponsiveThreshold1 = '1000px'
+export const productPageResponsiveThreshold2 = '770px'
+
+
 export const TopArrowIcon = styled(IoIosArrowDropup)`
   ${iconBasic};
   ${topBottomArrowBasic};

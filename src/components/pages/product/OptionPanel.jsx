@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FlexBetween, FullSizeIcon} from "./styles";
+import {FlexBetween, FullSizeIcon, productPageResponsiveThreshold1, productPageResponsiveThreshold2} from "./styles";
 import {Button, priceColor} from "../../../styles/commonStyles";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -77,11 +77,16 @@ const rowMargin = '5px'
 const OptionPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 20rem;
+  height: 100%;
   padding: 10px 10px 0 10px;
   text-align: left;
-  
-  
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+    width: 40%;
+  }
+  @media (max-width: ${productPageResponsiveThreshold2}) {
+    width: 100%;
+  }
 `;
 
 const SpecImage = styled.img`

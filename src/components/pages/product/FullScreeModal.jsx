@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {GiCancel} from "react-icons/gi";
 import {ProductImage, ProductImageContainer} from "./ProductPage";
-import {productPageShadow} from "./styles";
+import {productPageResponsiveThreshold1, productPageShadow} from "./styles";
 import {Box, Modal} from "@mui/material";
 import {modalStyle1} from "../../common/Footer";
 import {Privacy, Return} from "../../common/Text";
@@ -20,9 +20,12 @@ const FullScreeModal = ({isOpen, setIsModalOpen, currImg }) => {
 
 
 const FullScreenImage = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  aspect-ratio: 1.5 / 1;
   object-fit: fill;
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+    aspect-ratio: 1.5 / 1;
+  }
 `
 
 const ModalContainer = styled(Box)`
@@ -30,13 +33,18 @@ const ModalContainer = styled(Box)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 65vw;
-  height: 80vh;
+  padding: 4rem;
+  width: 58vw;
+  aspect-ratio: 1.93 / 1;
   background-color: #ffffff;
   ${productPageShadow};
   z-index: 100;
   
-  ${verticalCentral}
+  ${verticalCentral};
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+    width: 88vw;
+    padding: 1rem;
+  }
 `
 
 const ModalCloser = styled(GiCancel)`

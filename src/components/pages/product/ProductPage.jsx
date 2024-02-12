@@ -8,7 +8,15 @@ import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
 import { Magnifier } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
-import {BottomArrowIcon, FullSizeIcon, LeftArrowIcon, productPageShadow, RightArrowIcon, TopArrowIcon} from "./styles";
+import {
+  BottomArrowIcon,
+  FullSizeIcon,
+  LeftArrowIcon,
+  productPageResponsiveThreshold1, productPageResponsiveThreshold2,
+  productPageShadow,
+  RightArrowIcon,
+  TopArrowIcon
+} from "./styles";
 import OptionPanel from "./OptionPanel";
 import PicCardSlider from "./PicCardSlider";
 
@@ -37,7 +45,6 @@ export const ProductPage = () => {
 
       setCurrentIndex(temp)
   }
-  console.log(currentIndex)
   useEffect(() => {
     setCurrentIndex(0)
   }, [chosenGender]);
@@ -102,14 +109,14 @@ export const ProductPage = () => {
 };
 
 const ProductPageContainer = styled.div`
+  overflow: hidden;
 `
 
 const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
-  min-width: 30vw;
+  margin: 2.5rem auto;
   flex-direction: column;
 `;
 
@@ -125,35 +132,51 @@ const ArrowIconContainer = styled.span`
 
 export const ProductImageContainer = styled.div`
   position: relative;
-  flex: 0 0 30rem;
-  //background-color: #c7c7c7;
-  ${productPageShadow}
+  width: 31rem;
+  aspect-ratio:  1 / 1;
+  ${productPageShadow};
+  
   & div {
     display: flex;
     height: 100%;
     align-items: center;
   }
-`
-const SliderContainer = styled.div`
-  width: 10%;
-  padding: .7rem;
-  position: relative;
-  text-align: center;
-`;
+  
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+     width: 60%;
+  }
 
-export const ProductImage = styled(Magnifier)`
+  @media (max-width: ${productPageResponsiveThreshold2}) {
+    width: 100%;
+  }
 `
+
 const ShoppingSectionContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 60%;
   gap: 25px;
   margin: .6rem 0;
-  height: 30rem;
-  align-items: stretch;
-  @media (max-width: 900px) {
-    width: 80%;
+  
+  align-items: center;
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+    padding: 0 3rem;
   }
+  @media (max-width: ${productPageResponsiveThreshold2}) {
+    flex-direction: column;
+  }
+`
+
+const SliderContainer = styled.div`
+  width: 5rem;
+  padding: .7rem;
+  position: relative;
+  text-align: center;
+  @media (max-width: ${productPageResponsiveThreshold1}) {
+    display: none;
+  }
+`;
+
+export const ProductImage = styled(Magnifier)`
 `
 
 const ProductTitle = styled(BodyText)`
@@ -164,8 +187,9 @@ const ProductTitle = styled(BodyText)`
 `;
 
 const ProductionDesContainer = styled.div`
-  width: 30%;
-  @media (max-width: 728px) {
+  width: 40%;
+  margin-bottom: 3vw;
+  @media (max-width: 1024px) {
     width: 70%;
   }
 `
@@ -177,7 +201,7 @@ const Banner = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 100vw;
+ 
   height: 50vh;
   background: url(${BgdImage});
   background-size: cover !important;
