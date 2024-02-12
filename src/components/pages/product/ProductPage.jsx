@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Footer } from "../../common/Footer";
 import { NavigationBar } from "../../common/NavigationBar";
 import styled from "styled-components";
-import {blackColor, BodyText, GeneralText, TitleText, verticalCentral} from "../../../styles/commonStyles";
+import {blackColor, BodyText, GeneralText, grey1, TitleText, verticalCentral} from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/home/about_background.png";
 import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
@@ -19,6 +19,7 @@ import {
 } from "./styles";
 import OptionPanel from "./OptionPanel";
 import PicCardSlider from "./PicCardSlider";
+import RelatedProducts from "./RelatedProducts";
 
 export const path = {
   'B': 'boyImages',
@@ -102,6 +103,7 @@ export const ProductPage = () => {
               />
             </ShoppingSectionContainer>
           </ProductContainer>
+          <RelatedProducts/>
           <Footer />
         </>
     </ProductPageContainer>
@@ -116,8 +118,9 @@ const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem auto;
   flex-direction: column;
+  background-color: ${ grey1 };
+  padding: 2.5rem 0;
 `;
 
 const ArrowIconContainer = styled.span`
@@ -171,6 +174,7 @@ const SliderContainer = styled.div`
   padding: .7rem;
   position: relative;
   text-align: center;
+  align-self: start;
   @media (max-width: ${productPageResponsiveThreshold1}) {
     display: none;
   }
@@ -188,7 +192,6 @@ const ProductTitle = styled(BodyText)`
 
 const ProductionDesContainer = styled.div`
   width: 40%;
-  margin-bottom: 3vw;
   @media (max-width: 1024px) {
     width: 70%;
   }

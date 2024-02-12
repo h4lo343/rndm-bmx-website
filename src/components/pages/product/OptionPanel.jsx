@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import {FlexBetween, FullSizeIcon, productPageResponsiveThreshold1, productPageResponsiveThreshold2} from "./styles";
+import {
+  FlexBetween,
+  FullSizeIcon,
+  originalPrice, OriginalPriceBox,
+  productPageResponsiveThreshold1,
+  productPageResponsiveThreshold2
+} from "./styles";
 import {Button, priceColor} from "../../../styles/commonStyles";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -21,10 +27,10 @@ const OptionPanel = ({
     <OptionPanelContainer>
       <Title>{currProduct.fullName}</Title>
       <PriceContainer>
-        <div><CurrPriceBox> ${currProduct.currPrice} </CurrPriceBox></div>
+        <div><CurrPriceBox> ${currProduct.discountedPrice} </CurrPriceBox></div>
         <div>
           <OriginalPriceBox> ${currProduct.originalPrice.toFixed(2)} </OriginalPriceBox>
-          <DiscountedPriceBox> ${currProduct.currPrice} </DiscountedPriceBox>
+          <DiscountedPriceBox> ${currProduct.discountedPrice} </DiscountedPriceBox>
         </div>
       </PriceContainer>
       <Title>Gender:</Title>
@@ -89,13 +95,6 @@ const OptionPanelContainer = styled.div`
   }
 `;
 
-const SpecImage = styled.img`
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-`
-
 const Title = styled.div`
   font-size: ${titleFontSize};
   margin-bottom: ${rowMargin};
@@ -108,14 +107,6 @@ const DiscountedPriceBox = styled.span`
   font-family: "Arial";
   font-weight: bold;
   font-size: 30px
-`
-
-const OriginalPriceBox = styled.span`
-  font-family: "Arial";
-  font-size: 15px;
-  text-decoration: line-through;
-  opacity: .5;
-  margin-right: 5px;
 `
 
 const PriceContainer = styled.div`

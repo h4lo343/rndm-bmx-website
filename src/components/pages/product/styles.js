@@ -45,8 +45,20 @@ const topBottomArrowBasic = css`
 const topBotOffset = '-15px'
 
 export const productPageResponsiveThreshold1 = '1000px'
+
 export const productPageResponsiveThreshold2 = '770px'
 
+export const originalPrice = css`
+  font-family: "Arial";
+  font-size: 15px;
+  text-decoration: line-through;
+  opacity: .5;
+  margin-right: 5px;
+`
+
+export const OriginalPriceBox = styled.span`
+  ${originalPrice}
+`
 
 export const TopArrowIcon = styled(IoIosArrowDropup)`
   ${iconBasic};

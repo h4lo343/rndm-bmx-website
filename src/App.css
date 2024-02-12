@@ -14,6 +14,15 @@
   }
 }
 
+.MuiRating-root {
+  color: rgb(161, 173, 61) !important;
+  font-size: .9rem !important;
+}
+
+.Mui-disabled{
+  opacity: 1 !important;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
