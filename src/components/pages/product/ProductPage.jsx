@@ -36,14 +36,27 @@ export const ProductPage = () => {
   const [chosenGender, setChosenGender] = useState('B')
   const [currentModalImage, setCurrentModalImage] = useState()
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentType, setCurrentType] = useState(productDetails[currentProductKey]['types'][0])
 
-  const handleArrowClick = (direction) => {
+  const [currentImageSet, setCurrentImageSet] = useState([
+      ...productDetails[key]['images'][currentType][[path[chosenGender]]],
+      ...productDetails[key]['images'][currentType]['common'],
+      ]
+    );
+  useEffect(() => {
+    setCurrentImageSet([
+      ...productDetails[key]['images'][currentType][[path[chosenGender]]],
+      ...productDetails[key]['images'][currentType]['common'],
+    ]
+    )
+  }, [chosenGender, currentType, key]);
+
+    const handleArrowClick = (direction) => {
       let temp = currentIndex
-      const imgCount = productDetails[currentProductKey][path[chosenGender]].length
+      const imgCount = currentImageSet.length
       direction === 'back' ? temp -= 1 : temp += 1;
       if(temp < 0) temp = imgCount - 1;
       if(temp === imgCount) temp = 0;
-
       setCurrentIndex(temp)
   }
   useEffect(() => {
@@ -62,9 +75,9 @@ export const ProductPage = () => {
           </Banner>
           <ProductContainer>
             <ProductionDesContainer>
-              <ProductTitle>{productDetails[currentProductKey].fullName}</ProductTitle>
+              <ProductTitle>{productDetails[key].fullName}</ProductTitle>
               <GeneralText color={blackColor} textAlign={"left"}>
-                {productDetails[currentProductKey].description}
+                {productDetails[key].description}
               </GeneralText>
             </ProductionDesContainer>
             <ShoppingSectionContainer>
@@ -73,13 +86,14 @@ export const ProductPage = () => {
                   currentIndex={currentIndex}
                   setCurrentIndex={setCurrentIndex}
                   chosenGender={chosenGender}
+                  imageSet={currentImageSet}
                 />
                 <TopArrowIcon onClick={() => handleArrowClick('back')}/>
                 <BottomArrowIcon onClick={() => handleArrowClick('forth')}/>
               </SliderContainer>
               <ProductImageContainer>
                 <ProductImage
-                  imageSrc={productDetails[currentProductKey][path[chosenGender]][currentIndex]}
+                  imageSrc={currentImageSet[currentIndex]}
                 />
                 <FullSizeIcon
                   onClick={() => {
@@ -100,6 +114,8 @@ export const ProductPage = () => {
                 chosenGender={chosenGender}
                 setIsModalOpen={setIsModalOpen}
                 setCurrentModalImage={setCurrentModalImage}
+                currentType={currentType}
+                setCurrentType={setCurrentType}
               />
             </ShoppingSectionContainer>
           </ProductContainer>

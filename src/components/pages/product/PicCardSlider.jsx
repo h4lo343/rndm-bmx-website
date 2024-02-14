@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import {path} from "./ProductPage";
 import {productPageShadow} from "./styles";
 
-const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
+const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender, imageSet}) => {
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
     axis: "y",
@@ -27,7 +27,7 @@ const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender}) => {
       <PicCardViewport ref={thumbViewportRef}>
         <PicCardContainer>
           {
-            productDetails.pin[path[chosenGender]].map((src, index) =>
+            imageSet.map((src, index) =>
               <SlideCardContainer
                 key={index}
                 selected = {currentIndex === index}

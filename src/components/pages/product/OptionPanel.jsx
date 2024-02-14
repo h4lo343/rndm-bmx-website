@@ -21,6 +21,8 @@ const OptionPanel = ({
                        setChosenGender,
                        setCurrentModalImage,
                        setIsModalOpen,
+                       currentType,
+                       setCurrentType
                        }) => {
 
   return (
@@ -56,19 +58,22 @@ const OptionPanel = ({
         </div>
       </AddCartContainer>
       <Title>Types:</Title>
-      <Select>
+      <Select
+        onChange = { e => setCurrentType(e.target.value) }
+        value = {currentType}
+      >
         {
-          currProduct.types.map(product => <MenuItem value={product}>{product}</MenuItem>)
+          currProduct.types.map(type => <MenuItem value={type}>{type}</MenuItem>)
         }
       </Select>
       <SpecContainer>
         <Title>Specs: </Title>
-        <Magnifier imageSrc={currProduct.specImage}></Magnifier>
+        <Magnifier imageSrc={currProduct['images'][currentType]['specImage']}></Magnifier>
         <FullSizeIcon
           top={'40px'}
           right={'13px'}
           onClick={() => {
-            setCurrentModalImage(currProduct.specImage)
+            setCurrentModalImage(currProduct['images'][currentType]['specImage'])
             setIsModalOpen(true)
         }}/>
       </SpecContainer>

@@ -78,6 +78,5 @@ const ProductCard = styled.div`
 `
 
 const SectionTitle = styled.div`
- 
   font-size: 1.3rem;
 `
