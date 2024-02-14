@@ -28,7 +28,7 @@ import type_2_titanium_2 from '../../../assets/images/products/pin/type_2_titani
 import girl_type_2_2 from '../../../assets/images/products/pin/type_2_titanium/girl/Girl_type_2.jpg'
 import boy_type_2_2 from '../../../assets/images/products/pin/type_2_titanium/boy/Boy_type_2.jpg'
 
-export const productDetails = {
+export const introProductDetails = {
   pin: {
     fullName: 'Brake\'N\'Pins',
     description: 'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {blackColor, BodyText, GeneralText, grey1, TitleText, verticalCentral} from "../../../styles/commonStyles";
 import BgdImage from "../../../assets/images/products/IntroProduct_background_image.jpg";
 import {useParams} from "react-router-dom";
-import { productDetails } from "../handlers/productsDetails";
+import { introProductDetails } from "../handlers/productsDetails";
 import { Magnifier } from "react-image-magnifiers";
 import FullScreeModal from "./FullScreeModal";
 import {
@@ -36,20 +36,23 @@ export const ProductPage = () => {
   const [chosenGender, setChosenGender] = useState('B')
   const [currentModalImage, setCurrentModalImage] = useState()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [currentType, setCurrentType] = useState(productDetails[currentProductKey]['types'][0])
+  const [currentType, setCurrentType] = useState(introProductDetails[currentProductKey]['types'][0])
 
   const [currentImageSet, setCurrentImageSet] = useState([
-      ...productDetails[key]['images'][currentType][[path[chosenGender]]],
-      ...productDetails[key]['images'][currentType]['common'],
+      ...introProductDetails[key]['images'][currentType][[path[chosenGender]]],
+      ...introProductDetails[key]['images'][currentType]['common'],
       ]
     );
   useEffect(() => {
     setCurrentImageSet([
-      ...productDetails[key]['images'][currentType][[path[chosenGender]]],
-      ...productDetails[key]['images'][currentType]['common'],
+      ...introProductDetails[key]['images'][currentType][[path[chosenGender]]],
+      ...introProductDetails[key]['images'][currentType]['common'],
     ]
     )
   }, [chosenGender, currentType, key]);
+
+
+
 
     const handleArrowClick = (direction) => {
       let temp = currentIndex
@@ -75,9 +78,9 @@ export const ProductPage = () => {
           </Banner>
           <ProductContainer>
             <ProductionDesContainer>
-              <ProductTitle>{productDetails[key].fullName}</ProductTitle>
+              <ProductTitle>{introProductDetails[key].fullName}</ProductTitle>
               <GeneralText color={blackColor} textAlign={"left"}>
-                {productDetails[key].description}
+                {introProductDetails[key].description}
               </GeneralText>
             </ProductionDesContainer>
             <ShoppingSectionContainer>
@@ -98,7 +101,7 @@ export const ProductPage = () => {
                 <FullSizeIcon
                   onClick={() => {
                     setIsModalOpen(true)
-                    setCurrentModalImage(productDetails[currentProductKey][path[chosenGender]][currentIndex])
+                    setCurrentModalImage(currentImageSet[currentIndex])
                   }}
                   top={'13px'}
                   right={'13px'}/>
@@ -109,7 +112,7 @@ export const ProductPage = () => {
               </ProductImageContainer>
               <OptionPanel
                 setCurrentImage={setCurrentModalImage}
-                currProduct={productDetails[currentProductKey]}
+                currProduct={introProductDetails[currentProductKey]}
                 setChosenGender={setChosenGender}
                 chosenGender={chosenGender}
                 setIsModalOpen={setIsModalOpen}

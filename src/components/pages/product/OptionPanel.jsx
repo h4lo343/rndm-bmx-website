@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 import {
   Magnifier
 } from "react-image-magnifiers";
-import {productDetails} from "../handlers/productsDetails";
+import {introProductDetails} from "../handlers/productsDetails";
 
 
 const OptionPanel = ({

@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import { productDetails } from "../../pages/handlers/productsDetails"
+import { introProductDetails } from "../../pages/handlers/productsDetails"
 import { useEffect } from 'react'
 import useEmblaCarousel from "embla-carousel-react";
 import {path} from "./ProductPage";

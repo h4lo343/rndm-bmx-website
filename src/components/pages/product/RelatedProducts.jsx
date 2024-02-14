@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {productDetails} from "../handlers/productsDetails";
+import {introProductDetails} from "../handlers/productsDetails";
 import { Rating } from "@mui/material";
 import {grey1, priceColor} from "../../../styles/commonStyles";
 import {OriginalPriceBox} from "./styles";
@@ -19,7 +19,7 @@ const RelatedProducts = () => {
     <ProductCardContainer>
       <SectionTitle>Related Products</SectionTitle>
       {
-        Object.values(productDetails).map(p =>
+        Object.values(introProductDetails).map(p =>
           <ProductCard>
             <ProductCardImg
               src={p.boyImages[0]}
