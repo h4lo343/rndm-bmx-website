@@ -40,7 +40,6 @@ const RelatedProducts = () => {
           </ProductCard>
         )
       }
-
     </ProductCardContainer>
   </RelatedProductsContainer>
 }

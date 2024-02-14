@@ -3,7 +3,7 @@ import { Footer } from "../../common/Footer";
 import { NavigationBar } from "../../common/NavigationBar";
 import styled from "styled-components";
 import {blackColor, BodyText, GeneralText, grey1, TitleText, verticalCentral} from "../../../styles/commonStyles";
-import BgdImage from "../../../assets/images/home/about_background.png";
+import BgdImage from "../../../assets/images/products/IntroProduct_background_image.jpg";
 import {useParams} from "react-router-dom";
 import { productDetails } from "../handlers/productsDetails";
 import { Magnifier } from "react-image-magnifiers";
