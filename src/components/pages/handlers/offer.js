@@ -1,5 +1,6 @@
 import boys_img from "../../../assets/images/home/offer_boys.png";
 import girls_img from "../../../assets/images/home/offer_girls.png";
+import pin_img from "../../../assets/images/home/offer_main_shop.jpg";
 // import adventure_shop from "../../../assets/images/home/offers/adventure-shop.png";
 
 export const offersList = [
@@ -18,6 +19,14 @@ export const offersList = [
     alt: "A girl on a bicycle wearing a random BMX helmet",
     key: "offerGirls",
     link: "https://rndm-bmx-girlz-merch.creator-spring.com/",
+  },
+  {
+    image: pin_img,
+    title: "RNDM-BMX Shop",
+    subtitle: "some RNDM-BMX Products to purchase",
+    alt: "Pin Image",
+    key: "offerMain",
+    link: "",
   },
   // {
   //   image: adventure_shop,
