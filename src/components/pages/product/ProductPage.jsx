@@ -227,5 +227,6 @@ const Banner = styled.div`
   height: 50vh;
   background: url(${BgdImage});
   background-size: cover !important;
+  background-position: 50% 40%;
 `;
 
