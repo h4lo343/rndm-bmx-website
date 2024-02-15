@@ -1,14 +1,13 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
-import { createContext, useState } from "react";
-import { pageRoutes } from "./components/pages/handlers/pageRoutes";
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import { createContext, useState } from 'react';
+import { pageRoutes } from './components/pages/handlers/pageRoutes';
 
 export const ThemeContext = createContext();
 
 function App() {
   const [isOpen, setOpen] = useState(false);
-
   return (
     <Router>
       <ThemeContext.Provider value={{ isOpen, setOpen }}>

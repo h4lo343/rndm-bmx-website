@@ -1,6 +1,7 @@
 import { ProductPage } from "../product/ProductPage";
 import { ShopPage } from "../shop/ShopPage";
 import { HomePage } from "../home/HomePage";
+import { MainShopPage  } from "../mainShop/mainShopPage";
 import { Test } from "../../../test";
 
 // setting the pages and the components for the routes
@@ -24,11 +25,12 @@ export const pageRoutes = [
     key: "product",
   },
   {
-    pathname: "/test",
+    pathname: "/mainShop",
     exact: true,
-    component: Test,
-    key: "test",
+    component: MainShopPage,
+    key: "mainShop"
   },
+
 ];
 
 export const navHomeID = "home-section";

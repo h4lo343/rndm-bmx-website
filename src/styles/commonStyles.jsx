@@ -1,18 +1,16 @@
-import {Container, Link, Typography} from "@mui/material";
-import styled, {css} from "styled-components";
-import overlayBefore from "../assets/images/home/before.png";
-import overlayAfter from "../assets/images/home/after.png";
+import { Container, Link, Typography } from '@mui/material';
+import styled, { css } from 'styled-components';
+import overlayBefore from '../assets/images/home/before.png';
 
-
-export const whiteColor = "#FFFFFF";
-export const bgWhiteColor = "#f6f6f6";
-export const blackNavColor = "rgba(14, 14, 17, 0.9)";
-export const greenColor = "#afbf00";
-export const blackColor = "#000";
-export const errorColor = "#B00020";
-export const successColor = "rgb(56, 142, 60)";
-export const brightGreenColor = "#eaff00";
-export const myFont = "Nerko One";
+export const whiteColor = '#FFFFFF';
+export const bgWhiteColor = '#f6f6f6';
+export const blackNavColor = 'rgba(14, 14, 17, 0.9)';
+export const greenColor = '#afbf00';
+export const blackColor = '#000';
+export const errorColor = '#B00020';
+export const successColor = 'rgb(56, 142, 60)';
+export const brightGreenColor = '#eaff00';
+export const myFont = 'Nerko One';
 export const mobileSize = 40;
 export const laptopSize = 42;
 
@@ -30,7 +28,7 @@ export const grey1 = '#e7e7e7;';
 export const HeaderText = styled(Typography)`
   font-size: 32px;
   color: ${(props) => (!!props.color ? props.color : whiteColor)};
-  text-align: ${(props) => (!!props.textAlign ? props.textAlign : "center")};
+  text-align: ${(props) => (!!props.textAlign ? props.textAlign : 'center')};
 `;
 
 export const TitleText = styled(HeaderText)`
@@ -55,8 +53,8 @@ export const TitleText = styled(HeaderText)`
 export const GeneralText = styled(BodyText)`
   && {
     color: ${(props) => (!!props.color ? props.color : whiteColor)};
-    font-size: ${(props) => (!!props.fontSize ? props.fontSize : "20px")};
-    text-align: ${(props) => (!!props.textAlign ? props.textAlign : "center")};
+    font-size: ${(props) => (!!props.fontSize ? props.fontSize : '20px')};
+    text-align: ${(props) => (!!props.textAlign ? props.textAlign : 'center')};
   }
 `;
 
@@ -72,7 +70,6 @@ export const GeneralLink = styled(Link)`
   }
 `;
 
-
 export const Title = styled(HeaderText)`
   text-transform: uppercase;
   font-size: 46px;
@@ -84,8 +81,6 @@ export const Title = styled(HeaderText)`
   color: ${(props) => (props.isBlack ? blackColor : whiteColor)};
 `;
 
-
-
 export const StyleDiv = styled.div`
   padding-top: 3%;
 `;
@@ -94,7 +89,7 @@ export const verticalCentral = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`
+`;
 
 export const CommonContainer = styled(Container)`
   min-height: 80vh;
@@ -105,11 +100,44 @@ export const Button = styled.button`
   background-color: ${priceColor};
   outline: none;
   border: 1px solid transparent;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   margin: 0;
   color: #ffffff;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   &:hover {
     transform: scale(1.2);
   }
-`
+`;
+
+export const Banner = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100vw;
+  height: 50vh;
+  background-image: url(${(props) => props.url});
+  background-size: cover !important;
+  background-position: ${(props) => props.position};
+  ${(props) =>
+    props.showOverlay &&
+    css`
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        position: absolute;
+        @media (min-width: 728px) {
+          height: 100px;
+        }
+        background: url(${overlayBefore}) 50% 50% no-repeat;
+        background-size: cover;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+      }
+    `}
+`;

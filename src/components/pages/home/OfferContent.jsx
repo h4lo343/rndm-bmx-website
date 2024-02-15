@@ -1,53 +1,56 @@
-import { Box, Container } from "@mui/material";
-import React from "react";
-import { Element } from "react-scroll";
-import styled from "styled-components";
+import { Box, Container } from '@mui/material';
+import React from 'react';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
 import {
   bgWhiteColor,
   blackColor,
   GeneralText,
   Title,
-} from "../../../styles/commonStyles";
-import { navOffersID } from "../handlers/pageRoutes";
-import { offersList } from "../handlers/offer";
-import BagSvg from "../../../assets/logos/bag.svg";
-import PencilBg from "../../../assets/images/home/pencil_mark_bgd.png";
-import overlayBefore from "../../../assets/images/home/before.png";
-import overlayAfter from "../../../assets/images/home/after.png";
+} from '../../../styles/commonStyles';
+import { navOffersID } from '../handlers/pageRoutes';
+import { useOfferList } from '../handlers/offer';
+import BagSvg from '../../../assets/logos/bag.svg';
+import PencilBg from '../../../assets/images/home/pencil_mark_bgd.png';
+import overlayBefore from '../../../assets/images/home/before.png';
+import overlayAfter from '../../../assets/images/home/after.png';
+import { Link } from 'react-router-dom';
 
 export const OfferContent = () => {
   return (
     <OfferElement name={navOffersID} id="home-offer-section">
       <OfferContainer>
-        <Box style={{ textAlign: "center" }}>
+        <Box style={{ textAlign: 'center' }}>
           <TitleWithImage as="h2" isBlack={true}>
             Check our Clothing Line
           </TitleWithImage>
         </Box>
-        <OfferBox flexDirection={{ xs: "column", md: "row" }}>
-          {offersList.map((offer) => (
-            <Tag
-              key={offer.key}
-              href={offer.link}
-              target="_blank"
-              rel="noopener"
-              aria-label={offer.title}
-            >
-              <OfferProductDiv>
-                <GreenContent />
-                <OfferImage
-                  src={offer?.image}
-                  alt={offer.alt}
-                  z-index={1}
-                  key={offer.key}
-                />
-              </OfferProductDiv>
-              <GeneralText color={blackColor} fontSize={"24px"} as="h3">
-                {offer?.title}
-              </GeneralText>
-              <GeneralText color={blackColor}>{offer?.subtitle}</GeneralText>
-            </Tag>
-          ))}
+        <OfferBox flexDirection={{ xs: 'column', md: 'row' }}>
+          {useOfferList().map((offer) => {
+            return (
+              <Tag
+                key={offer.key}
+                to={offer.link}
+                target="_self"
+                rel="noopener"
+                aria-label={offer.title}
+              >
+                <OfferProductDiv>
+                  <GreenContent />
+                  <OfferImage
+                    src={offer?.image}
+                    alt={offer.alt}
+                    z-index={1}
+                    key={offer.key}
+                  />
+                </OfferProductDiv>
+                <GeneralText color={blackColor} fontSize={'24px'} as="h3">
+                  {offer?.title}
+                </GeneralText>
+                <GeneralText color={blackColor}>{offer?.subtitle}</GeneralText>
+              </Tag>
+            );
+          })}
         </OfferBox>
       </OfferContainer>
     </OfferElement>
@@ -64,7 +67,7 @@ const OfferElement = styled(Element)`
       @media (min-width: 728px) {
         margin-bottom: -5%;
       }
-      content: "";
+      content: '';
       display: block;
       width: 100%;
       min-height: 100px;
@@ -78,7 +81,7 @@ const OfferElement = styled(Element)`
       background-size: 100% 100%;
     }
     ::after {
-      content: "";
+      content: '';
       display: block;
       width: 100%;
       height: 60px;
@@ -118,7 +121,7 @@ const TitleWithImage = styled(Title)`
   background-position: center;
 `;
 
-const Tag = styled.a`
+const Tag = styled(Link)`
   display: block;
   text-decoration: none;
   padding: 0%;
