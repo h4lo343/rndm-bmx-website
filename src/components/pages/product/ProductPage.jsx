@@ -163,6 +163,7 @@ export const ProductImageContainer = styled.div`
   position: relative;
   width: 31rem;
   aspect-ratio: 1 / 1;
+  border-radius: 5px;
   ${productPageShadow};
 
   & div {

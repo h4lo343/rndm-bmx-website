@@ -29,7 +29,7 @@ const ProductsContainer = styled.div`
 
 const ProductCard = styled.a`
   display: block;
-  border-radius: 5%;
+
   max-width: 100%;
   margin: 10px;
   overflow: hidden;
@@ -50,7 +50,8 @@ const ProductCard = styled.a`
 `;
 
 const ProductImage = styled.img`
-  border: none;
+  border-radius: 20px;
+
   display: inline-block;
   max-width: 100%;
   ${productPageShadow};
