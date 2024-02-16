@@ -8,6 +8,7 @@ import {
   BodyText,
   GeneralText,
   grey1,
+  productPageShadow,
   TitleText,
   verticalCentral,
 } from '../../../styles/commonStyles';
@@ -22,7 +23,6 @@ import {
   LeftArrowIcon,
   productPageResponsiveThreshold1,
   productPageResponsiveThreshold2,
-  productPageShadow,
   RightArrowIcon,
   TopArrowIcon,
 } from './styles';

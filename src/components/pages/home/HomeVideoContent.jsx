@@ -1,21 +1,21 @@
-import { Box } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import { Element } from "react-scroll";
+import { Box } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import { Element } from 'react-scroll';
 import {
   bgWhiteColor,
   HeaderText,
   laptopSize,
   myFont,
-} from "../../../styles/commonStyles";
-import { navHomeID } from "../handlers/pageRoutes";
-// import videoContent from "../../../assets/videos/home_video.mp4";
-import styled from "styled-components";
-import { BsSoundwave } from "react-icons/bs";
-import { VscMute } from "react-icons/vsc";
-import {TitleText} from "../../../styles/commonStyles";
+} from '../../../styles/commonStyles';
+import { navHomeID } from '../handlers/pageRoutes';
+import videoContent from '../../../assets/video/home_video.mp4';
+import styled from 'styled-components';
+import { BsSoundwave } from 'react-icons/bs';
+import { VscMute } from 'react-icons/vsc';
+import { TitleText } from '../../../styles/commonStyles';
 
 export const HomeVideoContent = () => {
-  const homeVideoText = "A BMX Brand for all kinds of people BMX!";
+  const homeVideoText = 'A BMX Brand for all kinds of people BMX!';
   const refVideo = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   // const isMobile = window.matchMedia('only screen and (max-width: 900px)').matches;
@@ -40,9 +40,9 @@ export const HomeVideoContent = () => {
         refVideo.current.muted = isMuted;
       }
     };
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [isMuted]);
 
@@ -51,7 +51,7 @@ export const HomeVideoContent = () => {
       <VideoContainer tabIndex="0">
         <HomeVideo
           id="home-video"
-          // src={videoContent}
+          src={videoContent}
           ref={refVideo}
           muted={isMuted}
           autoPlay
@@ -112,8 +112,6 @@ const OverlayBox = styled(Box)`
   margin: auto;
   width: 100vw;
 `;
-
-
 
 const SoundIcon = styled(BsSoundwave)`
   position: absolute;

@@ -1,23 +1,27 @@
-import React, {useEffect, useState} from "react";
-import styled from "styled-components";
-import {GiCancel} from "react-icons/gi";
-import {ProductImage, ProductImageContainer} from "./ProductPage";
-import {productPageResponsiveThreshold1, productPageShadow} from "./styles";
-import {Box, Modal} from "@mui/material";
-import {modalStyle1} from "../../common/Footer";
-import {Privacy, Return} from "../../common/Text";
-import { verticalCentral } from "../../../styles/commonStyles";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { GiCancel } from 'react-icons/gi';
+import { ProductImage, ProductImageContainer } from './ProductPage';
+import { productPageResponsiveThreshold1 } from './styles';
 
-const FullScreeModal = ({isOpen, setIsModalOpen, currImg }) => {
+import { Box, Modal } from '@mui/material';
+import { modalStyle1 } from '../../common/Footer';
+import { Privacy, Return } from '../../common/Text';
+import {
+  productPageShadow,
+  verticalCentral,
+} from '../../../styles/commonStyles';
 
-  return  <Modal  open={isOpen} onClose={() => {}}>
-    <ModalContainer>
-      <FullScreenImage src={currImg}/>
-      <ModalCloser onClick={() => setIsModalOpen(false)}/>
-    </ModalContainer>
-  </Modal>
-}
-
+const FullScreeModal = ({ isOpen, setIsModalOpen, currImg }) => {
+  return (
+    <Modal open={isOpen} onClose={() => {}}>
+      <ModalContainer>
+        <FullScreenImage src={currImg} />
+        <ModalCloser onClick={() => setIsModalOpen(false)} />
+      </ModalContainer>
+    </Modal>
+  );
+};
 
 const FullScreenImage = styled.img`
   width: 90%;
@@ -26,7 +30,7 @@ const FullScreenImage = styled.img`
   @media (max-width: ${productPageResponsiveThreshold1}) {
     aspect-ratio: 1.5 / 1;
   }
-`
+`;
 
 const ModalContainer = styled(Box)`
   display: flex;
@@ -39,13 +43,13 @@ const ModalContainer = styled(Box)`
   background-color: #ffffff;
   ${productPageShadow};
   z-index: 100;
-  
+
   ${verticalCentral};
   @media (max-width: ${productPageResponsiveThreshold1}) {
     width: 88vw;
     padding: 1rem;
   }
-`
+`;
 
 const ModalCloser = styled(GiCancel)`
   position: absolute;
@@ -58,7 +62,6 @@ const ModalCloser = styled(GiCancel)`
     cursor: pointer;
     transform: scale(3.5);
   }
-`
+`;
 
-export default FullScreeModal
-
+export default FullScreeModal;

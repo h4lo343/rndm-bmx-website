@@ -1,18 +1,16 @@
-import styled, {css} from "styled-components";
-import {SlSizeFullscreen} from "react-icons/sl";
-import { IoIosArrowDropleft, IoIosArrowDropright, IoIosArrowDropup, IoIosArrowDropdown   } from "react-icons/io";
+import styled, { css } from 'styled-components';
+import { SlSizeFullscreen } from 'react-icons/sl';
+import {
+  IoIosArrowDropleft,
+  IoIosArrowDropright,
+  IoIosArrowDropup,
+  IoIosArrowDropdown,
+} from 'react-icons/io';
 
-export const productPageShadow = css`
-  border: 1px solid  #cccccc;
-  border-radius: 5px;
-  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
-  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
-  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.51);
-`
 export const FlexBetween = css`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const iconBasic = css`
   font-size: 30px;
@@ -21,12 +19,11 @@ const iconBasic = css`
 
 export const FullSizeIcon = styled(SlSizeFullscreen)`
   position: absolute;
-  top: ${props => props.top};
-  right: ${props => props.right};
+  top: ${(props) => props.top};
+  right: ${(props) => props.right};
   ${iconBasic};
-  font-size: 20px
-  
-`
+  font-size: 20px;
+`;
 
 export const LeftArrowIcon = styled(IoIosArrowDropleft)`
   ${iconBasic};
@@ -36,29 +33,29 @@ export const LeftArrowIcon = styled(IoIosArrowDropleft)`
     cursor: pointer;
     transform: scale(1.5);
   }
-`
+`;
 
 const topBottomArrowBasic = css`
   position: absolute;
-`
+`;
 
-const topBotOffset = '-15px'
+const topBotOffset = '-15px';
 
-export const productPageResponsiveThreshold1 = '1000px'
+export const productPageResponsiveThreshold1 = '1000px';
 
-export const productPageResponsiveThreshold2 = '770px'
+export const productPageResponsiveThreshold2 = '770px';
 
 export const originalPrice = css`
-  font-family: "Arial";
+  font-family: 'Arial';
   font-size: 15px;
   text-decoration: line-through;
-  opacity: .5;
+  opacity: 0.5;
   margin-right: 5px;
-`
+`;
 
 export const OriginalPriceBox = styled.span`
   ${originalPrice}
-`
+`;
 
 export const TopArrowIcon = styled(IoIosArrowDropup)`
   ${iconBasic};
@@ -70,19 +67,19 @@ export const TopArrowIcon = styled(IoIosArrowDropup)`
     cursor: pointer;
     transform: translateX(-50%) scale(1.5);
   }
-`
+`;
 
 export const BottomArrowIcon = styled(IoIosArrowDropdown)`
   ${iconBasic};
   ${topBottomArrowBasic};
-  bottom:  ${topBotOffset};
+  bottom: ${topBotOffset};
   left: 50%;
   transform: translateX(-50%) scale(1.2);
   &:hover {
     cursor: pointer;
     transform: translateX(-50%) scale(1.5);
   }
-`
+`;
 
 export const RightArrowIcon = styled(IoIosArrowDropright)`
   ${iconBasic};
@@ -92,4 +89,4 @@ export const RightArrowIcon = styled(IoIosArrowDropright)`
     cursor: pointer;
     transform: scale(1.5);
   }
-`
+`;

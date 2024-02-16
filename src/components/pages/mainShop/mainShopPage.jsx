@@ -9,6 +9,8 @@ import {
   grey1,
   TitleText,
 } from '../../../styles/commonStyles';
+import { Products } from './Products';
+import { mainShopProducts } from '../handlers/mainShopProducts';
 
 export const MainShopPage = () => {
   return (
@@ -23,6 +25,18 @@ export const MainShopPage = () => {
           Image to find out more about the particular Item.
         </GeneralText>
       </ShopDescriptionContainer>
+      <TabBar>
+        <Tab>general bmx</Tab>
+        <Tab>rndm-bmx</Tab>
+        <Tab>unique bmx</Tab>
+        <Tab>exotic bmx</Tab>
+      </TabBar>
+      <MainContentContainer>
+        <LeftColumn></LeftColumn>
+        <RightColumn>
+          <Products data={mainShopProducts.generalBMX.products} />
+        </RightColumn>
+      </MainContentContainer>
     </MainShopPageContainer>
   );
 };
@@ -33,11 +47,63 @@ const MainShopPageContainer = styled.div`
 `;
 
 const ShopDescriptionContainer = styled.div`
-  width: 40%;
+  width: 40rem;
   margin: 0 auto;
+  @media (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const ShopTitle = styled.div`
   font-size: 2.5rem;
   text-transform: uppercase;
+`;
+
+const TabBar = styled.div`
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  align-items: center;
+  gap: 6rem;
+  @media (max-width: 800px) {
+    gap: 3rem;
+    justify-content: space-evenly;
+  }
+`;
+
+const Tab = styled.div`
+  font-size: 1.7rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  text-transform: uppercase;
+  @media (max-width: 800px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 1rem;
+  }
+`;
+
+const MainContentContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  background-color: pink;
+
+  padding: 1rem;
+`;
+
+const LeftColumn = styled.div`
+  background-color: aqua;
+  width: 15%;
+`;
+
+const RightColumn = styled.div`
+  background-color: white;
+  width: 85%;
 `;
