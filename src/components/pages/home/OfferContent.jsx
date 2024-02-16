@@ -14,9 +14,15 @@ import BagSvg from '../../../assets/logos/bag.svg';
 import PencilBg from '../../../assets/images/home/pencil_mark_bgd.png';
 import overlayBefore from '../../../assets/images/home/before.png';
 import overlayAfter from '../../../assets/images/home/after.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export const OfferContent = () => {
+  const history = useHistory();
+  const handleDirect = (link) => {
+    if (link.includes('https')) {
+      window.location = link;
+    } else history.push(link);
+  };
   return (
     <OfferElement name={navOffersID} id="home-offer-section">
       <OfferContainer>
@@ -30,7 +36,10 @@ export const OfferContent = () => {
             return (
               <Tag
                 key={offer.key}
-                to={offer.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDirect(offer.link);
+                }}
                 target="_self"
                 rel="noopener"
                 aria-label={offer.title}

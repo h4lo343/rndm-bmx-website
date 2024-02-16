@@ -45,7 +45,7 @@ export const TitleText = styled(HeaderText)`
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 100vh;
+
     padding: 0vh 10px;
   }
 `;
@@ -111,13 +111,12 @@ export const Button = styled.button`
 
 export const Banner = styled.div`
   position: relative;
-  top: 0;
-  left: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 100vw;
+  width: 100%;
   height: 50vh;
   background-image: url(${(props) => props.url});
   background-size: cover !important;

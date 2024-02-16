@@ -92,10 +92,8 @@ const Tab = styled.div`
 const MainContentContainer = styled.div`
   display: flex;
   gap: 1rem;
-  width: 100%;
-  background-color: pink;
-
-  padding: 1rem;
+  width: 98%;
+  padding: 2rem;
 `;
 
 const LeftColumn = styled.div`
@@ -104,6 +102,7 @@ const LeftColumn = styled.div`
 `;
 
 const RightColumn = styled.div`
-  background-color: white;
+  background-color: inherit;
   width: 85%;
+  padding: 20px;
 `;

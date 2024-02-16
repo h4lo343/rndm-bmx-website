@@ -136,9 +136,7 @@ export const ProductPage = () => {
   );
 };
 
-const ProductPageContainer = styled.div`
-  overflow: hidden;
-`;
+const ProductPageContainer = styled.div``;
 
 const ProductContainer = styled.div`
   display: flex;
