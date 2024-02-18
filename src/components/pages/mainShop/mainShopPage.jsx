@@ -11,6 +11,7 @@ import {
 } from '../../../styles/commonStyles';
 import { Products } from './Products';
 import { mainShopProducts } from '../handlers/mainShopProducts';
+import { FilterPanel } from './filterPanel';
 
 export const MainShopPage = () => {
   return (
@@ -32,7 +33,9 @@ export const MainShopPage = () => {
         <Tab>exotic bmx</Tab>
       </TabBar>
       <MainContentContainer>
-        <LeftColumn></LeftColumn>
+        <LeftColumn>
+          <FilterPanel />
+        </LeftColumn>
         <RightColumn>
           <Products data={mainShopProducts.generalBMX.products} />
         </RightColumn>
@@ -97,7 +100,6 @@ const MainContentContainer = styled.div`
 `;
 
 const LeftColumn = styled.div`
-  background-color: aqua;
   width: 15%;
 `;
 
