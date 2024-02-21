@@ -12,8 +12,22 @@ import {
 import { Products } from './Products';
 import { mainShopProducts } from '../handlers/mainShopProducts';
 import { FilterPanel } from './filterPanel';
+import { useParams } from 'react-router-dom';
+import { pagination } from './utility/pagination';
 
 export const MainShopPage = () => {
+  const { category } = useParams();
+  let rawData = null;
+  if (!category) {
+    rawData = [
+      ...mainShopProducts.generalBMX.products,
+      ...mainShopProducts.ExoticBMX.products,
+      ...mainShopProducts.UniqueBMX.products,
+      ...mainShopProducts.RNDMBMX.products,
+    ];
+  }
+  const dataSource = pagination(category, rawData);
+
   return (
     <MainShopPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
@@ -37,7 +51,11 @@ export const MainShopPage = () => {
           <FilterPanel />
         </LeftColumn>
         <RightColumn>
-          <Products data={mainShopProducts.generalBMX.products} />
+          <Products
+            data={mainShopProducts.generalBMX.products}
+            dataSource={dataSource}
+            category={category}
+          />
         </RightColumn>
       </MainContentContainer>
     </MainShopPageContainer>
