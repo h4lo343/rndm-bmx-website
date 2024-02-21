@@ -17,6 +17,7 @@ import { pagination } from './utility/pagination';
 
 export const MainShopPage = () => {
   const history = useHistory();
+  const [index, setIndex] = useState(0);
   const { category } = useParams();
   const [dataSource, setDataSource] = useState(
     pagination(category, [
@@ -57,25 +58,37 @@ export const MainShopPage = () => {
       </ShopDescriptionContainer>
       <TabBar>
         <Tab
-          onClick={() => history.push(`/mainShop/generalBMX`)}
+          onClick={() => {
+            setIndex(0);
+            history.push(`/mainShop/generalBMX`);
+          }}
           chosen={category === 'generalBMX'}
         >
           general bmx
         </Tab>
         <Tab
-          onClick={() => history.push(`/mainShop/RNDMBMX`)}
+          onClick={() => {
+            setIndex(0);
+            history.push(`/mainShop/RNDMBMX`);
+          }}
           chosen={category === 'RNDMBMX'}
         >
           rndm-bmx
         </Tab>
         <Tab
-          onClick={() => history.push(`/mainShop/UniqueBMX`)}
+          onClick={() => {
+            setIndex(0);
+            history.push(`/mainShop/UniqueBMX`);
+          }}
           chosen={category === 'UniqueBMX'}
         >
           unique bmx
         </Tab>
         <Tab
-          onClick={() => history.push(`/mainShop/ExoticBMX`)}
+          onClick={() => {
+            setIndex(0);
+            history.push(`/mainShop/ExoticBMX`);
+          }}
           chosen={category === 'ExoticBMX'}
         >
           exotic bmx
@@ -86,7 +99,12 @@ export const MainShopPage = () => {
           <FilterPanel />
         </LeftColumn>
         <RightColumn>
-          <Products dataSource={dataSource} category={category} />
+          <Products
+            dataSource={dataSource}
+            category={category}
+            index={index}
+            setIndex={setIndex}
+          />
         </RightColumn>
       </MainContentContainer>
     </MainShopPageContainer>

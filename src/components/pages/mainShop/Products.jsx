@@ -8,9 +8,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { Select } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-export const Products = ({ dataSource, category }) => {
+export const Products = ({ dataSource, category, index, setIndex }) => {
   const keys = Object.keys(dataSource);
-  const [index, setIndex] = useState(0);
+
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
   const [sortType, setSortType] = useState('Trending');
 
