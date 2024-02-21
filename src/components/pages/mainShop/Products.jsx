@@ -8,40 +8,47 @@ import MenuItem from '@mui/material/MenuItem';
 import { Select } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-export const Products = ({ data, dataSource, category }) => {
+export const Products = ({ dataSource, category }) => {
   const keys = Object.keys(dataSource);
-
   const [index, setIndex] = useState(0);
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
   const [sortType, setSortType] = useState('Trending');
 
   const sortData = (arr) => {
+    if (!arr) return;
     if (sortType === 'Trending') {
       return arr.sort((a, b) => a.popularity - b.popularity);
     } else {
       return arr.sort((a, b) => a.price - b.price);
     }
   };
+  console.log(pageData);
 
   useEffect(() => {
-    setPageData(dataSource[keys[index]]);
-  }, [index]);
+    if (Object.keys(dataSource).length === 0) {
+      setPageData([]);
+    } else setPageData(dataSource[keys[index]]);
+  }, [index, dataSource]);
 
   const handlePageFlip = (type) => {
-    if (type === 'reduce') {
-      if (index === 0) {
-        setIndex(keys.length - 1);
-      } else setIndex(index - 1);
-    } else {
-      if (index === keys.length - 1) {
-        setIndex(0);
-      } else setIndex(index + 1);
+    if (keys.length) {
+      if (type === 'reduce') {
+        if (index === 0) {
+          setIndex(keys.length - 1);
+        } else setIndex(index - 1);
+      } else {
+        if (index === keys.length - 1) {
+          setIndex(0);
+        } else setIndex(index + 1);
+      }
     }
   };
   return (
     <ProductsContainer>
       <FunctionBar>
-        <ProductName>Showing all {pageData.length} results</ProductName>
+        <ProductName>
+          Showing {pageData?.length ? pageData?.length : 0} results
+        </ProductName>
         <PageNumber>
           <PageNumberArrow onClick={() => handlePageFlip('reduce')}>
             &lt;
@@ -57,13 +64,31 @@ export const Products = ({ data, dataSource, category }) => {
         </Select>
       </FunctionBar>
       <ProductsCardContainer>
-        {sortData(pageData).map((p) => (
-          <ProductCard>
-            <ProductImage src={p.image} />
-            <ProductName>{p.name}</ProductName>
-            <ProductPrice>${p.price}</ProductPrice>
-          </ProductCard>
-        ))}
+        {category
+          ? Object?.keys(pageData).map((key) => {
+              return (
+                <>
+                  <Subcategory>{key}</Subcategory>
+                  <ProductsCardContainer>
+                    {pageData[key].map((p) => (
+                      <ProductCard>
+                        <ProductImage src={p.image} />
+                        <ProductName>{p.name}</ProductName>
+                        <ProductPrice>${p.price}</ProductPrice>
+                      </ProductCard>
+                    ))}
+                  </ProductsCardContainer>
+                </>
+              );
+            })
+          : pageData?.length &&
+            sortData(pageData).map((p) => (
+              <ProductCard>
+                <ProductImage src={p.image} />
+                <ProductName>{p.name}</ProductName>
+                <ProductPrice>${p.price}</ProductPrice>
+              </ProductCard>
+            ))}
       </ProductsCardContainer>
     </ProductsContainer>
   );
@@ -88,6 +113,11 @@ const FunctionBar = styled.div`
   padding: 0 6rem;
   margin-bottom: 1rem;
   align-items: center;
+`;
+
+const Subcategory = styled.div`
+  font-size: 2rem;
+  color: grey;
 `;
 
 const PageNumber = styled.span`

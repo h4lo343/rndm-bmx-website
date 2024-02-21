@@ -9,5 +9,22 @@ export const pagination = (category, data) => {
       dataObj[i] = data[i];
     }
     return dataObj;
+  } else {
+    const dataObj = {};
+
+    for (let d of data) {
+      const firstWord = d.subCategory?.trim()[0];
+      if (!dataObj[firstWord]) {
+        dataObj[firstWord] = {};
+        dataObj[firstWord][d.subCategory] = [d];
+      } else {
+        if (dataObj[firstWord][d.subCategory]) {
+          dataObj[firstWord][d.subCategory].push(d);
+        } else {
+          dataObj[firstWord][d.subCategory] = [d];
+        }
+      }
+    }
+    return dataObj;
   }
 };

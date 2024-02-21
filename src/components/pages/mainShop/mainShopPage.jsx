@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { NavigationBar } from '../../common/NavigationBar';
 import BgdImage from '../../../assets/images/mainShop/main_shop_backgroud.jpg';
@@ -12,22 +12,37 @@ import {
 import { Products } from './Products';
 import { mainShopProducts } from '../handlers/mainShopProducts';
 import { FilterPanel } from './filterPanel';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { pagination } from './utility/pagination';
 
 export const MainShopPage = () => {
+  const history = useHistory();
   const { category } = useParams();
-  let rawData = null;
-  if (!category) {
-    rawData = [
+  const [dataSource, setDataSource] = useState(
+    pagination(category, [
       ...mainShopProducts.generalBMX.products,
       ...mainShopProducts.ExoticBMX.products,
       ...mainShopProducts.UniqueBMX.products,
       ...mainShopProducts.RNDMBMX.products,
-    ];
-  }
-  const dataSource = pagination(category, rawData);
-
+    ])
+  );
+  useEffect(() => {
+    if (!category) {
+      setDataSource(
+        pagination(category, [
+          ...mainShopProducts.generalBMX.products,
+          ...mainShopProducts.ExoticBMX.products,
+          ...mainShopProducts.UniqueBMX.products,
+          ...mainShopProducts.RNDMBMX.products,
+        ])
+      );
+    } else {
+      setDataSource(
+        pagination(category, [...mainShopProducts[category].products])
+      );
+    }
+  }, [category]);
+  console.log(dataSource);
   return (
     <MainShopPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
@@ -41,21 +56,37 @@ export const MainShopPage = () => {
         </GeneralText>
       </ShopDescriptionContainer>
       <TabBar>
-        <Tab>general bmx</Tab>
-        <Tab>rndm-bmx</Tab>
-        <Tab>unique bmx</Tab>
-        <Tab>exotic bmx</Tab>
+        <Tab
+          onClick={() => history.push(`/mainShop/generalBMX`)}
+          chosen={category === 'generalBMX'}
+        >
+          general bmx
+        </Tab>
+        <Tab
+          onClick={() => history.push(`/mainShop/RNDMBMX`)}
+          chosen={category === 'RNDMBMX'}
+        >
+          rndm-bmx
+        </Tab>
+        <Tab
+          onClick={() => history.push(`/mainShop/UniqueBMX`)}
+          chosen={category === 'UniqueBMX'}
+        >
+          unique bmx
+        </Tab>
+        <Tab
+          onClick={() => history.push(`/mainShop/ExoticBMX`)}
+          chosen={category === 'ExoticBMX'}
+        >
+          exotic bmx
+        </Tab>
       </TabBar>
       <MainContentContainer>
         <LeftColumn>
           <FilterPanel />
         </LeftColumn>
         <RightColumn>
-          <Products
-            data={mainShopProducts.generalBMX.products}
-            dataSource={dataSource}
-            category={category}
-          />
+          <Products dataSource={dataSource} category={category} />
         </RightColumn>
       </MainContentContainer>
     </MainShopPageContainer>
@@ -87,6 +118,7 @@ const TabBar = styled.div`
   background-color: #ffffff;
   align-items: center;
   gap: 6rem;
+
   @media (max-width: 800px) {
     gap: 3rem;
     justify-content: space-evenly;
@@ -95,7 +127,7 @@ const TabBar = styled.div`
 
 const Tab = styled.div`
   font-size: 1.7rem;
-
+  color: ${(props) => (props.chosen ? 'orange' : 'inherit')};
   &:hover {
     cursor: pointer;
   }

@@ -30,6 +30,4 @@ function App() {
 
 export default App;
 
-const AppContainer = styled.div`
-  width: fit-content;
-`;
+const AppContainer = styled.div``;
