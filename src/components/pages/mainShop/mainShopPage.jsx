@@ -43,7 +43,6 @@ export const MainShopPage = () => {
       );
     }
   }, [category]);
-  console.log(dataSource);
   return (
     <MainShopPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />

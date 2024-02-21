@@ -13,7 +13,12 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
 
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
   const [sortType, setSortType] = useState('Trending');
-
+  const [cardNum, setCardNum] = useState(0);
+  useEffect(() => {
+    const cardDivs = document.querySelectorAll('div[aria-label="card"]');
+    const cardCount = cardDivs.length;
+    setCardNum(cardCount);
+  });
   const sortData = (arr) => {
     if (!arr) return;
     if (sortType === 'Trending') {
@@ -22,7 +27,6 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
       return arr.sort((a, b) => a.price - b.price);
     }
   };
-  console.log(pageData);
 
   useEffect(() => {
     if (Object.keys(dataSource).length === 0) {
@@ -46,9 +50,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
   return (
     <ProductsContainer>
       <FunctionBar>
-        <ProductName>
-          Showing {pageData?.length ? pageData?.length : 0} results
-        </ProductName>
+        <ProductName>Showing {cardNum} results</ProductName>
         <PageNumber>
           <PageNumberArrow onClick={() => handlePageFlip('reduce')}>
             &lt;
@@ -73,9 +75,11 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
                     {pageData[key]?.length &&
                       pageData[key]?.map((p) => (
                         <ProductCard>
-                          <ProductImage src={p.image} />
-                          <ProductName>{p.name}</ProductName>
-                          <ProductPrice>${p.price}</ProductPrice>
+                          <div aria-label={'card'}>
+                            <ProductImage src={p.image} />
+                            <ProductName>{p.name}</ProductName>
+                            <ProductPrice>${p.price}</ProductPrice>
+                          </div>
                         </ProductCard>
                       ))}
                   </ProductsCardContainer>
@@ -85,9 +89,11 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
           : pageData?.length &&
             sortData(pageData).map((p) => (
               <ProductCard>
-                <ProductImage src={p.image} />
-                <ProductName>{p.name}</ProductName>
-                <ProductPrice>${p.price}</ProductPrice>
+                <div aria-label={'card'}>
+                  <ProductImage src={p.image} />
+                  <ProductName>{p.name}</ProductName>
+                  <ProductPrice>${p.price}</ProductPrice>
+                </div>
               </ProductCard>
             ))}
       </ProductsCardContainer>
@@ -129,7 +135,9 @@ const PageNumber = styled.span`
 
 const ProductsContainer = styled.div``;
 
-const ProductCard = styled.a`
+const ProductCard = styled.a.attrs({
+  ariaLabel: 'card',
+})`
   display: block;
   max-width: 100%;
   margin: 10px;
