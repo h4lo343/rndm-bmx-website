@@ -70,13 +70,14 @@ export const Products = ({ dataSource, category }) => {
                 <>
                   <Subcategory>{key}</Subcategory>
                   <ProductsCardContainer>
-                    {pageData[key].map((p) => (
-                      <ProductCard>
-                        <ProductImage src={p.image} />
-                        <ProductName>{p.name}</ProductName>
-                        <ProductPrice>${p.price}</ProductPrice>
-                      </ProductCard>
-                    ))}
+                    {pageData[key]?.length &&
+                      pageData[key]?.map((p) => (
+                        <ProductCard>
+                          <ProductImage src={p.image} />
+                          <ProductName>{p.name}</ProductName>
+                          <ProductPrice>${p.price}</ProductPrice>
+                        </ProductCard>
+                      ))}
                   </ProductsCardContainer>
                 </>
               );
