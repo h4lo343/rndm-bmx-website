@@ -48,7 +48,7 @@ export const MainShopPage = () => {
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
       <Banner url={BgdImage} position={'50% 15%'} showOverlay={true}></Banner>
       <ShopDescriptionContainer>
-        <ShopTitle>shop</ShopTitle>
+        <ShopTitle onClick={() => history.push('/mainShop')}>shop</ShopTitle>
         <GeneralText color={blackColor} textAlign={'left'}>
           Welcome to the SHOP Page. Click/Tap a Sub-catagory below to be taken
           to that desired part of the Shop or click on a particular Product
@@ -130,6 +130,7 @@ const ShopDescriptionContainer = styled.div`
 const ShopTitle = styled.div`
   font-size: 2.5rem;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 const TabBar = styled.div`
