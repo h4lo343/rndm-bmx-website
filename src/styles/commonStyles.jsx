@@ -23,7 +23,7 @@ export const BodyText = styled(Typography)`
 
 export const priceColor = 'rgb(161, 173, 61)';
 
-export const grey1 = '#e7e7e7;';
+export const grey1 = 'rgb(246, 246, 246)';
 
 export const HeaderText = styled(Typography)`
   font-size: 32px;
@@ -133,6 +133,7 @@ export const Banner = styled.div`
           height: 100px;
         }
         background: url(${overlayBefore}) 50% 50% no-repeat;
+        filter: grayscale(100%);
         background-size: cover;
         bottom: 0;
         left: 0;

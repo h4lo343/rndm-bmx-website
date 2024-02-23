@@ -33,15 +33,7 @@ export const introProductDetails = {
     fullName: "Brake'N'Pins",
     description:
       'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
-    boyImages: [
-      product_pin_boy_1,
-      product_pin_boy_2,
-      product_pin_boy_3,
-      product_pin_boy_4,
-      product_pin_boy_5,
-    ],
-    girlImages: [product_pin_girl_1],
-    specImage: product_pin_spec,
+    themeImage: product_pin_boy_1,
     discountedPrice: 20,
     originalPrice: 140,
     rating: 2,
@@ -83,6 +75,7 @@ export const introProductDetails = {
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
     boyImages: [post_1],
+    themeImage: product_pin_boy_1,
     discountedPrice: null,
     rating: 4,
     originalPrice: 30,
@@ -91,6 +84,7 @@ export const introProductDetails = {
     fullName: 'Pivitol Seat Post',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e.',
+    themeImage: product_pin_boy_1,
     boyImages: [clamp_1],
     rating: 4,
     discountedPrice: null,

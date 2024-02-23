@@ -12,7 +12,8 @@ import {
   TitleText,
   verticalCentral,
 } from '../../../styles/commonStyles';
-import BgdImage from '../../../assets/images/products/IntroProduct_background_image.jpg';
+import introBgdImage from '../../../assets/images/products/IntroProduct_background_image.jpg';
+import commonBgdImage from '../../../assets/images/products/commonProduct_background_image.jpg';
 import { useParams } from 'react-router-dom';
 import { introProductDetails } from '../handlers/productsDetails';
 import { Magnifier } from 'react-image-magnifiers';
@@ -35,28 +36,29 @@ export const path = {
   G: 'girlImages',
 };
 
-export const ProductPage = () => {
+export const ProductPage = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const productData = props.location.state.productData;
+  const isCommon = props.location.state.commonProduct;
+
   const { key } = useParams();
   const [currentProductKey, setCurrentProductKey] = useState(key);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenGender, setChosenGender] = useState('B');
   const [currentModalImage, setCurrentModalImage] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentType, setCurrentType] = useState(
-    introProductDetails[currentProductKey]['types'][0]
-  );
+  const [currentType, setCurrentType] = useState(productData['types'][0]);
 
   const [currentImageSet, setCurrentImageSet] = useState([
-    ...introProductDetails[key]['images'][currentType][[path[chosenGender]]],
-    ...introProductDetails[key]['images'][currentType]['common'],
+    ...productData['images'][currentType][[path[chosenGender]]],
+    ...productData['images'][currentType]['common'],
   ]);
   useEffect(() => {
     setCurrentImageSet([
-      ...introProductDetails[key]['images'][currentType][[path[chosenGender]]],
-      ...introProductDetails[key]['images'][currentType]['common'],
+      ...productData['images'][currentType][[path[chosenGender]]],
+      ...productData['images'][currentType]['common'],
     ]);
   }, [chosenGender, currentType, key]);
 
@@ -81,14 +83,20 @@ export const ProductPage = () => {
       />
       <>
         <NavigationBar isHomePage={false} arrayToHandle={[]} />
-        <Banner url={BgdImage} position={'50% 40%'} showOverlay={false}>
-          <TitleText variant="h1">INTRO PRODUCTS</TitleText>
+        <Banner
+          url={isCommon ? commonBgdImage : introBgdImage}
+          position={'50% 40%'}
+          showOverlay={true}
+        >
+          <TitleText variant="h1">
+            {isCommon ? 'PRODUCTS' : 'INTRO PRODUCTS'}
+          </TitleText>
         </Banner>
         <ProductContainer>
           <ProductionDesContainer>
-            <ProductTitle>{introProductDetails[key].fullName}</ProductTitle>
+            <ProductTitle>{productData.fullName}</ProductTitle>
             <GeneralText color={blackColor} textAlign={'left'}>
-              {introProductDetails[key].description}
+              {productData.description}
             </GeneralText>
           </ProductionDesContainer>
           <ShoppingSectionContainer>
@@ -119,7 +127,7 @@ export const ProductPage = () => {
             </ProductImageContainer>
             <OptionPanel
               setCurrentImage={setCurrentModalImage}
-              currProduct={introProductDetails[currentProductKey]}
+              currProduct={productData}
               setChosenGender={setChosenGender}
               chosenGender={chosenGender}
               setIsModalOpen={setIsModalOpen}
@@ -129,7 +137,7 @@ export const ProductPage = () => {
             />
           </ShoppingSectionContainer>
         </ProductContainer>
-        <RelatedProducts />
+        {!isCommon && <RelatedProducts />}
         <Footer />
       </>
     </ProductPageContainer>

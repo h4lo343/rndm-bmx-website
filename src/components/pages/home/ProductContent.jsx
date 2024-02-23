@@ -1,38 +1,43 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
-import React from "react";
-import { Element } from "react-scroll";
-import styled from "styled-components";
-import { navProductID } from "../handlers/pageRoutes";
-import { useHistory } from 'react-router-dom'
-import { bgWhiteColor, blackColor, Title } from "../../../styles/commonStyles";
-import { latestProducts } from "../handlers/latestProducts";
-import PencilBg from "../../../assets/images/home/pencil_mark_bgd.png";
-import overlayBefore from "../../../assets/images/home/before.png";
-import overlayAfter from "../../../assets/images/home/after.png";
+import { Box, Container, Stack, Typography } from '@mui/material';
+import React from 'react';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
+import { navProductID } from '../handlers/pageRoutes';
+import { useHistory } from 'react-router-dom';
+import { bgWhiteColor, blackColor, Title } from '../../../styles/commonStyles';
+import { latestProducts } from '../handlers/latestProducts';
+import PencilBg from '../../../assets/images/home/pencil_mark_bgd.png';
+import overlayBefore from '../../../assets/images/home/before.png';
+import overlayAfter from '../../../assets/images/home/after.png';
+import { introProductDetails } from '../handlers/productsDetails';
 
 export const ProductContent = () => {
-  const history = useHistory()
+  const history = useHistory();
   return (
     <ProductElement name={navProductID} id="home-product-section">
       <ProductContainer>
-        <Box style={{ textAlign: "center" }}>
+        <Box style={{ textAlign: 'center' }}>
           <TitleWithImage as="h2" isBlack={true}>
-            {" "}
+            {' '}
             Our Upcoming Products
           </TitleWithImage>
         </Box>
         <ProductBox id="home-products-box">
           <Stack
-            direction={{ xs: "column", md: "row" }}
+            direction={{ xs: 'column', md: 'row' }}
             spacing={{ xs: 1, sm: 2, md: 3 }}
           >
             {latestProducts.map((product) => (
-              <ProductLink to={"/product"} key={product.key}>
+              <ProductLink to={'/product'} key={product.key}>
                 <ProductImage
                   src={product.image}
                   alt={product.alt}
                   key={product.alt}
-                  onClick={() => history.push(`product/pin`)}
+                  onClick={() =>
+                    history.push(`product/pin`, {
+                      productData: introProductDetails['pin'],
+                    })
+                  }
                 />
                 <ProductText as="h3">{product.productName}</ProductText>
               </ProductLink>
@@ -51,7 +56,7 @@ const ProductElement = styled(Element)`
     position: relative;
     background-color: ${bgWhiteColor};
     ::before {
-      content: "";
+      content: '';
       display: block;
       width: 100%;
       min-height: 100px;
@@ -65,7 +70,7 @@ const ProductElement = styled(Element)`
       background-size: 100% 100%;
     }
     ::after {
-      content: "";
+      content: '';
       display: block;
       width: 100%;
       height: 100px;

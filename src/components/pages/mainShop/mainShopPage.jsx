@@ -62,6 +62,7 @@ export const MainShopPage = () => {
             history.push(`/mainShop/generalBMX`);
           }}
           chosen={category === 'generalBMX'}
+          color={'orange'}
         >
           general bmx
         </Tab>
@@ -71,6 +72,7 @@ export const MainShopPage = () => {
             history.push(`/mainShop/RNDMBMX`);
           }}
           chosen={category === 'RNDMBMX'}
+          color={'blue'}
         >
           rndm-bmx
         </Tab>
@@ -80,6 +82,7 @@ export const MainShopPage = () => {
             history.push(`/mainShop/UniqueBMX`);
           }}
           chosen={category === 'UniqueBMX'}
+          color={'green'}
         >
           unique bmx
         </Tab>
@@ -89,6 +92,7 @@ export const MainShopPage = () => {
             history.push(`/mainShop/ExoticBMX`);
           }}
           chosen={category === 'ExoticBMX'}
+          color={'red'}
         >
           exotic bmx
         </Tab>
@@ -144,7 +148,7 @@ const TabBar = styled.div`
 
 const Tab = styled.div`
   font-size: 1.7rem;
-  color: ${(props) => (props.chosen ? 'orange' : 'inherit')};
+  color: ${(props) => (props.chosen ? props.color : 'inherit')};
   &:hover {
     cursor: pointer;
   }

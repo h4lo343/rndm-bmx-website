@@ -1,277 +1,247 @@
 import g1 from '../../../assets/images/mainShop/generalBMX/g1.jpg';
+import product_pin_boy_1 from '../../../assets/images/products/pin/pin_boy_1.jpg';
+import type_1_stainless_1 from '../../../assets/images/products/pin/type_1_stainless/common/Type_1_Stainless.jpg';
+import type_1_stainless_2 from '../../../assets/images/products/pin/type_1_stainless/common/Type_1_Stainless_2.jpg';
+import girl_type_1 from '../../../assets/images/products/pin/type_1_stainless/girl/Girl_type_1.jpg';
+import boy_type_1 from '../../../assets/images/products/pin/type_1_stainless/boy/Boy_type_1.jpg';
+import spec_diagram_1 from '../../../assets/images/products/pin/type_1_stainless/Spec_Diagram.jpg';
+import type_1_titanium_1 from '../../../assets/images/products/pin/type_1_titanium/common/Type_1_Titanium.jpg';
+import type_1_titanium_2 from '../../../assets/images/products/pin/type_1_titanium/common/Type_1_Titanium_2.jpg';
+import girl_type_1_2 from '../../../assets/images/products/pin/type_1_titanium/girl/Girl_type_1.jpg';
+import boy_type_1_2 from '../../../assets/images/products/pin/type_1_titanium/boy/Boy_type_1.jpg';
+import spec_diagram_1_2 from '../../../assets/images/products/pin/type_1_titanium/Spec_Diagram.jpg';
+import type_2_stainless_1 from '../../../assets/images/products/pin/type_2_stainless/common/Type_2_Stainless.jpg';
+import type_2_stainless_2 from '../../../assets/images/products/pin/type_2_stainless/common/Type_2_Stainless_2.jpg';
+import girl_type_2 from '../../../assets/images/products/pin/type_2_stainless/girl/Girl_type_2.jpg';
+import boy_type_2 from '../../../assets/images/products/pin/type_2_stainless/boy/Boy_type_2.jpg';
+import spec_diagram_2 from '../../../assets/images/products/pin/type_2_stainless/Spec_Diagram_2.png';
+import type_2_titanium_1 from '../../../assets/images/products/pin/type_2_titanium/common/Type_2_Titanium.jpg';
+import type_2_titanium_2 from '../../../assets/images/products/pin/type_2_titanium/common/Type_2_Titanium_2.jpg';
+import girl_type_2_2 from '../../../assets/images/products/pin/type_2_titanium/girl/Girl_type_2.jpg';
+import boy_type_2_2 from '../../../assets/images/products/pin/type_2_titanium/boy/Boy_type_2.jpg';
+import spec_diagram_2_2 from '../../../assets/images/products/pin/type_2_titanium/Spec_Diagram_2.png';
 
 export const mainShopProducts = {
   generalBMX: {
     products: [
       {
-        image: g1,
-        name: 'ga1',
-        price: 3020,
+        fullName: 'asd',
+        description:
+          'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
+        themeImage: product_pin_boy_1,
+        discountedPrice: 20,
+        originalPrice: 140,
+        subCategory: "Brake's",
         popularity: 12,
-        subCategory: "Cable's",
-      },
-      {
-        image: g1,
-        name: 'ga2',
-        price: 3100,
-        popularity: 43123,
-        subCategory: "Cable's",
-      },
-      {
-        image: g1,
-        name: 'g3',
-        price: 30,
-        popularity: 13,
-        subCategory: "Cable's",
-      },
-      {
-        image: g1,
-        name: 'ah',
-        price: 1300,
-        popularity: 34,
-        subCategory: "Cable's",
-      },
-      {
-        image: g1,
-        name: 'h5',
-        price: 3,
-        subCategory: "Cable's",
-        popularity: 56,
-      },
-      {
-        image: g1,
-        name: 'g7',
-        subCategory: "Cable's",
-        price: 4300,
-        popularity: 70,
-      },
-      {
-        image: g1,
-        name: 'j8',
-        price: 11300,
-        popularity: 80,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'sd2',
-        price: 30230,
-        popularity: 89,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'a23',
-        price: 320,
-        popularity: 99,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'h77',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'd2312',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: '22s',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'sdf4',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'fb3',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'fga',
-        price: 352,
-        popularity: 100,
-        subCategory: "Pin's",
-      },
-      {
-        image: g1,
-        name: 'nui',
-        subCategory: "Brake's Pad's",
-        price: 352,
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'sd211',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: '123d',
-        price: 352,
-        popularity: 100,
-        subCategory: "Brake's Pad's",
-      },
-      {
-        image: g1,
-        name: 'ccb23',
-        subCategory: "Brake's Pad's",
-        price: 352,
-        popularity: 100,
+        rating: 2,
+        types: [
+          'Type 1 Stainless Steel 316',
+          'Type 1 Titanium Grade 5',
+          'Type 2 Stainless Steel 316',
+          'Type 2 Titanium Grade 5',
+        ],
+        images: {
+          'Type 1 Stainless Steel 316': {
+            common: [type_1_stainless_1, type_1_stainless_2],
+            girlImages: [girl_type_1],
+            boyImages: [boy_type_1],
+            specImage: spec_diagram_1,
+          },
+          'Type 1 Titanium Grade 5': {
+            common: [type_1_titanium_1, type_1_titanium_2],
+            girlImages: [girl_type_1_2],
+            boyImages: [boy_type_1_2],
+            specImage: spec_diagram_1_2,
+          },
+          'Type 2 Stainless Steel 316': {
+            common: [type_2_stainless_1, type_2_stainless_2],
+            girlImages: [girl_type_2],
+            boyImages: [boy_type_2],
+            specImage: spec_diagram_2,
+          },
+          'Type 2 Titanium Grade 5': {
+            common: [type_2_titanium_1, type_2_titanium_2],
+            girlImages: [girl_type_2_2],
+            boyImages: [boy_type_2_2],
+            specImage: spec_diagram_2_2,
+          },
+        },
       },
     ],
   },
   RNDMBMX: {
     products: [
       {
-        image: g1,
-        name: 'r121',
-        price: 3020,
+        fullName: 'a22',
+        description:
+          'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
+        themeImage: product_pin_boy_1,
+        discountedPrice: 20,
+        originalPrice: 140,
+        subCategory: 'Pin',
+        popularity: 12,
+        rating: 2,
+        types: [
+          'Type 1 Stainless Steel 316',
+          'Type 1 Titanium Grade 5',
+          'Type 2 Stainless Steel 316',
+          'Type 2 Titanium Grade 5',
+        ],
+        images: {
+          'Type 1 Stainless Steel 316': {
+            common: [type_1_stainless_1, type_1_stainless_2],
+            girlImages: [girl_type_1],
+            boyImages: [boy_type_1],
+            specImage: spec_diagram_1,
+          },
+          'Type 1 Titanium Grade 5': {
+            common: [type_1_titanium_1, type_1_titanium_2],
+            girlImages: [girl_type_1_2],
+            boyImages: [boy_type_1_2],
+            specImage: spec_diagram_1_2,
+          },
+          'Type 2 Stainless Steel 316': {
+            common: [type_2_stainless_1, type_2_stainless_2],
+            girlImages: [girl_type_2],
+            boyImages: [boy_type_2],
+            specImage: spec_diagram_2,
+          },
+          'Type 2 Titanium Grade 5': {
+            common: [type_2_titanium_1, type_2_titanium_2],
+            girlImages: [girl_type_2_2],
+            boyImages: [boy_type_2_2],
+            specImage: spec_diagram_2_2,
+          },
+        },
+      },
+      {
+        fullName: 'wsax',
+        description:
+          'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
+        themeImage: product_pin_boy_1,
+        discountedPrice: 20,
+        originalPrice: 140,
+        subCategory: 'Pin_2',
+        popularity: 12,
+        rating: 2,
+        types: [
+          'Type 1 Stainless Steel 316',
+          'Type 1 Titanium Grade 5',
+          'Type 2 Stainless Steel 316',
+          'Type 2 Titanium Grade 5',
+        ],
+        images: {
+          'Type 1 Stainless Steel 316': {
+            common: [type_1_stainless_1, type_1_stainless_2],
+            girlImages: [girl_type_1],
+            boyImages: [boy_type_1],
+            specImage: spec_diagram_1,
+          },
+          'Type 1 Titanium Grade 5': {
+            common: [type_1_titanium_1, type_1_titanium_2],
+            girlImages: [girl_type_1_2],
+            boyImages: [boy_type_1_2],
+            specImage: spec_diagram_1_2,
+          },
+          'Type 2 Stainless Steel 316': {
+            common: [type_2_stainless_1, type_2_stainless_2],
+            girlImages: [girl_type_2],
+            boyImages: [boy_type_2],
+            specImage: spec_diagram_2,
+          },
+          'Type 2 Titanium Grade 5': {
+            common: [type_2_titanium_1, type_2_titanium_2],
+            girlImages: [girl_type_2_2],
+            boyImages: [boy_type_2_2],
+            specImage: spec_diagram_2_2,
+          },
+        },
+      },
+      {
+        fullName: 'zaz',
+        description:
+          'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
+        themeImage: product_pin_boy_1,
+        discountedPrice: 20,
+        originalPrice: 140,
+        subCategory: 'Brake_2',
+        popularity: 12,
+        rating: 2,
+        types: [
+          'Type 1 Stainless Steel 316',
+          'Type 1 Titanium Grade 5',
+          'Type 2 Stainless Steel 316',
+          'Type 2 Titanium Grade 5',
+        ],
+        images: {
+          'Type 1 Stainless Steel 316': {
+            common: [type_1_stainless_1, type_1_stainless_2],
+            girlImages: [girl_type_1],
+            boyImages: [boy_type_1],
+            specImage: spec_diagram_1,
+          },
+          'Type 1 Titanium Grade 5': {
+            common: [type_1_titanium_1, type_1_titanium_2],
+            girlImages: [girl_type_1_2],
+            boyImages: [boy_type_1_2],
+            specImage: spec_diagram_1_2,
+          },
+          'Type 2 Stainless Steel 316': {
+            common: [type_2_stainless_1, type_2_stainless_2],
+            girlImages: [girl_type_2],
+            boyImages: [boy_type_2],
+            specImage: spec_diagram_2,
+          },
+          'Type 2 Titanium Grade 5': {
+            common: [type_2_titanium_1, type_2_titanium_2],
+            girlImages: [girl_type_2_2],
+            boyImages: [boy_type_2_2],
+            specImage: spec_diagram_2_2,
+          },
+        },
+      },
+      {
+        fullName: 'asd',
+        description:
+          'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
+        themeImage: product_pin_boy_1,
+        discountedPrice: 20,
+        originalPrice: 140,
         subCategory: "Brake's",
         popularity: 12,
-      },
-      {
-        image: g1,
-        name: 'r5',
-        price: 3100,
-        subCategory: "Brake's",
-        popularity: 43123,
-      },
-      {
-        image: g1,
-        name: 'r44',
-        price: 30,
-        subCategory: "Brake's",
-        popularity: 13,
-      },
-      {
-        image: g1,
-        name: 'r123',
-        price: 1300,
-        subCategory: "Brake's",
-        popularity: 34,
-      },
-      {
-        image: g1,
-        name: 'r44',
-        subCategory: "Brake's",
-        price: 3,
-        popularity: 56,
-      },
-      {
-        image: g1,
-        name: 'r7',
-        price: 4300,
-        subCategory: "Brake's",
-        popularity: 70,
-      },
-      {
-        image: g1,
-        name: 'r123',
-        price: 11300,
-        subCategory: "Brake's",
-        popularity: 80,
-      },
-      {
-        image: g1,
-        name: 'rb',
-        price: 30230,
-        subCategory: "Brake's Pad's",
-        popularity: 89,
-      },
-      {
-        image: g1,
-        name: 'r677',
-        price: 320,
-        subCategory: "Brake's Pad's",
-        popularity: 99,
-      },
-      {
-        image: g1,
-        name: 'rv',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'r678',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'rqa',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'rasc',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'rrr',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'r111',
-        price: 352,
-        subCategory: "Brake's Pad's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'r234',
-        price: 352,
-        subCategory: "Cable's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'ra1',
-        price: 352,
-        subCategory: "Cable's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'rrs',
-        price: 352,
-        subCategory: "Cable's",
-        popularity: 100,
-      },
-      {
-        image: g1,
-        name: 'rq',
-        price: 352,
-        subCategory: "Cable's",
-        popularity: 100,
+        rating: 2,
+        types: [
+          'Type 1 Stainless Steel 316',
+          'Type 1 Titanium Grade 5',
+          'Type 2 Stainless Steel 316',
+          'Type 2 Titanium Grade 5',
+        ],
+        images: {
+          'Type 1 Stainless Steel 316': {
+            common: [type_1_stainless_1, type_1_stainless_2],
+            girlImages: [girl_type_1],
+            boyImages: [boy_type_1],
+            specImage: spec_diagram_1,
+          },
+          'Type 1 Titanium Grade 5': {
+            common: [type_1_titanium_1, type_1_titanium_2],
+            girlImages: [girl_type_1_2],
+            boyImages: [boy_type_1_2],
+            specImage: spec_diagram_1_2,
+          },
+          'Type 2 Stainless Steel 316': {
+            common: [type_2_stainless_1, type_2_stainless_2],
+            girlImages: [girl_type_2],
+            boyImages: [boy_type_2],
+            specImage: spec_diagram_2,
+          },
+          'Type 2 Titanium Grade 5': {
+            common: [type_2_titanium_1, type_2_titanium_2],
+            girlImages: [girl_type_2_2],
+            boyImages: [boy_type_2_2],
+            specImage: spec_diagram_2_2,
+          },
+        },
       },
     ],
   },

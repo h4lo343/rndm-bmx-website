@@ -7,10 +7,12 @@ import {
 import MenuItem from '@mui/material/MenuItem';
 import { Select } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { introProductDetails } from '../handlers/productsDetails';
+import { useHistory } from 'react-router-dom';
 
 export const Products = ({ dataSource, category, index, setIndex }) => {
-  const keys = Object.keys(dataSource);
-
+  const history = useHistory();
+  const keys = Object.keys(dataSource).sort();
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
   const [sortType, setSortType] = useState('Trending');
   const [cardNum, setCardNum] = useState(0);
@@ -47,6 +49,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
       }
     }
   };
+
   return (
     <ProductsContainer>
       <FunctionBar>
@@ -67,30 +70,41 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
       </FunctionBar>
       <ProductsCardContainer>
         {category
-          ? Object?.keys(pageData).map((key) => {
-              return (
-                <>
-                  <Subcategory>{key}</Subcategory>
-                  <ProductsCardContainer>
-                    {pageData[key]?.length &&
-                      pageData[key]?.map((p) => (
-                        <ProductCard>
-                          <div aria-label={'card'}>
-                            <ProductImage src={p.image} />
-                            <ProductName>{p.name}</ProductName>
-                            <ProductPrice>${p.price}</ProductPrice>
-                          </div>
-                        </ProductCard>
-                      ))}
-                  </ProductsCardContainer>
-                </>
-              );
-            })
+          ? Object?.keys(pageData)
+              .sort((a, b) => a - b)
+              .map((key) => {
+                return (
+                  <>
+                    <Subcategory>{key}</Subcategory>
+                    <ProductsCardContainer>
+                      {pageData[key]?.length &&
+                        sortData(pageData[key])?.map((p) => (
+                          <ProductCard
+                            onClick={() =>
+                              history.push(`/product/${p.fullName}`, {
+                                productData: p,
+                                commonProduct: true,
+                              })
+                            }
+                          >
+                            <div aria-label={'card'}>
+                              <ProductImage src={p.themeImage} />
+                              <ProductName>{p.fullName}</ProductName>
+                              <ProductPrice>
+                                ${p.discountedPrice || p.originalPrice}
+                              </ProductPrice>
+                            </div>
+                          </ProductCard>
+                        ))}
+                    </ProductsCardContainer>
+                  </>
+                );
+              })
           : pageData?.length &&
             sortData(pageData).map((p) => (
               <ProductCard>
                 <div aria-label={'card'}>
-                  <ProductImage src={p.image} />
+                  <ProductImage src={p.themeImage} />
                   <ProductName>{p.name}</ProductName>
                   <ProductPrice>${p.price}</ProductPrice>
                 </div>
@@ -125,6 +139,8 @@ const FunctionBar = styled.div`
 const Subcategory = styled.div`
   font-size: 2rem;
   color: grey;
+  width: 100%;
+  text-align: left;
 `;
 
 const PageNumber = styled.span`
@@ -144,6 +160,7 @@ const ProductCard = styled.a.attrs({
   overflow: hidden;
   width: calc(24% - 20px);
   flex-direction: column;
+  cursor: pointer;
   justify-content: space-between;
   @media (max-width: 1240px) {
     width: calc(30% - 20px);
