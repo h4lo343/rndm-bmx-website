@@ -105,8 +105,11 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
               <ProductCard>
                 <div aria-label={'card'}>
                   <ProductImage src={p.themeImage} />
-                  <ProductName>{p.name}</ProductName>
-                  <ProductPrice>${p.price}</ProductPrice>
+                  <ProductName>{p.fullName}</ProductName>
+                  <ProductPrice>
+                    {' '}
+                    ${p.discountedPrice || p.originalPrice}
+                  </ProductPrice>
                 </div>
               </ProductCard>
             ))}
