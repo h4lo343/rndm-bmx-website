@@ -1,8 +1,15 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import styled from 'styled-components';
 import { createContext, useState } from 'react';
 import { pageRoutes } from './components/pages/handlers/pageRoutes';
+import { CartButton } from './components/common/cartButton';
 
 export const ThemeContext = createContext();
 
@@ -22,6 +29,7 @@ function App() {
               />
             ))}
           </Switch>
+          <CartButton />
         </AppContainer>
       </ThemeContext.Provider>
     </Router>

@@ -30,6 +30,7 @@ import {
 import OptionPanel from './OptionPanel';
 import PicCardSlider from './PicCardSlider';
 import RelatedProducts from './RelatedProducts';
+import { useCartStore } from '../../../stores/useCartStore';
 
 export const path = {
   B: 'boyImages',

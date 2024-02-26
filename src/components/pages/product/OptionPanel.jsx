@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Magnifier } from 'react-image-magnifiers';
 import { introProductDetails } from '../handlers/productsDetails';
+import { useCartStore } from '../../../stores/useCartStore';
 
 const OptionPanel = ({
   currProduct,
@@ -22,22 +23,41 @@ const OptionPanel = ({
   currentType,
   setCurrentType,
 }) => {
+  const { addProduct } = useCartStore();
+
+  const handleAddCart = () => {
+    currProduct.type = currentType;
+    currProduct.gender = chosenGender;
+    addProduct(currProduct);
+  };
   return (
     <OptionPanelContainer>
       <Title>{currProduct.fullName}</Title>
       <PriceContainer>
         <div>
-          <CurrPriceBox> ${currProduct.discountedPrice} </CurrPriceBox>
+          <CurrPriceBox>
+            {' '}
+            ${currProduct.discountedPrice || currProduct.originalPrice}{' '}
+          </CurrPriceBox>
         </div>
         <div>
-          <OriginalPriceBox>
-            {' '}
-            ${currProduct.originalPrice.toFixed(2)}{' '}
-          </OriginalPriceBox>
-          <DiscountedPriceBox>
-            {' '}
-            ${currProduct.discountedPrice}{' '}
-          </DiscountedPriceBox>
+          {currProduct.discountedPrice ? (
+            <>
+              <OriginalPriceBox>
+                {' '}
+                ${currProduct.originalPrice.toFixed(2)}{' '}
+              </OriginalPriceBox>
+              <DiscountedPriceBox>
+                {' '}
+                ${currProduct.discountedPrice}{' '}
+              </DiscountedPriceBox>
+            </>
+          ) : (
+            <DiscountedPriceBox>
+              {' '}
+              ${currProduct.originalPrice}{' '}
+            </DiscountedPriceBox>
+          )}
         </div>
       </PriceContainer>
       <Title>Gender:</Title>
@@ -63,7 +83,11 @@ const OptionPanel = ({
           </GenderOption>
         </div>
         <div>
-          <Button width={'3rem'} height={'1rem'}>
+          <Button
+            width={'3rem'}
+            height={'1rem'}
+            onClick={() => handleAddCart()}
+          >
             Add To Cart
           </Button>
         </div>
@@ -122,10 +146,10 @@ const Title = styled.div`
   margin-bottom: ${rowMargin};
 `;
 
-const CurrPriceBox = styled.div`
+export const CurrPriceBox = styled.div`
   font-size: ${titleFontSize};
 `;
-const DiscountedPriceBox = styled.span`
+export const DiscountedPriceBox = styled.span`
   font-family: 'Arial';
   font-weight: bold;
   font-size: 30px;

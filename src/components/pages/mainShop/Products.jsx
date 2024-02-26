@@ -16,6 +16,12 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
   const [sortType, setSortType] = useState('Trending');
   const [cardNum, setCardNum] = useState(0);
+  const directToProductPage = (p) => {
+    history.push(`/product/${p.fullName}`, {
+      productData: p,
+      commonProduct: true,
+    });
+  };
   useEffect(() => {
     const cardDivs = document.querySelectorAll('div[aria-label="card"]');
     const cardCount = cardDivs.length;
@@ -79,14 +85,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
                     <ProductsCardContainer>
                       {pageData[key]?.length &&
                         sortData(pageData[key])?.map((p) => (
-                          <ProductCard
-                            onClick={() =>
-                              history.push(`/product/${p.fullName}`, {
-                                productData: p,
-                                commonProduct: true,
-                              })
-                            }
-                          >
+                          <ProductCard onClick={() => directToProductPage(p)}>
                             <div aria-label={'card'}>
                               <ProductImage src={p.themeImage} />
                               <ProductName>{p.fullName}</ProductName>
@@ -102,7 +101,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
               })
           : pageData?.length &&
             sortData(pageData).map((p) => (
-              <ProductCard>
+              <ProductCard onClick={() => directToProductPage(p)}>
                 <div aria-label={'card'}>
                   <ProductImage src={p.themeImage} />
                   <ProductName>{p.fullName}</ProductName>

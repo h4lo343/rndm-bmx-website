@@ -3,6 +3,7 @@ import { ShopPage } from '../shop/ShopPage';
 import { HomePage } from '../home/HomePage';
 import { MainShopPage } from '../mainShop/mainShopPage';
 import { Test } from '../../../test';
+import { CartPage } from '../cart/cartPage';
 
 // setting the pages and the components for the routes
 export const pageRoutes = [
@@ -25,10 +26,22 @@ export const pageRoutes = [
     key: 'product',
   },
   {
+    pathname: '/test',
+    exact: true,
+    component: Test,
+    key: 'test',
+  },
+  {
     pathname: '/mainShop/',
     exact: true,
     component: MainShopPage,
     key: 'mainShop',
+  },
+  {
+    pathname: '/cart',
+    exact: true,
+    component: CartPage,
+    key: 'cartPage',
   },
   {
     pathname: '/mainShop/:category',

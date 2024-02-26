@@ -129,9 +129,9 @@ export const Banner = styled.div`
         display: block;
         width: 100%;
         position: absolute;
-        @media (min-width: 728px) {
-          height: 100px;
-        }
+
+        height: 100px;
+
         background: url(${overlayBefore}) 50% 50% no-repeat;
         filter: grayscale(100%);
         background-size: cover;
