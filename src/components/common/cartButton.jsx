@@ -13,7 +13,10 @@ export const CartButton = () => {
       onClick={() => {
         history.push(`/cart`);
       }}
-      show={!(location.pathname === '/cart') && cart.length}
+      show={
+        !(location.pathname === '/cart' || location.pathname === '/checkout') &&
+        cart.length
+      }
     >
       <NumberContainer>
         <span>{cart.length}</span>{' '}

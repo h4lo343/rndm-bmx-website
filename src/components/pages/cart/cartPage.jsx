@@ -1,8 +1,8 @@
 import { useCartStore } from '../../../stores/useCartStore';
 import { NavigationBar } from '../../common/NavigationBar';
 import React, { useMemo } from 'react';
-import commonBgdImage from '../../../assets/images/products/commonProduct_background_image.jpg';
 
+import cartBgdImage from '../../../assets/images/cart/cart_background_image.JPG';
 import {
   Banner,
   Button,
@@ -36,7 +36,7 @@ export const CartPage = () => {
   return (
     <CartPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
-      <Banner url={commonBgdImage} position={'50% 40%'} showOverlay={true}>
+      <Banner url={cartBgdImage} position={'50% 40%'} showOverlay={true}>
         <TitleText variant="h1">CART</TitleText>
       </Banner>
       <MainContentContainer>

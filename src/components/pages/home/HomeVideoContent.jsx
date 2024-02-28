@@ -8,14 +8,20 @@ import {
   myFont,
 } from '../../../styles/commonStyles';
 import { navHomeID } from '../handlers/pageRoutes';
-// import videoContent from '../../../assets/video/home_video.mp4';
+import videoContent from '../../../assets/video/home_video.mp4';
 import styled from 'styled-components';
 import { BsSoundwave } from 'react-icons/bs';
 import { VscMute } from 'react-icons/vsc';
 import { TitleText } from '../../../styles/commonStyles';
 
 export const HomeVideoContent = () => {
-  const homeVideoText = 'A BMX Brand for all kinds of people BMX!';
+  const homeVideoText = (
+    <>
+      Doing BMX.... <br />
+      RNDM-BMX <br />
+      Style!
+    </>
+  );
   const refVideo = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   // const isMobile = window.matchMedia('only screen and (max-width: 900px)').matches;
@@ -51,7 +57,7 @@ export const HomeVideoContent = () => {
       <VideoContainer tabIndex="0">
         <HomeVideo
           id="home-video"
-          // src={videoContent}
+          src={videoContent}
           ref={refVideo}
           muted={isMuted}
           autoPlay

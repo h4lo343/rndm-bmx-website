@@ -24,5 +24,10 @@ export const useCartStore = create(
         const index = state.cart.findIndex((p) => p.uuid === uuid);
         state.cart.splice(index, 1);
       }),
+    cleanCart: () =>
+      set((state) => {
+        state.cart = [];
+        localStorage.setItem('local_items', JSON.stringify(state.cart));
+      }),
   }))
 );

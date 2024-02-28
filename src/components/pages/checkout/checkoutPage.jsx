@@ -3,17 +3,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { Checkbox, Form, Input, Select } from 'antd';
 import { Banner, Button, TitleText } from '../../../styles/commonStyles';
-import commonBgdImage from '../../../assets/images/products/commonProduct_background_image.jpg';
 import { Option } from 'antd/es/mentions';
+import { loadStripe } from '@stripe/stripe-js';
+import checkoutBgdImage from '../../../assets/images/checkout/checkout_background_image.JPG';
+import { StripePublicKey } from '../handlers/stripePublicKey';
+import { useCartStore } from '../../../stores/useCartStore';
 
 export const CheckoutPage = () => {
-  const handlePayment = (e) => {
-    console.log(e);
-  };
+  const { cart, cleanCart } = useCartStore();
+  const handlePayment = async (e) => {};
   return (
     <>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
-      <Banner url={commonBgdImage} position={'50% 40%'} showOverlay={true}>
+      <Banner url={checkoutBgdImage} position={'50% 40%'} showOverlay={true}>
         <TitleText variant="h1">CHECKOUT</TitleText>
       </Banner>
       <CheckOutTitle>Check out</CheckOutTitle>
@@ -155,6 +157,10 @@ const CheckOutForm = styled(Form)`
   text-align: left;
   width: 50%;
   margin: 0 auto;
+  @media (max-width: 550px) {
+    width: 100%;
+    margin: 0;
+  }
 
   .ant-form-item-explain-error {
     font-size: 1.3rem;
