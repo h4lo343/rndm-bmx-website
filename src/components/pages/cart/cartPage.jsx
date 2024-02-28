@@ -12,8 +12,10 @@ import {
 import styled from 'styled-components';
 import { OriginalPriceBox } from '../product/styles';
 import { DiscountedPriceBox } from '../product/OptionPanel';
+import { useHistory } from 'react-router-dom';
 
 export const CartPage = () => {
+  const history = useHistory();
   const { cart, deleteProduct } = useCartStore();
   const handleRemoveItem = (id) => {
     deleteProduct(id);
@@ -99,7 +101,13 @@ export const CartPage = () => {
           </Row>
           <Row>
             <div></div>
-            <Button width={'100%'} height={'1rem'} onClick={() => {}}>
+            <Button
+              width={'100%'}
+              height={'1rem'}
+              onClick={() => {
+                history.push(`/checkout`);
+              }}
+            >
               CHECK OUT
             </Button>
           </Row>
@@ -134,6 +142,9 @@ const PriceContainer = styled.div`
   margin-left: auto;
   color: ${priceColor};
   text-align: right;
+  @media (max-width: 850px) {
+    margin: 0 auto;
+  }
 `;
 
 const Remove = styled.div`
@@ -164,6 +175,11 @@ const MainContentContainer = styled.div`
   margin: 2rem auto 0 auto;
   display: flex;
   align-items: start;
+  @media (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const ItemContainer = styled.div`
@@ -186,11 +202,21 @@ const ItemCell = styled.div`
   padding: 1rem 0 1rem 1rem;
   display: flex;
   gap: 1rem;
+  @media (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const CellImage = styled.img`
-  height: 100%;
+  height: 9rem;
+  display: block;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 20px;
+  @media (max-width: 850px) {
+    margin: 0 auto;
+  }
 `;

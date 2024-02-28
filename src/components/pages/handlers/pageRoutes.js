@@ -4,6 +4,7 @@ import { HomePage } from '../home/HomePage';
 import { MainShopPage } from '../mainShop/mainShopPage';
 import { Test } from '../../../test';
 import { CartPage } from '../cart/cartPage';
+import { CheckoutPage } from '../checkout/checkoutPage';
 
 // setting the pages and the components for the routes
 export const pageRoutes = [
@@ -48,6 +49,12 @@ export const pageRoutes = [
     exact: true,
     component: MainShopPage,
     key: 'mainShop',
+  },
+  {
+    pathname: '/checkout',
+    exact: true,
+    component: CheckoutPage,
+    key: 'checkout',
   },
 ];
 
