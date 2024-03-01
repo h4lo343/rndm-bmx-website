@@ -18,7 +18,7 @@ import { Button } from '@mui/material';
 
 export const MainShopPage = () => {
   const history = useHistory();
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const { category } = useParams();
   const [dataSource, setDataSource] = useState(
