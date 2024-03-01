@@ -7,7 +7,6 @@ import {
 import MenuItem from '@mui/material/MenuItem';
 import { Select } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { introProductDetails } from '../handlers/productsDetails';
 import { useHistory } from 'react-router-dom';
 
 export const Products = ({ dataSource, category, index, setIndex }) => {
@@ -133,9 +132,14 @@ const PageNumberArrow = styled.span`
 const FunctionBar = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
   padding: 0 6rem;
   margin-bottom: 1rem;
-  align-items: center;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
 const Subcategory = styled.div`
@@ -163,17 +167,17 @@ const ProductCard = styled.a.attrs({
   width: calc(24% - 20px);
   flex-direction: column;
   cursor: pointer;
-  justify-content: space-between;
+
   @media (max-width: 1240px) {
     width: calc(30% - 20px);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: calc(40% - 20px);
   }
 
-  @media (max-width: 500px) {
-    width: calc(100% - 20px);
+  @media (max-width: 700px) {
+    width: 100%;
   }
 `;
 
@@ -187,10 +191,16 @@ const ProductImage = styled.img`
 const ProductName = styled.div`
   text-align: left;
   font-size: 1.4rem;
+  @media (max-width: 700px) {
+    text-align: center;
+  }
 `;
 
 const ProductPrice = styled.div`
   text-align: left;
   font-size: 1.4rem;
   color: ${priceColor};
+  @media (max-width: 700px) {
+    text-align: center;
+  }
 `;

@@ -14,9 +14,11 @@ import { mainShopProducts } from '../handlers/mainShopProducts';
 import { FilterPanel } from './filterPanel';
 import { useHistory, useParams } from 'react-router-dom';
 import { pagination } from './utility/pagination';
+import { Button } from '@mui/material';
 
 export const MainShopPage = () => {
   const history = useHistory();
+  const [modalOpen, setModalOpen] = useState(true);
   const [index, setIndex] = useState(0);
   const { category } = useParams();
   const [dataSource, setDataSource] = useState(
@@ -98,8 +100,9 @@ export const MainShopPage = () => {
         </Tab>
       </TabBar>
       <MainContentContainer>
+        <FilterButton onClick={() => setModalOpen(true)}>Filter</FilterButton>
         <LeftColumn>
-          <FilterPanel />
+          <FilterPanel modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </LeftColumn>
         <RightColumn>
           <Products
@@ -158,25 +161,40 @@ const Tab = styled.div`
   @media (max-width: 800px) {
     font-size: 1.3rem;
   }
-
-  @media (max-width: 550px) {
-    font-size: 1rem;
-  }
 `;
 
 const MainContentContainer = styled.div`
   display: flex;
   gap: 1rem;
-  width: 98%;
+  position: relative;
   padding: 2rem;
+`;
+
+const FilterButton = styled.a`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: none;
+  font-size: 2rem;
+  border: 1px solid black;
+  padding: 0.3rem 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  @media (max-width: 700px) {
+    display: inline-block;
+  }
 `;
 
 const LeftColumn = styled.div`
   width: 15%;
+  @media (max-width: 700px) {
+    width: 0;
+  }
 `;
 
 const RightColumn = styled.div`
   background-color: inherit;
-  width: 85%;
+  width: 100%;
   padding: 20px;
+  margin: 0 auto;
 `;

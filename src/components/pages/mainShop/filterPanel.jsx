@@ -1,47 +1,85 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuItem from '@mui/material/MenuItem';
-import {
-  FormControl,
-  FormLabel,
-  InputLabel,
-  OutlinedInput,
-  Select,
-} from '@mui/material';
+import { FormLabel, Modal, Select } from '@mui/material';
+import { ModalCloser, ModalContainer } from '../product/FullScreeModal';
 
-export const FilterPanel = () => {
+export const FilterPanel = ({ modalOpen, setModalOpen }) => {
   return (
     <FilterPanelContainer>
-      <FilterTitle>Filter</FilterTitle>
-      <FormContainer>
-        <SelectLabel>Gender</SelectLabel>
-        <FilterSelect>
-          <MenuItem value={'Trending'}>Trending</MenuItem>
-          <MenuItem value={'Price'}>Price</MenuItem>
-        </FilterSelect>
+      <Form>
+        <FilterTitle>Filter</FilterTitle>
+        <FormContainer>
+          <SelectLabel>Gender</SelectLabel>
+          <FilterSelect>
+            <MenuItem value={'Trending'}>Trending</MenuItem>
+            <MenuItem value={'Price'}>Price</MenuItem>
+          </FilterSelect>
+          <SelectLabel>Sub Category</SelectLabel>
+          <FilterSelect>
+            <MenuItem value={'Trending'}>Trending</MenuItem>
+            <MenuItem value={'Price'}>Price</MenuItem>
+          </FilterSelect>
+          <SelectLabel>Color</SelectLabel>
+          <FilterSelect>
+            <MenuItem value={'Trending'}>Trending</MenuItem>
+            <MenuItem value={'Price'}>Price</MenuItem>
+          </FilterSelect>
+          <SelectLabel>Price</SelectLabel>
+          <FilterSelect>
+            <MenuItem value={'Trending'}>Trending</MenuItem>
+            <MenuItem value={'Price'}>Price</MenuItem>
+          </FilterSelect>
+        </FormContainer>
+      </Form>
+      <Modal open={modalOpen}>
+        <FilterModalContainer>
+          <ModalWrapper>
+            <SelectLabel>Gender</SelectLabel>
+            <FilterSelect>
+              <MenuItem value={'Trending'}>Trending</MenuItem>
+              <MenuItem value={'Price'}>Price</MenuItem>
+            </FilterSelect>
+            <SelectLabel>Sub Category</SelectLabel>
+            <FilterSelect>
+              <MenuItem value={'Trending'}>Trending</MenuItem>
+              <MenuItem value={'Price'}>Price</MenuItem>
+            </FilterSelect>
+            <SelectLabel>Color</SelectLabel>
+            <FilterSelect>
+              <MenuItem value={'Trending'}>Trending</MenuItem>
+              <MenuItem value={'Price'}>Price</MenuItem>
+            </FilterSelect>
+            <SelectLabel>Price</SelectLabel>
+            <FilterSelect>
+              <MenuItem value={'Trending'}>Trending</MenuItem>
+              <MenuItem value={'Price'}>Price</MenuItem>
+            </FilterSelect>
+          </ModalWrapper>
 
-        <SelectLabel>Sub Category</SelectLabel>
-        <FilterSelect>
-          <MenuItem value={'Trending'}>Trending</MenuItem>
-          <MenuItem value={'Price'}>Price</MenuItem>
-        </FilterSelect>
-        <SelectLabel>Color</SelectLabel>
-        <FilterSelect>
-          <MenuItem value={'Trending'}>Trending</MenuItem>
-          <MenuItem value={'Price'}>Price</MenuItem>
-        </FilterSelect>
-        <SelectLabel>Price</SelectLabel>
-        <FilterSelect>
-          <MenuItem value={'Trending'}>Trending</MenuItem>
-          <MenuItem value={'Price'}>Price</MenuItem>
-        </FilterSelect>
-      </FormContainer>
+          <ModalCloser onClick={() => setModalOpen(false)} />
+        </FilterModalContainer>
+      </Modal>
     </FilterPanelContainer>
   );
 };
 
 const FilterPanelContainer = styled.div`
   padding-top: 6rem;
+`;
+
+const FilterModalContainer = styled(ModalContainer)`
+  flex-direction: column;
+`;
+
+const ModalWrapper = styled.div`
+  width: 70%;
+`;
+
+const Form = styled.div`
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const FilterSelect = styled(Select)`

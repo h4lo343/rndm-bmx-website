@@ -32,7 +32,7 @@ const FullScreenImage = styled.img`
   }
 `;
 
-const ModalContainer = styled(Box)`
+export const ModalContainer = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@ const ModalContainer = styled(Box)`
   }
 `;
 
-const ModalCloser = styled(GiCancel)`
+export const ModalCloser = styled(GiCancel)`
   position: absolute;
   top: 23px;
   right: 25px;

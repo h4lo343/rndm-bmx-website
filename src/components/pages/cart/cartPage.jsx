@@ -157,6 +157,9 @@ const Remove = styled.div`
 
 const ProductName = styled.div`
   font-size: 1.5rem;
+  @media (max-width: 850px) {
+    text-align: center;
+  }
 `;
 
 const Key = styled.span`
