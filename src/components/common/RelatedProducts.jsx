@@ -107,7 +107,7 @@ const RelatedProducts = ({ isIntro }) => {
   );
   useEffect(() => {
     setTimeout(() => {
-      if (!isIntro) emblaApi?.plugins()?.autoplay.play();
+      emblaApi?.plugins()?.autoplay.play();
     }, 1000);
   }, [emblaRef, emblaApi]);
   useEffect(() => {
@@ -173,8 +173,11 @@ const RelatedProductsContainer = styled.div`
 `;
 
 const ProductZone = styled.div`
-  max-width: 45rem;
-  margin: 0 auto;
+  width: 45rem;
+  @media (max-width: 800px) {
+    width: 17rem;
+  }
+  margin: auto auto;
   position: relative;
 `;
 
@@ -218,7 +221,7 @@ const ProductCardContainer = styled.div`
 `;
 
 const ProductCard = styled.div`
-  flex: 0 0 30%;
+  flex: 0 0 14rem;
 
   padding: 0.5rem;
   display: inline-block;
