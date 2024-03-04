@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { introProductDetails } from '../pages/handlers/productsDetails';
 import { Rating } from '@mui/material';
@@ -9,8 +9,115 @@ import {
   RightArrowIcon,
 } from '../pages/product/styles';
 import { ArrowIconContainer } from '../pages/product/ProductPage';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { mainShopProducts } from '../pages/handlers/mainShopProducts';
+import { useHistory } from 'react-router-dom';
+import _ from 'lodash';
 
 const RelatedProducts = ({ isIntro }) => {
+  const [currProducts, setCurrProducts] = useState(() => {
+    if (isIntro) {
+      return _.shuffle([
+        introProductDetails.pin,
+        introProductDetails.post,
+        introProductDetails.clamp,
+      ]);
+    } else
+      return _.shuffle([
+        ...mainShopProducts.generalBMX.products,
+        ...mainShopProducts.ExoticBMX.products,
+        ...mainShopProducts.UniqueBMX.products,
+        ...mainShopProducts.RNDMBMX.products,
+      ]);
+  });
+  const [timeoutId, setTimeoutId] = useState(null);
+  const [control, setControl] = useState(false);
+  const history = useHistory();
+  const handleArrowClick = (type) => {
+    if (isIntro && !control) {
+      setCurrProducts(
+        _.shuffle([
+          ...mainShopProducts.generalBMX.products,
+          ...mainShopProducts.ExoticBMX.products,
+          ...mainShopProducts.UniqueBMX.products,
+          ...mainShopProducts.RNDMBMX.products,
+        ])
+      );
+      setControl(true);
+      const newTimeout = setTimeout(() => {
+        setCurrProducts(
+          _.shuffle([
+            introProductDetails.pin,
+            introProductDetails.post,
+            introProductDetails.clamp,
+          ])
+        );
+        setControl(false);
+      }, 8000);
+      setTimeoutId(newTimeout);
+      return;
+    }
+    if (control) {
+      clearTimeout(timeoutId);
+      setControl(false);
+      if (isIntro) {
+        const newTimeout = setTimeout(() => {
+          setCurrProducts(
+            _.shuffle([
+              introProductDetails.pin,
+              introProductDetails.post,
+              introProductDetails.clamp,
+            ])
+          );
+          setControl(false);
+        }, 8000);
+        setTimeoutId(newTimeout);
+      }
+    }
+    if (type === 'l') {
+      emblaApi.scrollPrev();
+      emblaApi.plugins().autoplay.stop();
+      if (!isIntro) {
+        const newTimeout = setTimeout(() => {
+          emblaApi.plugins().autoplay.play();
+          setControl(false);
+        }, 8000);
+        setTimeoutId(newTimeout);
+      }
+      setControl(true);
+    } else {
+      emblaApi.scrollNext();
+      emblaApi.plugins().autoplay.stop();
+      if (!isIntro) {
+        const newTimeout = setTimeout(() => {
+          emblaApi.plugins().autoplay.play();
+          setControl(false);
+        }, 8000);
+        setTimeoutId(newTimeout);
+      }
+      setControl(true);
+    }
+  };
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+    },
+    [Autoplay({ playOnInit: false, delay: 3000 })]
+  );
+  useEffect(() => {
+    setTimeout(() => {
+      if (!isIntro) emblaApi?.plugins()?.autoplay.play();
+    }, 1000);
+  }, [emblaRef, emblaApi]);
+  useEffect(() => {
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [timeoutId]);
+
   const renderPriceBox = (productObj) => {
     if (!productObj.discountedPrice) return <>${productObj.originalPrice}</>;
     else
@@ -24,21 +131,34 @@ const RelatedProducts = ({ isIntro }) => {
   return (
     <RelatedProductsContainer>
       <ProductCardContainer>
-        <ArrowContainer>
-          <LeftArrowIcon />
-          <RightArrowIcon />
-        </ArrowContainer>
         <SectionTitle>Related Products</SectionTitle>
-        {Object.values(introProductDetails).map((p) => (
-          <ProductCard>
-            <ProductCardImg src={p.themeImage} disabled={true} />
-            <div>{p.fullName}</div>
-            <RatingContainer>
-              <Rating value={p.rating} disabled={true} />
-            </RatingContainer>
-            <PriceContainer>{renderPriceBox(p)}</PriceContainer>
-          </ProductCard>
-        ))}
+        <ProductZone>
+          <ArrowContainer>
+            <LeftArrowIcon onClick={() => handleArrowClick('l')} />
+            <RightArrowIcon onClick={() => handleArrowClick('r')} />
+          </ArrowContainer>
+          <ViewPort ref={emblaRef}>
+            <RelatedSectionContainer>
+              {Object.values(currProducts).map((p, index) => (
+                <ProductCard
+                  key={index}
+                  onClick={() => {
+                    history.push(`/product/${p.fullName}`, {
+                      productData: p,
+                    });
+                  }}
+                >
+                  <ProductCardImg src={p.themeImage} disabled={true} />
+                  <div>{p.fullName}</div>
+                  <RatingContainer>
+                    <Rating value={p.rating} disabled={true} />
+                  </RatingContainer>
+                  <PriceContainer>{renderPriceBox(p)}</PriceContainer>
+                </ProductCard>
+              ))}
+            </RelatedSectionContainer>
+          </ViewPort>
+        </ProductZone>
       </ProductCardContainer>
     </RelatedProductsContainer>
   );
@@ -48,10 +168,27 @@ export default RelatedProducts;
 
 const RelatedProductsContainer = styled.div`
   padding: 1.5em;
+  margin: auto;
+  width: 100%;
+`;
+
+const ProductZone = styled.div`
+  max-width: 45rem;
+  margin: 0 auto;
+  position: relative;
+`;
+
+const RelatedSectionContainer = styled.div`
+  display: flex;
+`;
+
+const ViewPort = styled.div`
+  overflow: hidden;
 `;
 
 const ArrowContainer = styled.span`
-  width: 108%;
+  width: 105%;
+  z-index: 1000;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -71,20 +208,22 @@ const PriceContainer = styled.span`
 `;
 
 const ProductCardImg = styled.img`
-  width: 13rem;
-  aspect-ratio: 1.7 / 1;
+  width: 70%;
+  aspect-ratio: 1 / 1;
 `;
 
 const ProductCardContainer = styled.div`
   position: relative;
   display: inline-block;
-  cursor: pointer;
 `;
 
 const ProductCard = styled.div`
+  flex: 0 0 30%;
+
   padding: 0.5rem;
   display: inline-block;
   margin-left: 1rem;
+  cursor: pointer;
 `;
 
 const SectionTitle = styled.div`

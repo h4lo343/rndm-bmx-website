@@ -69,7 +69,7 @@ export const introProductDetails = {
     },
   },
   clamp: {
-    fullName: 'Seat Clamp',
+    fullName: "Seat'Clamp",
     description:
       'Pivotal Qne Piece Aluminum Alloy 180 25.4 mm Bmx Bike Seat Post Tube',
     types: ['default type'],
@@ -88,7 +88,7 @@ export const introProductDetails = {
     originalPrice: 30,
   },
   post: {
-    fullName: 'Seat Post',
+    fullName: "Seat'Post",
     description:
       'Pivotal Qne Piece Aluminum Alloy 180 25.4 mm Bmx Bike Seat Post Tube',
     themeImage: post_theme,

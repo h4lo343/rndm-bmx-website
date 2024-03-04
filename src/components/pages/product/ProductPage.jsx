@@ -14,7 +14,7 @@ import {
 } from '../../../styles/commonStyles';
 import introBgdImage from '../../../assets/images/products/IntroProduct_background_image.jpg';
 import commonBgdImage from '../../../assets/images/products/commonProduct_background_image.jpg';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { introProductDetails } from '../handlers/productsDetails';
 import { Magnifier } from 'react-image-magnifiers';
 import FullScreeModal from './FullScreeModal';
@@ -38,11 +38,20 @@ export const path = {
 };
 
 export const ProductPage = (props) => {
+  const history = useHistory();
+  useEffect(() => {
+    history.listen(() => {
+      window.location.reload();
+      window.scrollTo(0, 0);
+    });
+  }, [history]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const productData = props.location.state.productData;
 
+  const [productData, setProductData] = useState(
+    props.location.state.productData
+  );
   const isCommon = !productData.intro;
 
   const { key } = useParams();

@@ -18,7 +18,7 @@ export const pageRoutes = [
     pathname: '/product/:key',
     exact: true,
     component: ProductPage,
-    key: 'product',
+    key: Math.random(),
   },
   {
     pathname: '/shop',

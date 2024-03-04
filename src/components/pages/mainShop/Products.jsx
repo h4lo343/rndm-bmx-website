@@ -18,7 +18,6 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
   const directToProductPage = (p) => {
     history.push(`/product/${p.fullName}`, {
       productData: p,
-      commonProduct: true,
     });
   };
   useEffect(() => {

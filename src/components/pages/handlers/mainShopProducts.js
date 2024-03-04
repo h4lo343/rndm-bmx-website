@@ -15,7 +15,7 @@ export const mainShopProducts = {
   generalBMX: {
     products: [
       {
-        fullName: 'Bike Bell Electronic',
+        fullName: "Bike'Bell'Electronic",
         subCategory: 'bell',
         description:
           'X-TIGER Bicycle Bell Horn USB Chargeable Electric Horn 4 Modes Motorcycle Bike Horn Mountain Road Cycling Loud Warning Sound',
@@ -35,7 +35,7 @@ export const mainShopProducts = {
         },
       },
       {
-        fullName: 'Mechanical Bell',
+        fullName: "Mechanical'Bell",
         subCategory: 'bell',
         description:
           'High Decibel Clear Ring MTB Road Bike Retro Bell Bicycle Brass Bell Cover Nylon Stainless Steel ScrewBike Accessories ROCKBROS',
@@ -54,7 +54,7 @@ export const mainShopProducts = {
         },
       },
       {
-        fullName: 'Brake Cable',
+        fullName: "Brake'Cable",
         subCategory: 'cable',
         description:
           'ZTTO Bicycle Stainless Steel Inner Shift Brake Wire MTB Road Bike Shifting Zinc Coat Inside Cable Line 2100mm Shifter Derailleur',
@@ -73,7 +73,7 @@ export const mainShopProducts = {
         },
       },
       {
-        fullName: 'Brake Lever',
+        fullName: "Brake'Lever",
         subCategory: 'braker',
         description:
           'FR5 MTB Ultra Light Brake Handle Levers V Brake/Disc Brake Handle Brake Aluminum Alloy Mountain Hydraulic Bicycle Disc Brake Set',
@@ -92,7 +92,7 @@ export const mainShopProducts = {
         },
       },
       {
-        fullName: 'Brake Light',
+        fullName: "Brake'Light",
         subCategory: 'braker',
         description:
           'FR5 MTB Ultra Light Brake Handle Levers V Brake/Disc Brake Handle Brake Aluminum Alloy Mountain Hydraulic Bicycle Disc Brake Set',
