@@ -69,7 +69,7 @@ export const navLinks = [
   { name: 'Home', id: navHomeID, offset: -200, pathname: '/' },
   { name: 'Intro Products', id: navProductID, offset: -200, pathname: '/' },
   { name: 'About', id: navAboutID, offset: -50, pathname: '/' },
-  { name: 'Clothing', id: navOffersID, offset: -100, pathname: '/' },
+  { name: 'Shop', id: navOffersID, offset: -100, pathname: '/' },
   { name: 'Blogs', id: navBlogID, offset: 0, pathname: '/' },
   { name: 'Contact Us', id: navContactID, offset: -200, pathname: '/' },
 ];

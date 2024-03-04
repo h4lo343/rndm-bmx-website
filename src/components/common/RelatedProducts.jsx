@@ -17,12 +17,14 @@ import _ from 'lodash';
 
 const RelatedProducts = ({ isIntro }) => {
   const [currProducts, setCurrProducts] = useState(() => {
+    let a1 = _.shuffle([
+      introProductDetails.pin,
+      introProductDetails.post,
+      introProductDetails.clamp,
+    ]);
+    a1 = [...a1, ...a1, ...a1];
     if (isIntro) {
-      return _.shuffle([
-        introProductDetails.pin,
-        introProductDetails.post,
-        introProductDetails.clamp,
-      ]);
+      return a1;
     } else
       return _.shuffle([
         ...mainShopProducts.generalBMX.products,
