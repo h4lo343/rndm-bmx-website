@@ -87,9 +87,13 @@ export const ProductPage = (props) => {
   return (
     <ProductPageContainer>
       <FullScreeModal
+        handleArrowClick={handleArrowClick}
         isOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         currImg={currentModalImage}
+        setCurrentModalImage={setCurrentModalImage}
+        currentImageSet={currentImageSet}
+        currentIndex={currentIndex}
       />
       <>
         <NavigationBar isHomePage={false} arrayToHandle={[]} />

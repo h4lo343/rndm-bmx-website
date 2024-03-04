@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GiCancel } from 'react-icons/gi';
 import { ProductImage, ProductImageContainer } from './ProductPage';
-import { productPageResponsiveThreshold1 } from './styles';
+import {
+  LeftArrowIcon,
+  productPageResponsiveThreshold1,
+  RightArrowIcon,
+} from './styles';
 
 import { Box, Modal } from '@mui/material';
 import { modalStyle1 } from '../../common/Footer';
@@ -11,11 +15,37 @@ import {
   productPageShadow,
   verticalCentral,
 } from '../../../styles/commonStyles';
+import { ArrowContainer } from '../../common/RelatedProducts';
 
-const FullScreeModal = ({ isOpen, setIsModalOpen, currImg }) => {
+const FullScreeModal = ({
+  isOpen,
+  setIsModalOpen,
+  currImg,
+  handleArrowClick,
+  currentImageSet,
+  currentIndex,
+  setCurrentModalImage,
+}) => {
+  const resetModalImage = () => {
+    setCurrentModalImage(currentImageSet[currentIndex]);
+  };
   return (
     <Modal open={isOpen} onClose={() => {}}>
       <ModalContainer>
+        <ArrowContainerModal>
+          <LeftArrowIcon
+            onClick={() => {
+              handleArrowClick('back');
+              resetModalImage();
+            }}
+          />
+          <RightArrowIcon
+            onClick={() => {
+              handleArrowClick('forth');
+              resetModalImage();
+            }}
+          />
+        </ArrowContainerModal>
         <FullScreenImage src={currImg} />
         <ModalCloser onClick={() => setIsModalOpen(false)} />
       </ModalContainer>
@@ -32,8 +62,13 @@ const FullScreenImage = styled.img`
   }
 `;
 
+const ArrowContainerModal = styled(ArrowContainer)`
+  width: 103%;
+`;
+
 export const ModalContainer = styled(Box)`
   display: flex;
+
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -57,7 +92,6 @@ export const ModalCloser = styled(GiCancel)`
   right: 25px;
   transform: scale(3);
   z-index: 200;
-
   &:hover {
     cursor: pointer;
     transform: scale(3.5);

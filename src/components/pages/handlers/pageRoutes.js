@@ -71,7 +71,7 @@ export const navLinks = [
   { name: 'About', id: navAboutID, offset: -50, pathname: '/' },
   { name: 'Shop', id: navOffersID, offset: -100, pathname: '/' },
   { name: 'Blogs', id: navBlogID, offset: 0, pathname: '/' },
-  { name: 'Contact Us', id: navContactID, offset: -200, pathname: '/' },
+  { name: 'Contact', id: navContactID, offset: -200, pathname: '/' },
 ];
 export const footerLinks = [
   { name: 'Returns and Cancellations', id: 'refund', click: 1 },

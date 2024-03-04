@@ -1,5 +1,5 @@
 import { NavigationBar } from '../../common/NavigationBar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Checkbox, Form, Input, Select } from 'antd';
 import { Banner, Button, TitleText } from '../../../styles/commonStyles';
@@ -10,14 +10,17 @@ import checkoutBgdImage from '../../../assets/images/checkout/checkout_backgroun
 import { useCartStore } from '../../../stores/useCartStore';
 
 export const CheckoutPage = () => {
+  useEffect(() => {
+    window.scroll(0, 300);
+  }, []);
   const { cart, cleanCart } = useCartStore();
   const handlePayment = async (e) => {};
   return (
     <>
-      <NavigationBar isHomePage={false} arrayToHandle={[]} />
       <Banner url={checkoutBgdImage} position={'50% 40%'} showOverlay={true}>
         <TitleText variant="h1">CHECKOUT</TitleText>
       </Banner>
+      <NavigationBar isHomePage={false} arrayToHandle={[]} />
       <CheckOutTitle>Check out</CheckOutTitle>
       <CheckOutForm onFinish={handlePayment}>
         <FormTitle>EMAIL ✱</FormTitle>

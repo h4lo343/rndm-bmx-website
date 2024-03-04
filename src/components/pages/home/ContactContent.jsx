@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Element } from "react-scroll";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
 import {
   blackColor,
   errorColor,
@@ -11,31 +11,31 @@ import {
   successColor,
   Title,
   whiteColor,
-} from "../../../styles/commonStyles";
-import { navContactID } from "../handlers/pageRoutes";
-import bgImage from "../../../assets/images/home/contact_background.png";
-import { Alert, Box, Button, Container, Snackbar, Stack } from "@mui/material";
+} from '../../../styles/commonStyles';
+import { navContactID } from '../handlers/pageRoutes';
+import bgImage from '../../../assets/images/home/contact_background.png';
+import { Alert, Box, Button, Container, Snackbar, Stack } from '@mui/material';
 // import { apiKey } from "../handlers/emailKey";
-import emailjs from "@emailjs/browser";
-import overlayBefore from "../../../assets/images/home/before.png";
+import emailjs from '@emailjs/browser';
+import overlayBefore from '../../../assets/images/home/before.png';
 
-export const errorText = "error";
-export const successText = "success";
-export const alertVerticalPos = "top";
-export const alertHorizontalPos = "center";
+export const errorText = 'error';
+export const successText = 'success';
+export const alertVerticalPos = 'top';
+export const alertHorizontalPos = 'center';
 
 export const ContactContent = () => {
-  const [name, setName] = useState("");
-  const [emailID, setEmailID] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [emailID, setEmailID] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
   const [status, setStatus] = useState({
-    msg: "",
+    msg: '',
     vertical: alertVerticalPos,
     horizontal: alertHorizontalPos,
   });
-  const [info, setInfo] = useState("");
+  const [info, setInfo] = useState('');
   const [alert, setAlert] = useState(false);
   const { vertical, horizontal, msg } = status;
 
@@ -55,15 +55,15 @@ export const ContactContent = () => {
     e.preventDefault();
     setAlert(true);
     if (!emailID) {
-      return handleMessage("Enter your email ID to submit.", errorText);
+      return handleMessage('Enter your email ID to submit.', errorText);
     }
     if (emailID) {
       if (!emailID.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
-        return handleMessage("Invalid email id.", errorText);
+        return handleMessage('Invalid email id.', errorText);
       }
     }
     if (!message) {
-      return handleMessage("Enter a message to submit.", errorText);
+      return handleMessage('Enter a message to submit.', errorText);
     }
     try {
       var templateParams = {
@@ -73,30 +73,30 @@ export const ContactContent = () => {
         subject: subject,
       };
       emailjs
-        .send(
-          // apiKey.SERVICE_ID,
-          // apiKey.TEMPLATE_ID,
-          // templateParams,
-          // apiKey.USER_ID
-        )
+        .send
+        // apiKey.SERVICE_ID,
+        // apiKey.TEMPLATE_ID,
+        // templateParams,
+        // apiKey.USER_ID
+        ()
         .then(() => {
-          return handleMessage("Message has been sent.", successText);
+          return handleMessage('Message has been sent.', successText);
         })
         .catch(() => {
-          return handleMessage("Something went wrong.", errorText);
+          return handleMessage('Something went wrong.', errorText);
         });
     } catch {
-      return handleMessage("Something went wrong.", errorText);
+      return handleMessage('Something went wrong.', errorText);
     }
   }
 
   function handleClose(e) {
-    if (e.reason === "clickaway") {
-      handleStatus("");
+    if (e.reason === 'clickaway') {
+      handleStatus('');
       return;
     }
-    setInfo("");
-    handleStatus("");
+    setInfo('');
+    handleStatus('');
   }
 
   useEffect(() => {
@@ -109,14 +109,14 @@ export const ContactContent = () => {
   // const contactText = "on the right";
   // const contactTextM = "on the bottom";
   const isMobile = window.matchMedia(
-    "only screen and (max-width: 900px)"
+    'only screen and (max-width: 900px)'
   ).matches;
-  const contactText = isMobile ? "bottom" : "right";
+  const contactText = isMobile ? 'bottom' : 'right';
   return (
     <ContactElement name={navContactID} id="home-contact-section">
-      <Box style={{ textAlign: "center" }}>
+      <Box style={{ textAlign: 'center' }}>
         <Title as="h2" isBlack={true}>
-          Contact Us
+          Contact
         </Title>
       </Box>
       <ContactContainer id="contact-container">
@@ -125,7 +125,7 @@ export const ContactContent = () => {
             <ContactHeading color={blackColor} as="h2">
               Reach out to us
             </ContactHeading>
-            <ContactText variant="body1" textAlign={"left"} color={blackColor}>
+            <ContactText variant="body1" textAlign={'left'} color={blackColor}>
               For questions, queries and anything in between, just fill out the
               form (on the {contactText}) and we will get back to you really
               soon.
@@ -172,8 +172,8 @@ export const ContactContent = () => {
               required
               maxLength={1000}
               style={{
-                minHeight: "20%",
-                paddingBottom: "25%",
+                minHeight: '20%',
+                paddingBottom: '25%',
               }}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -189,23 +189,23 @@ export const ContactContent = () => {
             </MessageButton>
           </ContactInfoBox>
         </ContactStack>
-        {msg !== "" && alert && (
+        {msg !== '' && alert && (
           <InfoBar
             id="info-bar"
             anchorOrigin={{ vertical, horizontal }}
-            open={msg !== ""}
+            open={msg !== ''}
             autoHideDuration={2}
             key={vertical + horizontal}
           >
             <Alert
               id="alert-bar"
               style={{
-                backgroundColor: msg === "error" ? errorColor : successColor,
+                backgroundColor: msg === 'error' ? errorColor : successColor,
                 color: whiteColor,
               }}
               onClose={(e) => handleClose(e)}
               severity={msg}
-              sx={{ width: "100%" }}
+              sx={{ width: '100%' }}
             >
               {info}
             </Alert>
@@ -231,7 +231,7 @@ const ContactElement = styled(Element)`
     }
     background-size: auto;
     ::before {
-      content: "";
+      content: '';
       display: block;
       width: 100%;
       min-height: 100px;
@@ -326,7 +326,7 @@ const ContactHeading = styled(HeaderText)`
       width: 40vw;
     }
     &::after {
-      content: "";
+      content: '';
       width: 140px;
       height: 7px;
       display: block;
@@ -406,15 +406,15 @@ const InfoField = styled.input`
     cursor: pointer;
     padding-bottom: 5%;
     margin-left: 0%;
-    margin-right: ${(props) => (props.hasMargin ? "3%" : "0%")};
+    margin-right: ${(props) => (props.hasMargin ? '3%' : '0%')};
     padding-right: 2%;
     @media (min-width: 729px) {
       min-width: 46.2%;
     }
-    margin-right: ${(props) => (props.hasMargin ? "3%" : "0%")};
+    margin-right: ${(props) => (props.hasMargin ? '3%' : '0%')};
     padding-right: 2%;
     @media (max-width: 728px) {
-      max-width: ${(props) => (props.isAdjacent ? "37.2vw" : "80vw")};
+      max-width: ${(props) => (props.isAdjacent ? '37.2vw' : '80vw')};
     }
   }
 `;

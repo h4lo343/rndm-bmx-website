@@ -1,6 +1,6 @@
 import { useCartStore } from '../../../stores/useCartStore';
 import { NavigationBar } from '../../common/NavigationBar';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import cartBgdImage from '../../../assets/images/cart/cart_background_image.JPG';
 import {
@@ -15,6 +15,9 @@ import { DiscountedPriceBox } from '../product/OptionPanel';
 import { useHistory } from 'react-router-dom';
 
 export const CartPage = () => {
+  useEffect(() => {
+    window.scroll(0, 200);
+  }, []);
   const history = useHistory();
   const { cart, deleteProduct } = useCartStore();
   const handleRemoveItem = (id) => {

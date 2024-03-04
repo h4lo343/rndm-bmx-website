@@ -1,30 +1,30 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import { Link } from "react-scroll";
-import styled from "styled-components";
-import RNDM from "../../assets/logos/logo.png";
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import { Link } from 'react-scroll';
+import styled from 'styled-components';
+import RNDM from '../../assets/logos/logo.png';
 import {
   blackNavColor,
   GeneralText,
   greenColor,
   myFont,
   whiteColor,
-} from "../../styles/commonStyles";
-import { ThemeContext } from "../../App";
-import Hamburger from "hamburger-react";
-import { Grid, Slide, useMediaQuery } from "@mui/material";
-import { slideFwdTopAmt } from "../../styles/animations";
-import { navLinks } from "../pages/handlers/pageRoutes";
-import { HomeLogo, HomeLogoM } from "./HomeLogo";
-import { Link as RouterLink } from "react-router-dom";
+} from '../../styles/commonStyles';
+import { ThemeContext } from '../../App';
+import Hamburger from 'hamburger-react';
+import { Grid, Slide, useMediaQuery } from '@mui/material';
+import { slideFwdTopAmt } from '../../styles/animations';
+import { navLinks } from '../pages/handlers/pageRoutes';
+import { HomeLogo, HomeLogoM } from './HomeLogo';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   const { isOpen, setOpen } = useContext(ThemeContext);
   const [scrollPosition, setScrollPosition] = useState();
-  const isMobile = !useMediaQuery("(min-width:900px)");
+  const isMobile = !useMediaQuery('(min-width:900px)');
 
   const elementArray = arrayToHandle;
 
@@ -40,7 +40,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   }, [isOpen, setOpen]);
 
   function watchScroll() {
-    window.addEventListener("scroll", handleClose);
+    window.addEventListener('scroll', handleClose);
   }
 
   function handleNav(elementID) {
@@ -51,9 +51,9 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   // blur other elements when mobile nav bar is active
   useEffect(() => {
     if (isMobile && isOpen) {
-      elementArray.map((ele) => handleBlur(ele, "blur(4px)"));
+      elementArray.map((ele) => handleBlur(ele, 'blur(4px)'));
     } else {
-      elementArray.map((ele) => handleBlur(ele, "none"));
+      elementArray.map((ele) => handleBlur(ele, 'none'));
     }
   }, [isMobile, isOpen, handleBlur]);
 
@@ -61,22 +61,22 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
     if (isOpen) {
       watchScroll();
       return () => {
-        window.removeEventListener("scroll", handleClose);
+        window.removeEventListener('scroll', handleClose);
       };
     }
   }, [isOpen, handleClose]);
 
   // to handle click away and escape
   useEffect(() => {
-    window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
         handleClose();
       }
     });
 
     elementArray.map((ele) => handleNav(ele));
     return () => {
-      window.removeEventListener("keydown", handleClose);
+      window.removeEventListener('keydown', handleClose);
     };
   }, [isOpen, handleClose]);
 
@@ -84,17 +84,17 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
     function handleScroll() {
       const currentScrollPos = window.pageYOffset;
       if (scrollPosition > currentScrollPos) {
-        document.getElementById("navigation-bar").style.top = "0";
-        document.getElementById("navigation-bar").style.transition = "0.5s";
+        document.getElementById('navigation-bar').style.top = '0';
+        document.getElementById('navigation-bar').style.transition = '0.5s';
       } else {
-        document.getElementById("navigation-bar").style.top = "-25%";
-        document.getElementById("navigation-bar").style.transition = "0.5s";
+        document.getElementById('navigation-bar').style.top = '-25%';
+        document.getElementById('navigation-bar').style.transition = '0.5s';
       }
       setScrollPosition(currentScrollPos);
     }
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [scrollPosition]);
 
@@ -106,7 +106,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
             {!isMobile && isHomePage && <HomeLogo />}
             {!isHomePage && (
               <NoStyleRouterLink
-                style={{ paddingRight: "3%" }}
+                style={{ paddingRight: '3%' }}
                 to="/"
                 id="logo"
                 href="/"
@@ -118,7 +118,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
               container
               sx={{
                 flexGrow: 1,
-                display: { xs: "flex!important", md: "none!important" },
+                display: { xs: 'flex!important', md: 'none!important' },
               }}
             >
               <Grid item xs={3}></Grid>
@@ -138,7 +138,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
               <MenuGrid item xs={3}>
                 <Hamburger
                   id="mobile-hamburger-icon"
-                  style={{ display: "flex-end!important" }}
+                  style={{ display: 'flex-end!important' }}
                   toggled={isOpen}
                   toggle={setOpen}
                   duration={0.8}
@@ -151,7 +151,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
             <NavBox
               sx={{
                 flexGrow: 1,
-                display: { xs: "none!important", md: "flex! important" },
+                display: { xs: 'none!important', md: 'flex! important' },
               }}
             >
               {navLinks.map((page) => (
@@ -170,7 +170,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
                     </HomeLink>
                   )}
                   {!isHomePage && (
-                    <NoStyleRouterLink to={"/"}>{page.name}</NoStyleRouterLink>
+                    <NoStyleRouterLink to={'/'}>{page.name}</NoStyleRouterLink>
                   )}
                 </NavText>
               ))}
@@ -267,9 +267,6 @@ const SideNav = styled.aside`
     height: 100vh;
     filter: none;
     width: 50%;
-    @media (max-width: 425px) {
-      width: 65%;
-    }
     position: fixed;
     z-index: 10;
     top: 0;

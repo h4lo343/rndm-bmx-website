@@ -62,7 +62,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
           <PageNumberArrow onClick={() => handlePageFlip('reduce')}>
             &lt;
           </PageNumberArrow>
-          {category ? keys[index] : Number(keys[index]) + 1}
+          {category ? keys[index]?.toUpperCase() : Number(keys[index]) + 1}
           <PageNumberArrow onClick={() => handlePageFlip('increment')}>
             &gt;
           </PageNumberArrow>

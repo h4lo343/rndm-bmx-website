@@ -16,15 +16,15 @@ import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
 const RelatedProducts = ({ isIntro }) => {
+  const temp = _.shuffle([
+    introProductDetails.pin,
+    introProductDetails.post,
+    introProductDetails.clamp,
+  ]);
+  const randomIntro = [...temp, ...temp, ...temp];
   const [currProducts, setCurrProducts] = useState(() => {
-    let a1 = _.shuffle([
-      introProductDetails.pin,
-      introProductDetails.post,
-      introProductDetails.clamp,
-    ]);
-    a1 = [...a1, ...a1, ...a1];
     if (isIntro) {
-      return a1;
+      return randomIntro;
     } else
       return _.shuffle([
         ...mainShopProducts.generalBMX.products,
@@ -33,11 +33,13 @@ const RelatedProducts = ({ isIntro }) => {
         ...mainShopProducts.RNDMBMX.products,
       ]);
   });
+
   const [timeoutId, setTimeoutId] = useState(null);
   const [control, setControl] = useState(false);
   const history = useHistory();
+
   const handleArrowClick = (type) => {
-    if (isIntro && !control) {
+    if (!control) {
       setCurrProducts(
         _.shuffle([
           ...mainShopProducts.generalBMX.products,
@@ -48,13 +50,15 @@ const RelatedProducts = ({ isIntro }) => {
       );
       setControl(true);
       const newTimeout = setTimeout(() => {
-        setCurrProducts(
-          _.shuffle([
+        setCurrProducts(() => {
+          const a1 = _.shuffle([
             introProductDetails.pin,
             introProductDetails.post,
             introProductDetails.clamp,
-          ])
-        );
+          ]);
+          return [...a1, ...a1, ...a1];
+        });
+        emblaApi.plugins().autoplay.play();
         setControl(false);
       }, 8000);
       setTimeoutId(newTimeout);
@@ -65,13 +69,15 @@ const RelatedProducts = ({ isIntro }) => {
       setControl(false);
       if (isIntro) {
         const newTimeout = setTimeout(() => {
-          setCurrProducts(
-            _.shuffle([
+          setCurrProducts(() => {
+            const a1 = _.shuffle([
               introProductDetails.pin,
               introProductDetails.post,
               introProductDetails.clamp,
-            ])
-          );
+            ]);
+            return [...a1, ...a1, ...a1];
+          });
+          emblaApi.plugins().autoplay.play();
           setControl(false);
         }, 8000);
         setTimeoutId(newTimeout);
@@ -80,27 +86,71 @@ const RelatedProducts = ({ isIntro }) => {
     if (type === 'l') {
       emblaApi.scrollPrev();
       emblaApi.plugins().autoplay.stop();
-      if (!isIntro) {
-        const newTimeout = setTimeout(() => {
-          emblaApi.plugins().autoplay.play();
-          setControl(false);
-        }, 8000);
-        setTimeoutId(newTimeout);
-      }
+
+      const newTimeout = setTimeout(() => {
+        emblaApi.plugins().autoplay.play();
+        setControl(false);
+      }, 8000);
+      setTimeoutId(newTimeout);
+
       setControl(true);
     } else {
       emblaApi.scrollNext();
       emblaApi.plugins().autoplay.stop();
-      if (!isIntro) {
+      const newTimeout = setTimeout(() => {
+        emblaApi.plugins().autoplay.play();
+        setControl(false);
+      }, 8000);
+      setTimeoutId(newTimeout);
+
+      setControl(true);
+    }
+  };
+  const handleClick = (type) => {
+    if (isIntro)
+      return (type) => {
+        if (!control) {
+          setCurrProducts(
+            _.shuffle([
+              ...mainShopProducts.generalBMX.products,
+              ...mainShopProducts.ExoticBMX.products,
+              ...mainShopProducts.UniqueBMX.products,
+              ...mainShopProducts.RNDMBMX.products,
+            ])
+          );
+          setControl(true);
+          const newTimeout = setTimeout(() => {
+            setCurrProducts(randomIntro);
+            emblaApi.scrollTo(0);
+            emblaApi.plugins().autoplay.play();
+            setControl(false);
+          }, 8000);
+          setTimeoutId(newTimeout);
+          return;
+        }
+        if (control) {
+          clearTimeout(timeoutId);
+        }
+        if (type === 'l') {
+          emblaApi.scrollPrev();
+        } else {
+          emblaApi.scrollNext();
+        }
         const newTimeout = setTimeout(() => {
+          setCurrProducts(randomIntro);
+          emblaApi.scrollTo(0);
           emblaApi.plugins().autoplay.play();
           setControl(false);
         }, 8000);
         setTimeoutId(newTimeout);
-      }
-      setControl(true);
-    }
+      };
+    else return handleArrowClick;
   };
+  useEffect(() => {
+    if (isIntro) {
+      emblaApi?.plugins()?.autoplay?.play();
+    }
+  }, [control]);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -136,8 +186,8 @@ const RelatedProducts = ({ isIntro }) => {
         <SectionTitle>Related Products</SectionTitle>
         <ProductZone>
           <ArrowContainer>
-            <LeftArrowIcon onClick={() => handleArrowClick('l')} />
-            <RightArrowIcon onClick={() => handleArrowClick('r')} />
+            <LeftArrowIcon onClick={() => handleClick()('l')} />
+            <RightArrowIcon onClick={() => handleClick()('r')} />
           </ArrowContainer>
           <ViewPort ref={emblaRef}>
             <RelatedSectionContainer>
@@ -191,7 +241,7 @@ const ViewPort = styled.div`
   overflow: hidden;
 `;
 
-const ArrowContainer = styled.span`
+export const ArrowContainer = styled.span`
   width: 105%;
   z-index: 1000;
   position: absolute;
