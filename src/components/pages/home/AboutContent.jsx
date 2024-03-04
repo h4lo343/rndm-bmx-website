@@ -1,45 +1,45 @@
-import { Box, Card, CardContent, Container, Typography } from "@mui/material";
-import React from "react";
-import { Element } from "react-scroll";
-import styled from "styled-components";
-import { navAboutID } from "../handlers/pageRoutes";
-import BgdImage from "../../../assets/images/home/about_background.png";
+import { Box, Card, CardContent, Container, Typography } from '@mui/material';
+import React from 'react';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
+import { navAboutID } from '../handlers/pageRoutes';
+import BgdImage from '../../../assets/images/home/about_background.png';
 import {
   blackColor,
   GeneralLink,
   GeneralText,
   greenColor,
   Title,
-} from "../../../styles/commonStyles";
+} from '../../../styles/commonStyles';
 
 export const AboutContent = () => {
-  const blogLink = "https://rndmbmx8.substack.com/p/coming-soon";
+  const blogLink = 'https://rndmbmx8.substack.com/p/coming-soon';
 
   return (
     <AboutElement name={navAboutID} id="home-about-section">
       <AboutContainer>
         <AboutBox>
           <StyledTitle as="h2" isBlack={false}>
-            About Us
+            About
           </StyledTitle>
           <AboutCard id="about-card" sx={{ minWidth: 275 }}>
             <Content id="about-content">
               <AboutTitle as="h2" color="text.secondary" gutterBottom>
                 A little about us
               </AboutTitle>
-              <GeneralText color={blackColor} textAlign={"left"}>
+              <GeneralText color={blackColor} textAlign={'left'}>
                 Established in 2016, RNDM OR RaNDoM BMX was inspired by aiming
                 to be "Silly Unique" in a world full of Extreme.
               </GeneralText>
               <br />
-              <GeneralText color={blackColor} textAlign={"left"}>
+              <GeneralText color={blackColor} textAlign={'left'}>
                 Fast Forward some years ahead, RNDM-BMX grew from just being a
                 BMX Brand about "Silly Unique" to a Brand where BMX can be for
                 ALL People Interested!
               </GeneralText>
               <br />
-              <GeneralText color={blackColor} textAlign={"left"}>
-                Find out more about our{" "}
+              <GeneralText color={blackColor} textAlign={'left'}>
+                Find out more about our{' '}
                 <GeneralLink
                   href={blogLink}
                   rel="noopener"
@@ -110,7 +110,7 @@ const StyledTitle = styled(Title)`
 const AboutTitle = styled(Typography)`
   font-size: 32px;
   &::after {
-    content: "";
+    content: '';
     width: 140px;
     height: 7px;
     display: block;
