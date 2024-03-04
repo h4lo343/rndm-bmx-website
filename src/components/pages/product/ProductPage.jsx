@@ -43,10 +43,12 @@ export const ProductPage = (props) => {
     history.listen(() => {
       window.location.reload();
       window.scrollTo(0, 0);
+      window.scrollBy(0, 12);
     });
   }, [history]);
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.scrollBy(0, 12);
   }, []);
 
   const [productData, setProductData] = useState(
