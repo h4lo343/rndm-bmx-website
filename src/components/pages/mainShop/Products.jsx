@@ -121,6 +121,7 @@ const ProductsCardContainer = styled.div`
   flex-flow: row wrap;
   justify-content: left;
   position: relative;
+  width: 100%;
 `;
 
 const PageNumberArrow = styled.span`
@@ -157,14 +158,14 @@ const PageNumber = styled.span`
 
 const ProductsContainer = styled.div``;
 
-const ProductCard = styled.a.attrs({
-  ariaLabel: 'card',
-})`
+const ProductCard = styled.a`
   display: block;
   max-width: 100%;
+
   margin: 10px;
   overflow: hidden;
   width: calc(24% - 20px);
+
   flex-direction: column;
   cursor: pointer;
 

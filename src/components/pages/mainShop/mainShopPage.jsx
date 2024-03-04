@@ -14,7 +14,6 @@ import { mainShopProducts } from '../handlers/mainShopProducts';
 import { FilterPanel } from './filterPanel';
 import { useHistory, useParams } from 'react-router-dom';
 import { pagination } from './utility/pagination';
-import { Button } from '@mui/material';
 
 export const MainShopPage = () => {
   const history = useHistory();
@@ -45,6 +44,7 @@ export const MainShopPage = () => {
       );
     }
   }, [category]);
+  useEffect(() => window.scrollTo(0, 0), []);
   return (
     <MainShopPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />

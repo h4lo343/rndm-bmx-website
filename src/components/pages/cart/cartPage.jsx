@@ -89,11 +89,11 @@ export const CartPage = () => {
           <OrderSummary>Order Summary</OrderSummary>
           <Row>
             <Title>Item(s) total:</Title>
-            <Price>${totalPrice}</Price>
+            <Price>${totalPrice.toFixed(2)}</Price>
           </Row>
           <Row>
             <Title>Item(s) discount:</Title>
-            <Price>- ${discount}</Price>
+            <Price>- ${discount.toFixed(2)}</Price>
           </Row>
           <Row border={true}>
             <Title>Total:</Title>

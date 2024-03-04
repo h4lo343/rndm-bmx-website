@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { introProductDetails } from '../handlers/productsDetails';
+import { introProductDetails } from '../pages/handlers/productsDetails';
 import { Rating } from '@mui/material';
-import { grey1, priceColor } from '../../../styles/commonStyles';
-import { OriginalPriceBox } from './styles';
+import { grey1, priceColor } from '../../styles/commonStyles';
+import {
+  LeftArrowIcon,
+  OriginalPriceBox,
+  RightArrowIcon,
+} from '../pages/product/styles';
+import { ArrowIconContainer } from '../pages/product/ProductPage';
 
-const RelatedProducts = () => {
+const RelatedProducts = ({ isIntro }) => {
   const renderPriceBox = (productObj) => {
     if (!productObj.discountedPrice) return <>${productObj.originalPrice}</>;
     else
@@ -19,6 +24,10 @@ const RelatedProducts = () => {
   return (
     <RelatedProductsContainer>
       <ProductCardContainer>
+        <ArrowContainer>
+          <LeftArrowIcon />
+          <RightArrowIcon />
+        </ArrowContainer>
         <SectionTitle>Related Products</SectionTitle>
         {Object.values(introProductDetails).map((p) => (
           <ProductCard>
@@ -41,6 +50,16 @@ const RelatedProductsContainer = styled.div`
   padding: 1.5em;
 `;
 
+const ArrowContainer = styled.span`
+  width: 108%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+`;
+
 const RatingContainer = styled.div`
   text-align: left;
 `;
@@ -57,6 +76,7 @@ const ProductCardImg = styled.img`
 `;
 
 const ProductCardContainer = styled.div`
+  position: relative;
   display: inline-block;
   cursor: pointer;
 `;

@@ -28,7 +28,7 @@ export const OfferContent = () => {
       <OfferContainer>
         <Box style={{ textAlign: 'center' }}>
           <TitleWithImage as="h2" isBlack={true}>
-            Check our Clothing Line
+            SHOP
           </TitleWithImage>
         </Box>
         <OfferBox flexDirection={{ xs: 'column', md: 'row' }}>

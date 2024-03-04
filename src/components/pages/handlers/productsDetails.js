@@ -1,12 +1,9 @@
-import product_pin_boy_1 from '../../../assets/images/products/pin/pin_boy_1.jpg';
-import product_pin_boy_2 from '../../../assets/images/products/pin/pin_boy_2.jpg';
-import product_pin_boy_3 from '../../../assets/images/products/pin/pin_boy_3.jpg';
-import product_pin_boy_4 from '../../../assets/images/products/pin/pin_boy_4.jpg';
-import product_pin_boy_5 from '../../../assets/images/products/pin/pin_boy_5.jpg';
-import product_pin_girl_1 from '../../../assets/images/products/pin/pin_girl_1.jpg';
-import product_pin_spec from '../../../assets/images/products/pin/pin_spec.jpg';
-import post_1 from '../../../assets/images/products/post/post_1.jpg';
-import clamp_1 from '../../../assets/images/products/clamp/clamp_1.jpg';
+import pin_theme from '../../../assets/images/products/pin/pin_theme.jpg';
+import clamp_theme from '../../../assets/images/products/clamp/clamp_theme.png';
+import post_theme from '../../../assets/images/products/post/post_theme.png';
+import clamp_common from '../../../assets/images/products/clamp/default_type/common/clamp_theme.png';
+import post_common from '../../../assets/images/products/post/default_type/common/clamp_theme.png.webp';
+
 import spec_diagram_1 from '../../../assets/images/products/pin/type_1_stainless/Spec_Diagram.jpg';
 import type_1_stainless_1 from '../../../assets/images/products/pin/type_1_stainless/common/Type_1_Stainless.jpg';
 import type_1_stainless_2 from '../../../assets/images/products/pin/type_1_stainless/common/Type_1_Stainless_2.jpg';
@@ -33,11 +30,11 @@ export const introProductDetails = {
     fullName: "Brake'N'Pins",
     description:
       'These little Pins can be locked into place adjusting your Brake Cable to suit. They come in Two Types Round And Oval.',
-    themeImage: product_pin_boy_1,
-    product_id: 'price_1OohajErX9XCIZnaXYpxUrns',
+    themeImage: pin_theme,
     discountedPrice: 20,
     originalPrice: 140,
     rating: 2,
+    intro: true,
     types: [
       'Type 1 Stainless Steel 316',
       'Type 1 Titanium Grade 5',
@@ -71,22 +68,40 @@ export const introProductDetails = {
       },
     },
   },
-  post: {
-    fullName: 'BMX Seat',
+  clamp: {
+    fullName: 'Seat Clamp',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
-    boyImages: [post_1],
-    themeImage: product_pin_boy_1,
+      'Pivotal Qne Piece Aluminum Alloy 180 25.4 mm Bmx Bike Seat Post Tube',
+    types: ['default type'],
+    images: {
+      'default type': {
+        common: [clamp_common],
+        girlImages: [],
+        boyImages: [],
+        specImage: null,
+      },
+    },
+    intro: true,
+    themeImage: clamp_theme,
     discountedPrice: null,
     rating: 4,
     originalPrice: 30,
   },
-  clamp: {
-    fullName: 'Pivitol Seat Post',
+  post: {
+    fullName: 'Seat Post',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e.',
-    themeImage: product_pin_boy_1,
-    boyImages: [clamp_1],
+      'Pivotal Qne Piece Aluminum Alloy 180 25.4 mm Bmx Bike Seat Post Tube',
+    themeImage: post_theme,
+    types: ['default type'],
+    images: {
+      'default type': {
+        common: [post_common],
+        girlImages: [],
+        boyImages: [],
+        specImage: null,
+      },
+    },
+    intro: true,
     rating: 4,
     discountedPrice: null,
     originalPrice: 380,

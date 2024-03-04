@@ -1,97 +1,96 @@
+import styled from 'styled-components';
 
-import styled from "styled-components";
-import { introProductDetails } from "../../pages/handlers/productsDetails"
-import { useEffect } from 'react'
-import useEmblaCarousel from "embla-carousel-react";
-import {path} from "./ProductPage";
-import {productPageShadow} from "./styles";
+import { useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 
-const PicCardSlider = ({currentIndex, setCurrentIndex, chosenGender, imageSet}) => {
+const PicCardSlider = ({ currentIndex, setCurrentIndex, imageSet }) => {
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
-    containScroll: "keepSnaps",
-    axis: "y",
+    containScroll: 'keepSnaps',
+    axis: 'y',
     dragFree: true,
   });
 
-  const onThumbClick = (index) => {
-    setCurrentIndex(index);
-    emblaThumbs.scrollTo(index);
-  };
+  const onThumbClick = useCallback(
+    (index) => {
+      if (!emblaThumbs) {
+        return;
+      }
+      console.log(emblaThumbs.scrollSnapList());
+      setCurrentIndex(index);
+      emblaThumbs.scrollTo(index);
+    },
+    [emblaThumbs]
+  );
 
   useEffect(() => {
-    if(emblaThumbs) onThumbClick(currentIndex)
-  }, [currentIndex])
+    if (emblaThumbs) onThumbClick(currentIndex);
+  }, [currentIndex]);
 
   return (
     <SliderContainer>
       <PicCardViewport ref={thumbViewportRef}>
         <PicCardContainer>
-          {
-            imageSet.map((src, index) =>
-              <SlideCardContainer
-                key={index}
-                selected = {currentIndex === index}
-                onClick= {() => onThumbClick(index)}
-              >
-                <PicCardImage
-                  src= { src }
-                />
-              </SlideCardContainer>
-            )
-          }
+          {imageSet.map((src, index) => (
+            <SlideCardContainer
+              key={index}
+              selected={currentIndex === index}
+              onClick={() => onThumbClick(index)}
+            >
+              <PicCardImage src={src} />
+            </SlideCardContainer>
+          ))}
         </PicCardContainer>
       </PicCardViewport>
     </SliderContainer>
   );
-}
+};
 
 export default PicCardSlider;
 
-const picRadius = '15%'
+const picRadius = '15%';
 
 const SliderContainer = styled.div`
-  width:  100%;
   height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-`
+`;
 const PicCardViewport = styled.div`
-  height: 100%;
   overflow: hidden;
-`
+`;
 
 const SlideCardContainer = styled.div`
+  flex: 0 0 30%;
   aspect-ratio: 1 / 1;
   margin-bottom: 10px;
   border-radius: ${picRadius};
-  overflow: hidden;
+
   cursor: pointer;
-  ${ (props) => !props.selected && `
+  ${(props) =>
+    !props.selected &&
+    `
     &:hover {
     border: 1px solid black;
     padding: 2px;
   }
-  `
-  }
-  
-  ${ (props) => props.selected  && `
+  `}
+
+  ${(props) =>
+    props.selected &&
+    `
     border: 2.5px solid black;
     padding: 4px;
   `}
-  `
+`;
 
 const PicCardContainer = styled.div`
   height: 100%;
-`
+`;
 
 const PicCardImage = styled.img`
   object-fit: cover;
   height: 100%;
   width: 100%;
   border-radius: ${picRadius};
-  
-`
-
+`;

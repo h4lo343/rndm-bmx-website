@@ -19,7 +19,7 @@ export const ProductContent = () => {
         <Box style={{ textAlign: 'center' }}>
           <TitleWithImage as="h2" isBlack={true}>
             {' '}
-            Our Upcoming Products
+            Intro Products
           </TitleWithImage>
         </Box>
         <ProductBox id="home-products-box">
@@ -34,8 +34,8 @@ export const ProductContent = () => {
                   alt={product.alt}
                   key={product.alt}
                   onClick={() =>
-                    history.push(`product/pin`, {
-                      productData: introProductDetails['pin'],
+                    history.push(`product/${product.key}`, {
+                      productData: introProductDetails[product.key],
                     })
                   }
                 />

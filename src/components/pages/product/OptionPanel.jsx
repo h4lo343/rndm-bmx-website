@@ -131,6 +131,8 @@ const OptionPanelContainer = styled.div`
   flex-direction: column;
   width: 20rem;
   height: 100%;
+  justify-content: start;
+
   padding: 10px 10px 0 10px;
   text-align: left;
   @media (max-width: ${productPageResponsiveThreshold1}) {

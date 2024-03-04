@@ -24,8 +24,8 @@ export const useOfferList = () => {
     },
     {
       image: pin_img,
-      title: 'RNDM-BMX Shop',
-      subtitle: 'some RNDM-BMX Products to purchase',
+      title: 'Main Shop',
+      subtitle: 'Different BMX Products to Purchase',
       alt: 'Pin Image',
       key: 'offerMain',
       link: '/mainShop',

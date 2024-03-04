@@ -29,7 +29,7 @@ import {
 } from './styles';
 import OptionPanel from './OptionPanel';
 import PicCardSlider from './PicCardSlider';
-import RelatedProducts from './RelatedProducts';
+import RelatedProducts from '../../common/RelatedProducts';
 import { useCartStore } from '../../../stores/useCartStore';
 
 export const path = {
@@ -42,10 +42,10 @@ export const ProductPage = (props) => {
     window.scrollTo(0, 0);
   }, []);
   const productData = props.location.state.productData;
-  const isCommon = props.location.state.commonProduct;
+
+  const isCommon = !productData.intro;
 
   const { key } = useParams();
-  const [currentProductKey, setCurrentProductKey] = useState(key);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenGender, setChosenGender] = useState('B');
   const [currentModalImage, setCurrentModalImage] = useState();
@@ -102,14 +102,14 @@ export const ProductPage = (props) => {
           </ProductionDesContainer>
           <ShoppingSectionContainer>
             <SliderContainer>
+              <TopArrowIcon onClick={() => handleArrowClick('back')} />
+              <BottomArrowIcon onClick={() => handleArrowClick('forth')} />
               <PicCardSlider
                 currentIndex={currentIndex}
                 setCurrentIndex={setCurrentIndex}
                 chosenGender={chosenGender}
                 imageSet={currentImageSet}
               />
-              <TopArrowIcon onClick={() => handleArrowClick('back')} />
-              <BottomArrowIcon onClick={() => handleArrowClick('forth')} />
             </SliderContainer>
             <ProductImageContainer>
               <ProductImage imageSrc={currentImageSet[currentIndex]} />
@@ -138,7 +138,7 @@ export const ProductPage = (props) => {
             />
           </ShoppingSectionContainer>
         </ProductContainer>
-        {!isCommon && <RelatedProducts />}
+        <RelatedProducts isIntro={!isCommon} />
         <Footer />
       </>
     </ProductPageContainer>
@@ -156,7 +156,7 @@ const ProductContainer = styled.div`
   padding: 2.5rem 0;
 `;
 
-const ArrowIconContainer = styled.span`
+export const ArrowIconContainer = styled.span`
   position: absolute;
   display: flex;
   height: 0;
@@ -193,8 +193,7 @@ const ShoppingSectionContainer = styled.div`
   justify-content: center;
   gap: 25px;
   margin: 0.6rem 0;
-
-  align-items: center;
+  align-items: stretch;
   @media (max-width: ${productPageResponsiveThreshold1}) {
     padding: 0 3rem;
   }
@@ -205,6 +204,7 @@ const ShoppingSectionContainer = styled.div`
 
 const SliderContainer = styled.div`
   width: 5rem;
+  height: 30rem;
   padding: 0.7rem;
   position: relative;
   text-align: center;
@@ -214,7 +214,9 @@ const SliderContainer = styled.div`
   }
 `;
 
-export const ProductImage = styled(Magnifier)``;
+export const ProductImage = styled(Magnifier)`
+  width: 100%;
+`;
 
 const ProductTitle = styled(BodyText)`
   font-size: 2rem !important;

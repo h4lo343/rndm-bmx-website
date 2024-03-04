@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { Checkbox, Form, Input, Select } from 'antd';
 import { Banner, Button, TitleText } from '../../../styles/commonStyles';
 import { Option } from 'antd/es/mentions';
-import { loadStripe } from '@stripe/stripe-js';
+
 import checkoutBgdImage from '../../../assets/images/checkout/checkout_background_image.JPG';
-import { StripePublicKey } from '../handlers/stripePublicKey';
+
 import { useCartStore } from '../../../stores/useCartStore';
 
 export const CheckoutPage = () => {

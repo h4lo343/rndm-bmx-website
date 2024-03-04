@@ -23,6 +23,7 @@ export const useCartStore = create(
       set((state) => {
         const index = state.cart.findIndex((p) => p.uuid === uuid);
         state.cart.splice(index, 1);
+        localStorage.setItem('local_items', JSON.stringify(state.cart));
       }),
     cleanCart: () =>
       set((state) => {
