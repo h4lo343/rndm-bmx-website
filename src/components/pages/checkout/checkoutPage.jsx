@@ -11,6 +11,7 @@ import { useCartStore } from '../../../stores/useCartStore';
 
 export const CheckoutPage = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     window.scrollBy(0, 1);
   }, []);
   const { cart, cleanCart } = useCartStore();
