@@ -11,16 +11,17 @@ import { useCartStore } from '../../../stores/useCartStore';
 
 export const CheckoutPage = () => {
   useEffect(() => {
-    window.scroll(0, 300);
+    window.scrollBy(0, 1);
   }, []);
   const { cart, cleanCart } = useCartStore();
   const handlePayment = async (e) => {};
   return (
     <>
+      <NavigationBar isHomePage={false} arrayToHandle={[]} />
       <Banner url={checkoutBgdImage} position={'50% 40%'} showOverlay={true}>
         <TitleText variant="h1">CHECKOUT</TitleText>
       </Banner>
-      <NavigationBar isHomePage={false} arrayToHandle={[]} />
+
       <CheckOutTitle>Check out</CheckOutTitle>
       <CheckOutForm onFinish={handlePayment}>
         <FormTitle>EMAIL ✱</FormTitle>

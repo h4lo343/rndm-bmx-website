@@ -16,7 +16,7 @@ import { useHistory } from 'react-router-dom';
 
 export const CartPage = () => {
   useEffect(() => {
-    window.scroll(0, 200);
+    window.scrollBy(0, 1);
   }, []);
   const history = useHistory();
   const { cart, deleteProduct } = useCartStore();
