@@ -266,7 +266,8 @@ const SideNav = styled.aside`
   &&& {
     height: 100vh;
     filter: none;
-    width: 50%;
+    width: 100%;
+
     position: fixed;
     z-index: 10;
     top: 0;

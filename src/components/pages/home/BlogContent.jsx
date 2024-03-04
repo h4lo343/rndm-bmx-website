@@ -1,49 +1,49 @@
-import React from "react";
-import { Box, Container, Grid } from "@mui/material";
-import { Element } from "react-scroll";
-import styled from "styled-components";
-import { navBlogID } from "../handlers/pageRoutes";
-import blogItem1 from "../../../assets/images/home/blog_item_1.png";
-import blogItem2 from "../../../assets/images/home/blog_item_2.png";
-import blogItem3 from "../../../assets/images/home/blog_item_3.png";
-import bgdImage from "../../../assets/images/home/blog_background.png";
+import React from 'react';
+import { Box, Container, Grid } from '@mui/material';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
+import { navBlogID } from '../handlers/pageRoutes';
+import blogItem1 from '../../../assets/images/home/blog_item_1.png';
+import blogItem2 from '../../../assets/images/home/blog_item_2.png';
+import blogItem3 from '../../../assets/images/home/blog_item_3.png';
+import bgdImage from '../../../assets/images/home/blog_background.png';
 import {
   GeneralLink,
   GeneralText,
   HeaderText,
   Title,
   brightGreenColor,
-} from "../../../styles/commonStyles";
-import overlayAfter from "../../../assets/images/home/after.png";
+} from '../../../styles/commonStyles';
+import overlayAfter from '../../../assets/images/home/after.png';
 
 const blogHeading = [
-  "Branding Identity",
-  "Clothing for Our Brand Promoters",
-  "Haunted Hills BMX Style",
+  'Branding Identity',
+  'Clothing for Our Brand Promoters',
+  'Haunted Hills BMX Style',
 ];
 
 const blogText = [
-  "When doing a Model shoot one Sunny Afternoon, I noticed the different people...",
-  "G’Day All. RNDM-BMX is Purchasing some Clothing for our Brand Promoters so they...",
-  "Ok….. So it may be more or less of a new Mountain Bike Park to be exact, but...",
+  'When doing a Model shoot one Sunny Afternoon, I noticed the different people...',
+  'G’Day All. RNDM-BMX is Purchasing some Clothing for our Brand Promoters so they...',
+  'Ok….. So it may be more or less of a new Mountain Bike Park to be exact, but...',
 ];
 
-const linkText = "Continue reading";
+const linkText = 'Continue reading';
 
-const blogLink1 = "https://rndmbmx888.substack.com/p/branding-identity";
+const blogLink1 = 'https://rndmbmx888.substack.com/p/branding-identity';
 const blogLink2 =
-  "https://rndmbmx888.substack.com/p/clothing-for-our-brand-promoters";
-const blogLink3 = "https://rndmbmx8.substack.com/p/haunted-hills-bmx-style";
+  'https://rndmbmx888.substack.com/p/clothing-for-our-brand-promoters';
+const blogLink3 = 'https://rndmbmx8.substack.com/p/haunted-hills-bmx-style';
 
-const alt_text_1 = "One of the Model Shoots Taken Place";
-const alt_text_2 = "A BMX bike placed on a haunted hills gravestone";
-const alt_text_3 = "Boys New Tees";
+const alt_text_1 = 'One of the Model Shoots Taken Place';
+const alt_text_2 = 'A BMX bike placed on a haunted hills gravestone';
+const alt_text_3 = 'Boys New Tees';
 
 export const BlogContent = () => {
   return (
     <BlogElement name={navBlogID} id="home-blog-section">
       <BlogContainer>
-        <Box style={{ textAlign: "center", paddingBottom: "5%" }}>
+        <Box style={{ textAlign: 'center', paddingBottom: '5%' }}>
           <BlogTitle as="h2" isBlack={false}>
             Blogs
           </BlogTitle>
@@ -51,10 +51,10 @@ export const BlogContent = () => {
         </Box>
         <Grid
           container
-          direction={{ md: "row" }}
-          display={{ xs: "none", md: "flex" }}
+          direction={{ md: 'row' }}
+          display={{ xs: 'none', md: 'flex' }}
         >
-          <Grid item md={5.5} display={"flex"}>
+          <Grid item md={5.5} display={'flex'}>
             <BlogImage src={blogItem1} alt={alt_text_1} />
           </Grid>
           <ContentGrid item md={2.5}>
@@ -67,15 +67,15 @@ export const BlogContent = () => {
               {linkText}
             </GeneralLink>
           </ContentGrid>
-          <Grid item md={4} display={"flex"}>
+          <Grid item md={4} display={'flex'}>
             <BlogImage src={blogItem2} alt={alt_text_2} />
           </Grid>
         </Grid>
 
         <Grid
           container
-          direction={{ xs: "column", md: "row" }}
-          display={{ xs: "none", md: "flex" }}
+          direction={{ xs: 'column', md: 'row' }}
+          display={{ xs: 'none', md: 'flex' }}
         >
           <ContentGrid item md={2.5}>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -87,7 +87,7 @@ export const BlogContent = () => {
               {linkText}
             </GeneralLink>
           </ContentGrid>
-          <Grid item display={"flex"} md={5.5}>
+          <Grid item display={'flex'} md={5.5}>
             <BlogImage src={blogItem3} alt={alt_text_3} />
           </Grid>
           <ContentGrid item md={4}>
@@ -105,8 +105,8 @@ export const BlogContent = () => {
           id="blog-1-mobile"
           container
           spacing={0}
-          direction={{ xs: "column" }}
-          display={{ xs: "block", md: "none" }}
+          direction={{ xs: 'column' }}
+          display={{ xs: 'block', md: 'none' }}
         >
           <Grid item>
             <BlogImage src={blogItem1} alt={alt_text_1} />
@@ -125,8 +125,8 @@ export const BlogContent = () => {
         <Grid
           id="blog-2-mobile"
           container
-          direction={{ xs: "column" }}
-          display={{ xs: "block", md: "none" }}
+          direction={{ xs: 'column' }}
+          display={{ xs: 'block', md: 'none' }}
           spacing={0}
         >
           <Grid item>
@@ -146,8 +146,8 @@ export const BlogContent = () => {
         <Grid
           id="blog-3-mobile"
           container
-          direction={{ xs: "column" }}
-          display={{ xs: "block", md: "none" }}
+          direction={{ xs: 'column' }}
+          display={{ xs: 'block', md: 'none' }}
           spacing={0}
         >
           <Grid item>
@@ -182,7 +182,7 @@ const BlogElement = styled(Element)`
     background-attachment: fixed;
   }
   ::after {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100px;
@@ -208,9 +208,6 @@ const BlogContainer = styled(Container)`
     }
     @media (min-width: 1200px) {
       padding: 8% 3% 8% 3%;
-    }
-    @media (min-width: 1536px) {
-      padding: 6% 3% 6% 3%;
     }
   }
 `;
@@ -243,7 +240,7 @@ const ContentGrid = styled(Grid)`
 `;
 
 const LineDiv = styled.div`
-  content: "";
+  content: '';
   height: 7px;
   display: block;
   background: #fff;
