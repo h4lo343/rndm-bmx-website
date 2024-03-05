@@ -15,105 +15,127 @@ export const CheckoutPage = () => {
     window.scrollBy(0, 1);
   }, []);
   const { cart, cleanCart } = useCartStore();
+
   const handlePayment = async (e) => {};
   return (
     <>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
       <Banner url={checkoutBgdImage} position={'50% 40%'} showOverlay={true}>
-        <TitleText variant="h1">CHECKOUT</TitleText>
+        <TitleText variant="h1">CHECK OUT</TitleText>
       </Banner>
 
-      <CheckOutTitle>Check out</CheckOutTitle>
+      <CheckOutTitle>Check Out</CheckOutTitle>
       <CheckOutForm onFinish={handlePayment}>
-        <FormTitle>EMAIL ✱</FormTitle>
-        <Item
-          name={['email']}
-          rules={[
-            {
-              required: true,
-              message: 'Please input valid email!',
-              type: 'email',
-            },
-          ]}
-        >
-          <FormlInput placeholder="Email" style={{ width: '22rem' }} />
-        </Item>
-        <FormTitle>PHONE NUMBER ✱</FormTitle>
-        <Item
-          name={['phoneNumber']}
-          rules={[
-            {
-              pattern: new RegExp('^04\\d{8}$'),
-              message: `Please input a valid Australian phone number`,
-            },
-          ]}
-        >
-          <FormlInput placeholder="Phone number" style={{ width: '22rem' }} />
-        </Item>
-        <FormTitle>FIRST NAME ✱</FormTitle>
-        <Item
-          name={['firstName']}
-          rules={[
-            {
-              required: true,
-              message: 'Please input your first name!',
-            },
-          ]}
-        >
-          <FormlInput placeholder="First Name" />
-        </Item>
-        <FormTitle>LAST NAME ✱</FormTitle>
-        <Item
-          name={['lastName']}
-          rules={[
-            {
-              required: true,
-              message: 'Please input your last name!',
-            },
-          ]}
-        >
-          <FormlInput placeholder="LastName Name" />
-        </Item>
-        <FormTitle>State ✱</FormTitle>
-        <Item
-          name={['address', 'state']}
-          rules={[{ required: true, message: 'State is required' }]}
-          style={{ width: '20rem' }}
-        >
-          <FormSelect placeholder="Select State">
-            <FormOption value="Queensland">Queensland</FormOption>
-            <FormOption value="Tasmania">Tasmania</FormOption>
-            <FormOption value="Victoria">Victoria</FormOption>
-            <FormOption value="Northern_Territory">
-              Northern Territory
-            </FormOption>
-            <FormOption value="Western_Australia">Western Australia</FormOption>
-            <FormOption value="Australian_Capital_Territory">
-              Australian Capital Territory
-            </FormOption>
-          </FormSelect>
-        </Item>
-        <FormTitle>Address 1</FormTitle>
-        <Item
-          name={['address', 'street']}
-          rules={[{ required: true, message: 'Street is required' }]}
-        >
-          <FormlInput style={{ width: '25rem' }} placeholder="Input street" />
-        </Item>
-        <FormTitle>Address 2(Optional)</FormTitle>
-        <Item name={['address', 'street2']}>
-          <FormlInput
-            style={{ width: '25rem' }}
-            placeholder="Input additional address"
-          />
-        </Item>
-        <Form.Item wrapperCol={{ offset: 10 }} style={{ marginTop: '5rem' }}>
+        <GridContainer>
+          <GridItem>
+            {' '}
+            <FormTitle>EMAIL ✱</FormTitle>
+            <Item
+              name={['email']}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input valid email!',
+                  type: 'email',
+                },
+              ]}
+            >
+              <FormlInput placeholder="Email" style={{ width: '80%' }} />
+            </Item>
+          </GridItem>
+          <GridItem>
+            <FormTitle>PHONE NUMBER ✱</FormTitle>
+            <Item
+              name={['phoneNumber']}
+              rules={[
+                {
+                  required: true,
+                  pattern: new RegExp('^04\\d{8}$'),
+                  message: `Please input a valid Australian phone number`,
+                },
+              ]}
+            >
+              <FormlInput placeholder="Phone number" style={{ width: '80%' }} />
+            </Item>
+          </GridItem>
+          <GridItem>
+            <FormTitle>FIRST NAME ✱</FormTitle>
+            <Item
+              name={['firstName']}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your first name!',
+                },
+              ]}
+            >
+              <FormlInput placeholder="First Name" />
+            </Item>
+          </GridItem>
+          <GridItem>
+            <FormTitle>LAST NAME ✱</FormTitle>
+            <Item
+              name={['lastName']}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your last name!',
+                },
+              ]}
+            >
+              <FormlInput placeholder="LastName Name" />
+            </Item>
+          </GridItem>
+          <GridItem>
+            <FormTitle>State ✱</FormTitle>
+            <Item
+              name={['address', 'state']}
+              rules={[{ required: true, message: 'State is required' }]}
+              style={{ width: '50%' }}
+            >
+              <FormSelect placeholder="Select State">
+                <FormOption value="Queensland">Queensland</FormOption>
+                <FormOption value="Tasmania">Tasmania</FormOption>
+                <FormOption value="Victoria">Victoria</FormOption>
+                <FormOption value="Northern_Territory">
+                  Northern Territory
+                </FormOption>
+                <FormOption value="Western_Australia">
+                  Western Australia
+                </FormOption>
+                <FormOption value="Australian_Capital_Territory">
+                  Australian Capital Territory
+                </FormOption>
+              </FormSelect>
+            </Item>
+          </GridItem>
+          <GridItem>
+            {' '}
+            <FormTitle>Address 1</FormTitle>
+            <Item
+              name={['address', 'street']}
+              rules={[{ required: true, message: 'Street is required' }]}
+            >
+              <FormlInput style={{ width: '80%' }} placeholder="Input street" />
+            </Item>
+          </GridItem>
+          <SpanTwoColumns>
+            <FormTitle>Address 2(Optional)</FormTitle>
+            <Item name={['address', 'street2']}>
+              <FormlInput
+                style={{ width: '25rem' }}
+                placeholder="Input additional address"
+              />
+            </Item>
+          </SpanTwoColumns>
+        </GridContainer>
+        <Form.Item wrapperCol={{ offset: 10 }}>
           <Button
             type="primary"
             htmlType="submit"
-            style={{ padding: '.7rem 1.5rem' }}
+            style={{ padding: '1rem 3rem', fontSize: '1.3rem' }}
           >
-            PAY
+            Check Out
           </Button>
         </Form.Item>
       </CheckOutForm>
@@ -130,10 +152,32 @@ const FormTitle = styled.div`
   font-size: 1.5rem;
 `;
 
-const Item = styled(Form.Item)``;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(3, 20%);
+  grid-gap: 25px;
+
+  @media (max-width: 650px) {
+    display: block;
+  }
+`;
+
+const GridItem = styled.div`
+  width: 100%;
+`;
+
+const SpanTwoColumns = styled(GridItem)`
+  grid-column: span 2;
+`;
+
+const Item = styled(Form.Item)`
+  width: 100%;
+`;
 
 const FormSelect = styled(Select)`
   height: 3rem;
+  width: 3rem;
 
   & .ant-select-selection-placeholder {
     font-size: 1.5rem;
@@ -146,7 +190,7 @@ const FormSelect = styled(Select)`
 
 const FormlInput = styled(Input)`
   height: 2.4rem;
-  width: 15rem;
+  width: 60%;
   font-size: 1.5rem;
   &::placeholder {
     font-size: 1.5rem;
@@ -160,9 +204,9 @@ const FormOption = styled(Option)`
 
 const CheckOutForm = styled(Form)`
   text-align: left;
-  width: 50%;
+  width: 70rem;
   margin: 0 auto;
-  @media (max-width: 550px) {
+  @media (max-width: 1015px) {
     width: 100%;
     margin: 0;
   }

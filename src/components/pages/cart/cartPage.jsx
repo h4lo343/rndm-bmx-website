@@ -24,6 +24,11 @@ export const CartPage = () => {
   const handleRemoveItem = (id) => {
     deleteProduct(id);
   };
+  useEffect(() => {
+    if (!cart.length) {
+      history.push('/');
+    }
+  }, [cart]);
   const totalPrice = useMemo(() => {
     const v = cart.reduce((acc, curr) => acc + curr.originalPrice, 0);
     return v;
