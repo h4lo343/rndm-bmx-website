@@ -13,6 +13,7 @@ import {
   HeaderText,
   Title,
   brightGreenColor,
+  Clickable,
 } from '../../../styles/commonStyles';
 import overlayAfter from '../../../assets/images/home/after.png';
 
@@ -228,6 +229,7 @@ const BlogImage = styled.img`
   object-fit: fill;
   width: 100%;
   height: 100%;
+  ${Clickable}
 `;
 
 const ContentGrid = styled(Grid)`

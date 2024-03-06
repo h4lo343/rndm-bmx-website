@@ -3,6 +3,7 @@ import { Element } from 'react-scroll';
 import styled from 'styled-components';
 import {
   blackColor,
+  Clickable,
   errorColor,
   GeneralText,
   greenColor,
@@ -357,6 +358,7 @@ const HiddenLabel = styled.label`
 `;
 
 const MessageButton = styled(Button)`
+  ${Clickable}
   && {
     padding: 2% 0%;
     background: ${greenColor};

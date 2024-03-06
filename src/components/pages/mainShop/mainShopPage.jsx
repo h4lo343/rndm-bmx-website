@@ -5,6 +5,7 @@ import BgdImage from '../../../assets/images/mainShop/main_shop_backgroud.jpg';
 import {
   Banner,
   blackColor,
+  Clickable,
   GeneralText,
   grey1,
   TitleText,
@@ -14,6 +15,7 @@ import { mainShopProducts } from '../handlers/mainShopProducts';
 import { FilterPanel } from './filterPanel';
 import { useHistory, useParams } from 'react-router-dom';
 import { pagination } from './utility/pagination';
+import { Footer } from '../../common/Footer';
 
 export const MainShopPage = () => {
   const history = useHistory();
@@ -113,6 +115,7 @@ export const MainShopPage = () => {
           />
         </RightColumn>
       </MainContentContainer>
+      <Footer />
     </MainShopPageContainer>
   );
 };
@@ -134,6 +137,7 @@ const ShopTitle = styled.div`
   font-size: 2.5rem;
   text-transform: uppercase;
   cursor: pointer;
+  ${Clickable};
 `;
 
 const TabBar = styled.div`

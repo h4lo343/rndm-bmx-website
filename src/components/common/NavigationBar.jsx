@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import RNDM from '../../assets/logos/logo.png';
 import {
   blackNavColor,
+  Clickable,
   GeneralText,
   greenColor,
   myFont,
@@ -20,6 +21,15 @@ import { slideFwdTopAmt } from '../../styles/animations';
 import { navLinks } from '../pages/handlers/pageRoutes';
 import { HomeLogo, HomeLogoM } from './HomeLogo';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
+export const handleTabClick = (id, history) => {
+  history.push('/');
+  setTimeout(() => {
+    const targetElement = document.getElementById(id);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 0);
+};
 
 export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   const { isOpen, setOpen } = useContext(ThemeContext);
@@ -79,16 +89,6 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
       window.removeEventListener('keydown', handleClose);
     };
   }, [isOpen, handleClose]);
-
-  const handleTabClick = (id) => {
-    history.push('/');
-    setTimeout(() => {
-      const targetElement = document.getElementById(id);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 0);
-  };
 
   useEffect(() => {
     function handleScroll() {
@@ -168,7 +168,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
                 <NavText key={page.id} open={isOpen}>
                   <HomeLink
                     key={page.id}
-                    onClick={() => handleTabClick(page.id)}
+                    onClick={() => handleTabClick(page.id, history)}
                     spy={true}
                     smooth={true}
                     duration={500}
@@ -198,9 +198,8 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
                 <React.Fragment>
                   {isHomePage && (
                     <HomeLink
-                      to={page.id}
                       spy={true}
-                      onClick={handleClose}
+                      onClick={() => handleTabClick(page.id, history)}
                       smooth={true}
                       duration={500}
                       tabIndex={0}
@@ -323,6 +322,12 @@ const NavText = styled(GeneralText)`
 `;
 
 const HomeLink = styled(Link)`
+  display: inline-block;
+  ${Clickable}
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
   && {
     cursor: pointer;
     text-decoration: none;
@@ -357,4 +362,5 @@ const NoStyleRouterLink = styled(RouterLink)`
 const LogoImage = styled.img`
   font-family: ${myFont};
   font-size: 30px;
+  ${Clickable}
 `;

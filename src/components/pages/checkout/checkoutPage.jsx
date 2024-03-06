@@ -8,11 +8,12 @@ import { Option } from 'antd/es/mentions';
 import checkoutBgdImage from '../../../assets/images/checkout/checkout_background_image.JPG';
 
 import { useCartStore } from '../../../stores/useCartStore';
+import { Footer } from '../../common/Footer';
 
 export const CheckoutPage = () => {
   useEffect(() => {
+    window.scrollTo(0, 1);
     window.scrollTo(0, 0);
-    window.scrollBy(0, 1);
   }, []);
   const { cart, cleanCart } = useCartStore();
 
@@ -140,11 +141,12 @@ export const CheckoutPage = () => {
             htmlType="submit"
             style={{ padding: '1rem 3rem', fontSize: '1.3rem' }}
           >
-            Check Out
+            PAY
           </Button>
         </Form.Item>
       </CheckOutForm>
       <Form></Form>
+      <Footer />
     </>
   );
 };

@@ -3,6 +3,7 @@ import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { useCartStore } from '../../stores/useCartStore';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Clickable } from '../../styles/commonStyles';
 
 export const CartButton = () => {
   const history = useHistory();
@@ -39,6 +40,7 @@ const CartButtonContainer = styled.div`
   position: fixed;
   cursor: pointer;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  ${Clickable}
 `;
 
 const NumberContainer = styled.div`

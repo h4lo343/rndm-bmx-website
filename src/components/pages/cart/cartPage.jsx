@@ -13,13 +13,15 @@ import styled from 'styled-components';
 import { OriginalPriceBox } from '../product/styles';
 import { DiscountedPriceBox } from '../product/OptionPanel';
 import { useHistory } from 'react-router-dom';
+import { Footer } from '../../common/Footer';
 
 export const CartPage = () => {
   useEffect(() => {
+    window.scrollTo(0, 1);
     window.scrollTo(0, 0);
-    window.scrollBy(0, 1);
   }, []);
   const history = useHistory();
+
   const { cart, deleteProduct } = useCartStore();
   const handleRemoveItem = (id) => {
     deleteProduct(id);
@@ -127,6 +129,7 @@ export const CartPage = () => {
           </Row>
         </CheckoutPanelContainer>
       </MainContentContainer>
+      <Footer />
     </CartPageContainer>
   );
 };

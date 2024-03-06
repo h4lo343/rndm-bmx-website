@@ -7,7 +7,7 @@ import {
   productPageResponsiveThreshold1,
   productPageResponsiveThreshold2,
 } from './styles';
-import { Button, priceColor } from '../../../styles/commonStyles';
+import { Button, Clickable, priceColor } from '../../../styles/commonStyles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Magnifier } from 'react-image-magnifiers';
@@ -192,6 +192,7 @@ const GenderOption = styled.span`
   outline: 4px solid ${priceColor};
   outline-offset: 1px;
   `}
+  ${Clickable}
 `;
 
 export default OptionPanel;

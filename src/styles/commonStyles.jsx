@@ -59,18 +59,6 @@ export const GeneralText = styled(BodyText)`
   }
 `;
 
-export const GeneralLink = styled(Link)`
-  &&&& {
-    color: ${(props) => (!!props.color ? props.color : greenColor)};
-    text-decoration: none;
-    font-size: 20px !important;
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 export const Title = styled(HeaderText)`
   text-transform: uppercase;
   font-size: 46px;
@@ -107,6 +95,15 @@ export const Button = styled.button`
   transition: all 0.3s ease;
   &:hover {
     transform: scale(1.2);
+  }
+`;
+
+export const Clickable = css`
+  transform: scale(1);
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
   }
 `;
 
@@ -150,4 +147,24 @@ export const productPageShadow = css`
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.51);
   -webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.51);
+`;
+
+export const GeneralLink = styled(Link)`
+  &&&& {
+    display: block;
+    color: ${(props) => (!!props.color ? props.color : greenColor)};
+    text-decoration: none;
+    font-size: 20px !important;
+
+    transform: scale(1);
+    transition: all 0.2s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      text-decoration: underline;
+    }
+    cursor: pointer;
+    &:hover {
+    }
+  }
 `;

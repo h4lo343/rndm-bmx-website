@@ -5,24 +5,27 @@ import {
   Modal,
   Typography,
   useMediaQuery,
-} from "@mui/material";
-import React, { useCallback, useState } from "react";
-import styled from "styled-components";
-import RNDM_Boys from "../../assets/logos/boys_logo.png";
-import RNDM_Girls from "../../assets/logos/girls_logo.png";
+} from '@mui/material';
+import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
+import RNDM_Boys from '../../assets/logos/boys_logo.png';
+import RNDM_Girls from '../../assets/logos/girls_logo.png';
 import {
   GeneralText,
   bgWhiteColor,
   myFont,
   whiteColor,
-} from "../../styles/commonStyles";
-import { Link } from "react-scroll";
-import { footerLinks, navLinks } from "../pages/handlers/pageRoutes";
-import { RiVimeoLine } from "react-icons/ri";
-import { TbBrandYoutube } from "react-icons/tb";
-import { AiOutlineInstagram } from "react-icons/ai";
-import { Privacy, Return } from "./Text";
-import { GiCancel } from "react-icons/gi";
+  Clickable,
+} from '../../styles/commonStyles';
+import { Link } from 'react-scroll';
+import { footerLinks, navLinks } from '../pages/handlers/pageRoutes';
+import { RiVimeoLine } from 'react-icons/ri';
+import { TbBrandYoutube } from 'react-icons/tb';
+import { AiOutlineInstagram } from 'react-icons/ai';
+import { Privacy, Return } from './Text';
+import { GiCancel } from 'react-icons/gi';
+import { useHistory } from 'react-router-dom';
+import { handleTabClick } from './NavigationBar';
 
 const LOGO_WIDTH_L = 180;
 const LOGO_HEIGHT_L = 120;
@@ -34,18 +37,18 @@ const LOGO_WIDTH_M = 120;
 const LOGO_HEIGHT_M = 80;
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  maxWidth: "90vw",
-  maxHeight: "60vh",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  overflow: "scroll",
-  display: "grid",
-  justifyItems: "end",
+  maxWidth: '90vw',
+  maxHeight: '60vh',
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  overflow: 'scroll',
+  display: 'grid',
+  justifyItems: 'end',
   boxShadow: 24,
   pt: 2,
   px: 4,
@@ -53,22 +56,22 @@ const style = {
 };
 
 export const modalStyle1 = {
-  overflow: "scroll",
-  display: "grid",
-  justifyItems: "end",
+  overflow: 'scroll',
+  display: 'grid',
+  justifyItems: 'end',
 };
 
 export const Footer = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(1);
+  const history = useHistory();
+  const isMobile = !useMediaQuery('(min-width:450px)');
+  const isTablet = !useMediaQuery('(min-width:900px)');
 
-  const isMobile = !useMediaQuery("(min-width:450px)");
-  const isTablet = !useMediaQuery("(min-width:900px)");
-
-  const vimeoLink = "https://vimeo.com/rndmbmx";
+  const vimeoLink = 'https://vimeo.com/rndmbmx';
   const youtubeLink =
-    "https://www.youtube.com/channel/UCU2PTmpskLSJgWchiiOccSQ";
-  const instagramLink = "https://www.instagram.com/rndm_bmx/";
+    'https://www.youtube.com/channel/UCU2PTmpskLSJgWchiiOccSQ';
+  const instagramLink = 'https://www.instagram.com/rndm_bmx/';
 
   const handleOpen = useCallback((click) => {
     setValue(click);
@@ -87,7 +90,7 @@ export const Footer = () => {
           xs={12}
           md={4}
           lg={5}
-          paddingTop={{ xs: "15px", md: "0px!important" }}
+          paddingTop={{ xs: '15px', md: '0px!important' }}
         >
           <Box>
             <img
@@ -98,14 +101,14 @@ export const Footer = () => {
                 isMobile
                   ? LOGO_HEIGHT_M
                   : isTablet
-                  ? LOGO_HEIGHT_T
-                  : LOGO_HEIGHT_L
+                    ? LOGO_HEIGHT_T
+                    : LOGO_HEIGHT_L
               }
               src={RNDM_Boys}
               alt="RNDM-BMX Boys"
             />
             <img
-              style={{ paddingLeft: "3%" }}
+              style={{ paddingLeft: '3%' }}
               width={
                 isMobile ? LOGO_WIDTH_M : isTablet ? LOGO_WIDTH_T : LOGO_WIDTH_L
               }
@@ -113,13 +116,13 @@ export const Footer = () => {
                 isMobile
                   ? LOGO_HEIGHT_M
                   : isTablet
-                  ? LOGO_HEIGHT_T
-                  : LOGO_HEIGHT_L
+                    ? LOGO_HEIGHT_T
+                    : LOGO_HEIGHT_L
               }
               src={RNDM_Girls}
               alt="RNDM-BMX Girls"
             />
-            <FooterText color={whiteColor} marginTop={"2vh"}>
+            <FooterText color={whiteColor} marginTop={'2vh'}>
               BMX for the Boys and the Girls!
             </FooterText>
           </Box>
@@ -129,18 +132,18 @@ export const Footer = () => {
           xs={12}
           md={4}
           lg={3.5}
-          paddingTop={{ xs: "15px", md: "0px!important" }}
+          paddingTop={{ xs: '15px', md: '0px!important' }}
         >
-          <LinksBox padding={{ sx: "0% 20%", md: "0% 5%" }}>
-            <FooterHeader as="h2" textAlign={"start"}>
+          <LinksBox padding={{ sx: '0% 20%', md: '0% 5%' }}>
+            <FooterHeader as="h2" textAlign={'start'}>
               Quick links
             </FooterHeader>
 
             {navLinks.map((page) => (
               <HomeLink
-                key={"footer" + page.id}
+                key={'footer' + page.id}
                 offset={page.offset}
-                to={page.id}
+                onClick={() => handleTabClick(page.id, history)}
                 spy={true}
                 smooth={true}
                 duration={500}
@@ -153,7 +156,7 @@ export const Footer = () => {
 
             {footerLinks.map((page) => (
               <StyledButton
-                key={"footer" + page.id}
+                key={'footer' + page.id}
                 onClick={() => handleOpen(page.click)}
                 tabIndex={0}
               >
@@ -167,25 +170,25 @@ export const Footer = () => {
           xs={12}
           md={4}
           lg={3.5}
-          paddingTop={{ xs: "15px", md: "0px!important" }}
+          paddingTop={{ xs: '15px', md: '0px!important' }}
         >
-          <FooterHeader as="h2" textAlign={"center"}>
+          <FooterHeader as="h2" textAlign={'center'}>
             RNDM-BMX Info.
           </FooterHeader>
-          <FooterText color={"grey"}>Address:</FooterText>
+          <FooterText color={'grey'}>Address:</FooterText>
           <FooterText color={whiteColor}>Melbourne, Australia</FooterText>
           <FooterSpacing />
-          <FooterText color={"grey"}>EST:</FooterText>
+          <FooterText color={'grey'}>EST:</FooterText>
           <FooterText color={whiteColor}>2016</FooterText>
           <FooterSpacing />
-          <FooterText color={"grey"}>Favourite Slogan:</FooterText>
+          <FooterText color={'grey'}>Favourite Slogan:</FooterText>
           <FooterText color={whiteColor}>Got BMX?!</FooterText>
         </Grid>
       </FooterMainGrid>
       <Modal sx={{ ...modalStyle1 }} open={open} onClose={handleClose}>
         <Box sx={{ ...style, width: 400 }}>
           <GiCancel
-            style={{ alignContent: "right" }}
+            style={{ alignContent: 'right' }}
             size={30}
             onClick={handleClose}
           ></GiCancel>
@@ -196,14 +199,14 @@ export const Footer = () => {
       <hr />
       <IconDiv>
         <Icon>
-          <LinkNoStyle href={vimeoLink} aria-label={"vimeo"} target="_blank">
+          <LinkNoStyle href={vimeoLink} aria-label={'vimeo'} target="_blank">
             <RiVimeoLine size={30} color={bgWhiteColor} />
           </LinkNoStyle>
         </Icon>
         <Icon>
           <LinkNoStyle
             href={youtubeLink}
-            aria-label={"youtube"}
+            aria-label={'youtube'}
             target="_blank"
           >
             <TbBrandYoutube size={30} color={bgWhiteColor} />
@@ -212,7 +215,7 @@ export const Footer = () => {
         <Icon>
           <LinkNoStyle
             href={instagramLink}
-            aria-label={"instagram"}
+            aria-label={'instagram'}
             target="_blank"
           >
             <AiOutlineInstagram size={30} color={bgWhiteColor} />
@@ -269,6 +272,7 @@ const StyledButton = styled.button`
   padding: 0%;
   margin-top: 2%;
   font-family: ${myFont};
+  ${Clickable}
 `;
 
 const HomeLink = styled(Link)`
@@ -282,6 +286,7 @@ const HomeLink = styled(Link)`
     }
     margin-top: 2%;
   }
+  ${Clickable}
 `;
 
 const LinksBox = styled(Box)`
@@ -309,6 +314,7 @@ const IconDiv = styled.div`
 const Icon = styled.div`
   padding-right: 1%;
   padding-left: 1%;
+  ${Clickable}
 `;
 
 const LinkNoStyle = styled.a`
