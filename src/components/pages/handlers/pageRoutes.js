@@ -58,12 +58,12 @@ export const pageRoutes = [
   },
 ];
 
-export const navHomeID = 'home-section';
-export const navProductID = 'products-section';
-export const navAboutID = 'about-section';
-export const navOffersID = 'offers-section';
-export const navBlogID = 'blog-section';
-export const navContactID = 'contact-section';
+export const navHomeID = 'home-video-section';
+export const navProductID = 'home-product-section';
+export const navAboutID = 'home-about-section';
+export const navOffersID = 'home-offer-section';
+export const navBlogID = 'home-blog-section';
+export const navContactID = 'home-contact-section';
 
 export const navLinks = [
   { name: 'Home', id: navHomeID, offset: -200, pathname: '/' },

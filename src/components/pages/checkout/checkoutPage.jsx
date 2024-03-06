@@ -20,7 +20,12 @@ export const CheckoutPage = () => {
   return (
     <>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
-      <Banner url={checkoutBgdImage} position={'50% 40%'} showOverlay={true}>
+      <Banner
+        url={checkoutBgdImage}
+        position={'50% 40%'}
+        showOverlay={true}
+        white={true}
+      >
         <TitleText variant="h1">CHECK OUT</TitleText>
       </Banner>
 

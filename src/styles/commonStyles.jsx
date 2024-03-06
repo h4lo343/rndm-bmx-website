@@ -1,6 +1,7 @@
 import { Container, Link, Typography } from '@mui/material';
 import styled, { css } from 'styled-components';
 import overlayBefore from '../assets/images/home/before.png';
+import whiteBefore from '../assets/images/home/white_before.png';
 
 export const whiteColor = '#FFFFFF';
 export const bgWhiteColor = '#f6f6f6';
@@ -132,7 +133,8 @@ export const Banner = styled.div`
 
         height: 100px;
 
-        background: url(${overlayBefore}) 50% 50% no-repeat;
+        background: url(${props.white ? whiteBefore : overlayBefore}) 50% 50%
+          no-repeat;
         filter: grayscale(100%);
         background-size: cover;
         bottom: 0;

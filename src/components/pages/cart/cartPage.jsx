@@ -45,7 +45,12 @@ export const CartPage = () => {
   return (
     <CartPageContainer>
       <NavigationBar isHomePage={false} arrayToHandle={[]} />
-      <Banner url={cartBgdImage} position={'50% 40%'} showOverlay={true}>
+      <Banner
+        url={cartBgdImage}
+        position={'50% 40%'}
+        showOverlay={true}
+        white={true}
+      >
         <TitleText variant="h1">CART</TitleText>
       </Banner>
       <MainContentContainer>

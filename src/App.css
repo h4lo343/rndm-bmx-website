@@ -1,11 +1,14 @@
 html {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 :root {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+
 
 :root body {
   position: absolute;

@@ -93,4 +93,10 @@ const PicCardImage = styled.img`
   height: 100%;
   width: 100%;
   border-radius: ${picRadius};
+  transform: scale(1);
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 `;

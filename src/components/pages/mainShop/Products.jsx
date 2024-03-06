@@ -30,7 +30,11 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
     if (sortType === 'Trending') {
       return arr.sort((a, b) => a.popularity - b.popularity);
     } else {
-      return arr.sort((a, b) => a.price - b.price);
+      return arr.sort(
+        (a, b) =>
+          (a.discountedPrice || a.originalPrice) -
+          (b.discountedPrice || b.originalPrice)
+      );
     }
   };
 
@@ -186,6 +190,13 @@ const ProductImage = styled.img`
   display: inline-block;
   max-width: 100%;
   ${productPageShadow};
+  margin-bottom: 10px;
+  transform: scale(1);
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 `;
 
 const ProductName = styled.div`

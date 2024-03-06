@@ -155,8 +155,12 @@ const Tab = styled.div`
   color: ${(props) => (props.chosen ? props.color : 'inherit')};
   &:hover {
     cursor: pointer;
+    color: ${(props) => props.color};
   }
-
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
   text-transform: uppercase;
   @media (max-width: 800px) {
     font-size: 1.3rem;

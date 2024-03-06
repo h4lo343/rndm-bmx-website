@@ -19,7 +19,7 @@ import { Grid, Slide, useMediaQuery } from '@mui/material';
 import { slideFwdTopAmt } from '../../styles/animations';
 import { navLinks } from '../pages/handlers/pageRoutes';
 import { HomeLogo, HomeLogoM } from './HomeLogo';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 
 export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   const { isOpen, setOpen } = useContext(ThemeContext);
@@ -27,7 +27,7 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
   const isMobile = !useMediaQuery('(min-width:900px)');
 
   const elementArray = arrayToHandle;
-
+  const history = useHistory();
   const handleBlur = useCallback((elementID, style) => {
     const element = document.getElementById(elementID);
     element.style.filter = style;
@@ -79,6 +79,16 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
       window.removeEventListener('keydown', handleClose);
     };
   }, [isOpen, handleClose]);
+
+  const handleTabClick = (id) => {
+    history.push('/');
+    setTimeout(() => {
+      const targetElement = document.getElementById(id);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 0);
+  };
 
   useEffect(() => {
     function handleScroll() {
@@ -156,22 +166,17 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
             >
               {navLinks.map((page) => (
                 <NavText key={page.id} open={isOpen}>
-                  {isHomePage && (
-                    <HomeLink
-                      key={page.id}
-                      to={page.id}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                      tabIndex={0}
-                      href="/"
-                    >
-                      {page.name.toUpperCase()}
-                    </HomeLink>
-                  )}
-                  {!isHomePage && (
-                    <NoStyleRouterLink to={'/'}>{page.name}</NoStyleRouterLink>
-                  )}
+                  <HomeLink
+                    key={page.id}
+                    onClick={() => handleTabClick(page.id)}
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                    tabIndex={0}
+                    href="/"
+                  >
+                    {page.name.toUpperCase()}
+                  </HomeLink>
                 </NavText>
               ))}
             </NavBox>

@@ -263,6 +263,12 @@ const PriceContainer = styled.span`
 `;
 
 const ProductCardImg = styled.img`
+  transform: scale(1);
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
   width: 70%;
   aspect-ratio: 1 / 1;
 `;
