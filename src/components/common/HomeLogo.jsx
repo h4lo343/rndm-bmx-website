@@ -1,8 +1,9 @@
-import React from "react";
-import { Link } from "react-scroll";
-import styled from "styled-components";
-import RNDM from "../../assets/logos/logo.png";
-import { navHomeID } from "../pages/handlers/pageRoutes";
+import React from 'react';
+import { Link } from 'react-scroll';
+import styled from 'styled-components';
+import RNDM from '../../assets/logos/logo.png';
+import { navHomeID } from '../pages/handlers/pageRoutes';
+import { Clickable } from '../../styles/commonStyles';
 
 export const HomeLogo = () => {
   return (
@@ -50,6 +51,7 @@ const LogoLink = styled(NoStyleLink)`
   @media (min-width: 900px) {
     display: flex !important;
   }
+  ${Clickable}
 `;
 
 const LogoLinkM = styled(NoStyleLink)`
