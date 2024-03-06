@@ -125,7 +125,7 @@ export const CheckoutPage = () => {
             </Item>
           </GridItem>
           <SpanTwoColumns>
-            <FormTitle>Address 2(Optional)</FormTitle>
+            <FormTitle>Address 2 (Optional)</FormTitle>
             <Item name={['address', 'street2']}>
               <FormlInput
                 style={{ width: '25rem' }}
