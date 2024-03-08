@@ -12,7 +12,6 @@ import { Footer } from '../../common/Footer';
 
 export const CheckoutPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 1);
     window.scrollTo(0, 0);
   }, []);
   const { cart, cleanCart } = useCartStore();

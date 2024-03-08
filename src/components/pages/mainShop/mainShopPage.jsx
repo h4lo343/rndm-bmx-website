@@ -16,6 +16,7 @@ import { FilterPanel } from './filterPanel';
 import { useHistory, useParams } from 'react-router-dom';
 import { pagination } from './utility/pagination';
 import { Footer } from '../../common/Footer';
+import _ from 'lodash';
 
 export const MainShopPage = () => {
   const history = useHistory();
@@ -23,22 +24,26 @@ export const MainShopPage = () => {
   const [index, setIndex] = useState(0);
   const { category } = useParams();
   const [dataSource, setDataSource] = useState(
-    pagination(category, [
-      ...mainShopProducts.generalBMX.products,
-      ...mainShopProducts.ExoticBMX.products,
-      ...mainShopProducts.UniqueBMX.products,
-      ...mainShopProducts.RNDMBMX.products,
-    ])
+    _.shuffle(
+      pagination(category, [
+        ...mainShopProducts.generalBMX.products,
+        ...mainShopProducts.ExoticBMX.products,
+        ...mainShopProducts.UniqueBMX.products,
+        ...mainShopProducts.RNDMBMX.products,
+      ])
+    )
   );
   useEffect(() => {
     if (!category) {
       setDataSource(
-        pagination(category, [
-          ...mainShopProducts.generalBMX.products,
-          ...mainShopProducts.ExoticBMX.products,
-          ...mainShopProducts.UniqueBMX.products,
-          ...mainShopProducts.RNDMBMX.products,
-        ])
+        _.shuffle(
+          pagination(category, [
+            ...mainShopProducts.generalBMX.products,
+            ...mainShopProducts.ExoticBMX.products,
+            ...mainShopProducts.UniqueBMX.products,
+            ...mainShopProducts.RNDMBMX.products,
+          ])
+        )
       );
     } else {
       setDataSource(

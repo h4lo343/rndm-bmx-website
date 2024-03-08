@@ -8,12 +8,13 @@ import MenuItem from '@mui/material/MenuItem';
 import { Select } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import _ from 'lodash';
 
 export const Products = ({ dataSource, category, index, setIndex }) => {
   const history = useHistory();
   const keys = Object.keys(dataSource).sort();
   const [pageData, setPageData] = useState(dataSource[keys[0]]);
-  const [sortType, setSortType] = useState('Trending');
+  const [sortType, setSortType] = useState('Random');
   const [cardNum, setCardNum] = useState(0);
   const directToProductPage = (p) => {
     history.push(`/product/${p.fullName}`, {
@@ -29,12 +30,14 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
     if (!arr) return;
     if (sortType === 'Trending') {
       return arr.sort((a, b) => a.popularity - b.popularity);
-    } else {
+    } else if (sortType === 'Price') {
       return arr.sort(
         (a, b) =>
           (a.discountedPrice || a.originalPrice) -
           (b.discountedPrice || b.originalPrice)
       );
+    } else if (sortType === 'Random') {
+      return _.shuffle(arr);
     }
   };
 
@@ -74,6 +77,7 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
         <Select value={sortType} onChange={(e) => setSortType(e.target.value)}>
           <MenuItem value={'Trending'}>Trending</MenuItem>
           <MenuItem value={'Price'}>Price</MenuItem>
+          <MenuItem value={'Random'}>Random</MenuItem>
         </Select>
       </FunctionBar>
       <ProductsCardContainer>
@@ -83,7 +87,9 @@ export const Products = ({ dataSource, category, index, setIndex }) => {
               .map((key) => {
                 return (
                   <>
-                    <Subcategory>{key}</Subcategory>
+                    <Subcategory>
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </Subcategory>
                     <ProductsCardContainer>
                       {pageData[key]?.length &&
                         sortData(pageData[key])?.map((p) => (

@@ -17,7 +17,6 @@ import { Footer } from '../../common/Footer';
 
 export const CartPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 1);
     window.scrollTo(0, 0);
   }, []);
   const history = useHistory();
@@ -113,7 +112,7 @@ export const CartPage = () => {
           </Row>
           <Row border={true}>
             <Title>Total:</Title>
-            <Price>${totalPrice - discount}</Price>
+            <Price>${(totalPrice - discount).toFixed(2)}</Price>
           </Row>
           <Row>
             <div></div>

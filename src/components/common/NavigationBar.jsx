@@ -107,6 +107,10 @@ export const NavigationBar = ({ isHomePage, arrayToHandle }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrollPosition]);
+  useEffect(() => {
+    if (!isHomePage)
+      document.getElementById('navigation-bar').style.top = '-25%';
+  }, []);
 
   return (
     <React.Fragment>

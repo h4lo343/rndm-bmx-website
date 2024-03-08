@@ -30,7 +30,12 @@ export const ContactContent = () => {
   const [emailID, setEmailID] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-
+  const [warningMessages, setWarningMessages] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
   const [status, setStatus] = useState({
     msg: '',
     vertical: alertVerticalPos,
@@ -53,19 +58,41 @@ export const ContactContent = () => {
   }
 
   function handleSubmit(e) {
+    let warning = {};
     e.preventDefault();
-    setAlert(true);
+    setAlert(false);
+    if (!name) {
+      warning.name = 'Please enter your name';
+    } else {
+      warning.name = '';
+    }
     if (!emailID) {
-      return handleMessage('Enter your email ID to submit.', errorText);
+      warning.email = 'Please enter a valid email';
+      handleMessage('Enter your email ID to submit.', errorText);
+    } else {
+      warning.email = '';
     }
     if (emailID) {
       if (!emailID.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
-        return handleMessage('Invalid email id.', errorText);
+        warning.email = 'Please enter valid email';
+        handleMessage('Invalid email id.', errorText);
+      } else {
+        warning.email = '';
       }
     }
-    if (!message) {
-      return handleMessage('Enter a message to submit.', errorText);
+    if (subject) {
+      warning.subject = '';
+    } else {
+      warning.subject = 'Please enter your subject';
     }
+    if (!message) {
+      warning.message = 'Please enter your message';
+
+      handleMessage('Enter a message to submit.', errorText);
+    } else {
+      warning.message = '';
+    }
+    setWarningMessages({ ...warning });
     try {
       var templateParams = {
         from_name: name,
@@ -155,6 +182,14 @@ export const ContactContent = () => {
                 onChange={(e) => setEmailID(e.target.value)}
               />
             </Stack>
+            <Stack direction="row" spacing={4}>
+              <WarningMessage style={{ width: '70%' }}>
+                {warningMessages.name}
+              </WarningMessage>
+              <WarningMessage style={{ width: '120%' }}>
+                {warningMessages.email}
+              </WarningMessage>
+            </Stack>
             <StyleDiv />
             <HiddenLabel htmlFor="subject-id-field">Subject:</HiddenLabel>
             <InfoField
@@ -164,6 +199,9 @@ export const ContactContent = () => {
               placeholder="Subject"
               onChange={(e) => setSubject(e.target.value)}
             />
+            <Stack direction="row" spacing={4}>
+              <WarningMessage>{warningMessages.subject}</WarningMessage>
+            </Stack>
             <StyleDiv />
             <HiddenLabel htmlFor="message-field">Message: </HiddenLabel>
             <TextField
@@ -178,6 +216,9 @@ export const ContactContent = () => {
               }}
               onChange={(e) => setMessage(e.target.value)}
             />
+            <Stack direction="row" spacing={4}>
+              <WarningMessage>{warningMessages.message}</WarningMessage>
+            </Stack>
             <StyleDiv />
             <MessageButton
               id="profile-button"
@@ -380,6 +421,11 @@ const MessageButton = styled(Button)`
       min-width: 50%;
     }
   }
+`;
+
+const WarningMessage = styled.span`
+  color: #ff4d4f;
+  font-size: 1.3rem;
 `;
 
 const TextField = styled.textarea`

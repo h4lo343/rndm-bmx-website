@@ -56,7 +56,11 @@ export const BlogContent = () => {
           display={{ xs: 'none', md: 'flex' }}
         >
           <Grid item md={5.5} display={'flex'}>
-            <BlogImage src={blogItem1} alt={alt_text_1} />
+            <BlogImage
+              src={blogItem1}
+              alt={alt_text_1}
+              onClick={() => window.open(blogLink1)}
+            />
           </Grid>
           <ContentGrid item md={2.5}>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -69,7 +73,11 @@ export const BlogContent = () => {
             </GeneralLink>
           </ContentGrid>
           <Grid item md={4} display={'flex'}>
-            <BlogImage src={blogItem2} alt={alt_text_2} />
+            <BlogImage
+              src={blogItem2}
+              alt={alt_text_2}
+              onClick={() => window.open(blogLink3)}
+            />
           </Grid>
         </Grid>
 
@@ -89,7 +97,11 @@ export const BlogContent = () => {
             </GeneralLink>
           </ContentGrid>
           <Grid item display={'flex'} md={5.5}>
-            <BlogImage src={blogItem3} alt={alt_text_3} />
+            <BlogImage
+              src={blogItem3}
+              alt={alt_text_3}
+              onClick={() => window.open(blogLink2)}
+            />
           </Grid>
           <ContentGrid item md={4}>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -110,7 +122,11 @@ export const BlogContent = () => {
           display={{ xs: 'block', md: 'none' }}
         >
           <Grid item>
-            <BlogImage src={blogItem1} alt={alt_text_1} />
+            <BlogImage
+              src={blogItem1}
+              alt={alt_text_1}
+              onClick={() => window.open(blogLink1)}
+            />
           </Grid>
           <ContentGrid item>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -131,7 +147,11 @@ export const BlogContent = () => {
           spacing={0}
         >
           <Grid item>
-            <BlogImage src={blogItem2} alt={alt_text_2} />
+            <BlogImage
+              src={blogItem2}
+              alt={alt_text_2}
+              onClick={() => window.open(blogLink3)}
+            />
           </Grid>
           <ContentGrid item>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -152,7 +172,11 @@ export const BlogContent = () => {
           spacing={0}
         >
           <Grid item>
-            <BlogImage src={blogItem3} alt={alt_text_3} />
+            <BlogImage
+              src={blogItem3}
+              alt={alt_text_3}
+              onClick={() => window.open(blogLink2)}
+            />
           </Grid>
           <ContentGrid item>
             <BlogHeader textAlign="left" as="h3" color={brightGreenColor}>
@@ -160,9 +184,6 @@ export const BlogContent = () => {
             </BlogHeader>
             <GeneralText textAlign="left">{blogText[2]}</GeneralText>
             <br />
-            <GeneralLink href={blogLink3} rel="noopener" target="_blank">
-              {linkText}
-            </GeneralLink>
           </ContentGrid>
         </Grid>
       </BlogContainer>
